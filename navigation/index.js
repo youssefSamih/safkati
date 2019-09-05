@@ -1,7 +1,9 @@
 import React from 'react';
-import { Image } from 'react-native';
+import { Image,Dimensions } from 'react-native';
+
 import { createAppContainer, createSwitchNavigator } from 'react-navigation';
 import { createStackNavigator } from 'react-navigation-stack';
+import { createDrawerNavigator } from 'react-navigation-drawer';
 
 import Welcome from '../screens/Welcome';
 import Login from '../screens/Login';
@@ -28,12 +30,30 @@ const AuthStack = createStackNavigator(
     Forgot
   }
 );
+const DrawerConfig = {
+  DrawerWidth: WIDTH * 0.83,
+}
+const WIDTH = Dimensions.get('window').width
+
+const DrawerNavigation = createDrawerNavigator(
+{
+  Home:{
+    screen: Welcome
+  },
+  Login:{
+    screen: Login
+  },
+  SignUp:{
+    screen: SignUp
+  }
+}
+,DrawerConfig);
 
 export default createAppContainer(
   createSwitchNavigator(
     {
       AuthLoading: AuthLoading,
-      App: AppStack,
+      App: DrawerNavigation,
       Auth: AuthStack,
     },
     {

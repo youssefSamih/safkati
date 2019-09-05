@@ -3,6 +3,7 @@ import { StyleSheet, Text, View } from 'react-native';
 
 import { AppLoading, Asset } from 'expo';
 
+import DrawerNavigaton from './navigation/DrawerNavigation';
 import Navigation from './navigation';
 import { Block } from './components';
 
