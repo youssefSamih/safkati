@@ -1,12 +1,13 @@
 import React from 'react';
 import { Image } from 'react-native';
-import { createAppContainer } from 'react-navigation';
+import { createAppContainer, createSwitchNavigator } from 'react-navigation';
 import { createStackNavigator } from 'react-navigation-stack';
 
 import Welcome from '../screens/Welcome';
 import Login from '../screens/Login';
 import SignUp from '../screens/SignUp';
 import Forgot from '../screens/Forgot';
+import AuthLoading from '../screens/AuthLoading';
 /*import Explore from '../screens/Explore';
 import Browse from '../screens/Browse';
 import Product from '../screens/Product';
@@ -14,7 +15,34 @@ import Settings from '../screens/Settings';*/
 
 import { theme } from '../constants';
 
-const screens = createStackNavigator({
+const AppStack = createStackNavigator(
+  { 
+   Welcome,
+  }
+);
+
+const AuthStack = createStackNavigator(
+  { 
+    Login,
+    SignUp,
+    Forgot
+  }
+);
+
+export default createAppContainer(
+  createSwitchNavigator(
+    {
+      AuthLoading: AuthLoading,
+      App: AppStack,
+      Auth: AuthStack,
+    },
+    {
+      initialRouteName: 'AuthLoading',
+    }
+  )
+);
+
+/*const screens = createStackNavigator({
   Login,
   Welcome,
   SignUp,
@@ -39,6 +67,7 @@ const screens = createStackNavigator({
       paddingRight: theme.sizes.base,
     },
   }
-});
+});*/
 
-export default createAppContainer(screens);
+
+
