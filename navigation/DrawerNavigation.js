@@ -1,25 +1,51 @@
 import React from 'react';
-import { Platform, Dimensions } from 'react-native';
+import { Dimensions, StyleSheet} from 'react-native';
 import { createAppContainer } from 'react-navigation';
 import { createDrawerNavigator } from 'react-navigation-drawer';
 
 import Welcome from '../screens/Welcome';
 import Login from '../screens/Login';
 import SignUp from '../screens/SignUp';
-import Forgot from '../screens/Forgot';
-import AuthLoading from '../screens/AuthLoading';
+
+import CustomDrawerContentComponent from './CustomDrawerContentComponent';
+
+const WIDTH = Dimensions.get('window').width ;
+
 
 const DrawerConfig = {
-	DrawerWidth: WIDTH * 0.83,
+	 initialRouteName: 'Home',
+	 contentOptions: {
+	    activeTintColor: '#548ff7',
+	    activeBackgroundColor: 'transparent',
+	    labelStyle: {
+	      fontSize: 15,
+	      marginLeft: 0,
+	    },
+	 },
+  contentComponent: props => CustomDrawerContentComponent(props),
+  drawerWidth: WIDTH * 0.83,
 }
-const WIDTH = Dimensions.get('window').width
 
 const DrawerNavigation = createDrawerNavigator(
 {
-	Home:{
-		screen: Welcome
-	}
+  Home:{
+    screen: Welcome,
+    path: '/welcome',
+  },
+  Login:{
+    screen: Login,
+    path: '/login',
+  }/*,
+  SignUp:{
+    screen: SignUp
+  }*/
 }
-,DrawerConfig);
+, DrawerConfig);
 
-export default createAppContainer(DrawerNavigation);
+const styles = StyleSheet.create({
+	container: {
+		flex: 1,
+	}
+});
+
+export {DrawerNavigation}
