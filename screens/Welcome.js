@@ -3,6 +3,9 @@ import {View, Text} from 'react-native';
 
 
 class Welcome extends React.Component {
+	 static navigationOptions = {
+	    title: 'Home',
+	  };
 	render(){
 		return( 
 			<View>
