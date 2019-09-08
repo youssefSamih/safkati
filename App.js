@@ -2,6 +2,8 @@ import React from 'react';
 import { StyleSheet, Text, View } from 'react-native';
 
 import { AppLoading, Asset } from 'expo';
+import * as Font from 'expo-font';
+import { Ionicons } from '@expo/vector-icons';
 
 import DrawerNavigaton from './navigation/DrawerNavigation';
 import Navigation from './navigation';
@@ -17,7 +19,11 @@ export default class App extends React.Component {
   handleResourcesAsync = async () => {
     // we're caching all the images
     // for better performance on the app
-
+    await Font.loadAsync({
+      Roboto: require('native-base/Fonts/Roboto.ttf'),
+      Roboto_medium: require('native-base/Fonts/Roboto_medium.ttf'),
+      ...Ionicons.font,
+    });
     const cacheImages = images.map(image => {
       return Asset.fromModule(image).downloadAsync();
     });

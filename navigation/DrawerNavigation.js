@@ -24,6 +24,7 @@ const DrawerConfig = {
 	 },
   contentComponent: props => CustomDrawerContentComponent(props),
   drawerWidth: WIDTH * 0.83,
+  drawerPosition: 'left',
   drawerOpenRoute: 'DrawerOpen',
   drawerCloseRoute: 'DrawerClose',
   drawerToggleRoute: 'DrawerToggle'
