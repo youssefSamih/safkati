@@ -8,4 +8,16 @@ export default {
   "Choose the language": "Choisir la langue : ",
   "French":"Français",
   "Arabe":"Arabe",
+  "Become partner":"Devenez partenaire de {{appName}}",
+   "Last Name *":"Nom *",
+   "First Name *":"Prénom *", 
+   "Adress *":"Adresse *",
+   "CIN *":"CIN *",
+   "Email *":"Email *",
+   "phone *":"téléphone *",
+   "entrepreneur *":"Auto entrepreneur",
+   "Enter your password *":"Insérez votre mot de passe *",
+   "Comfirm your password *":"Confirmer votre mot de passe *",
+   "Accept CGU":"Accepter les CGU",
+
 };

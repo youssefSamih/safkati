@@ -25,9 +25,9 @@ const AppStack = createStackNavigator(
 
 const AuthStack = createStackNavigator(
   { 
+    SignUp,
     SelectLang,
     Login,
-    SignUp,
     Forgot
   }, {
   defaultNavigationOptions: {

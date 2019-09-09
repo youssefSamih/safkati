@@ -1,7 +1,7 @@
 import * as theme from './theme';
-import * as mocks from './mocks';
+import * as params from './params';
 
 export {
   theme,
-  mocks,
+  params,
 };

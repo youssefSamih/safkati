@@ -22,7 +22,7 @@ import {
 } from 'native-base';
 
 import {Block, Divider} from '../components';
-import { theme } from '../constants';
+import { theme, params } from '../constants';
 
 
 class Login extends React.Component {
@@ -37,7 +37,7 @@ class Login extends React.Component {
 			        <Block center>
 			       	<Image
 			       	 style={styles.logoImg}
-			          source={require('../assets/logo.png')} />
+			          source={params.app.LOGO} />
 			       </Block>
 		          <Form style={{paddingTop: 20}}>
 		              <Label style={styles.labelText}>{i18n.t('Username')} </Label>
