@@ -21,8 +21,8 @@ const WIDTH = Dimensions.get('window').width ;
 const DrawerConfig = {
 	 initialRouteName: 'Projets',
 	 contentOptions: {
-	    activeTintColor: '#548ff7',
-	    activeBackgroundColor: 'transparent',
+	    activeTintColor: '#fff',
+	    activeBackgroundColor: '#AA2D5A',
 	    labelStyle: {
 	      fontSize: 15,
 	      marginLeft: 0,
