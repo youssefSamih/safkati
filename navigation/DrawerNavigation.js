@@ -5,6 +5,13 @@ import { createDrawerNavigator } from 'react-navigation-drawer';
 
 import Welcome from '../screens/Welcome';
 import Projets from '../screens/Projets';
+import MonEspace from '../screens/MonEspace';
+import Aide from '../screens/Aide';
+import Apropos from '../screens/Apropos';
+import Confidentialite from '../screens/Confidentialite';
+import Parrainage from '../screens/Parrainage';
+import Tuto from '../screens/Tuto';
+//import Aide from '../screens/Aide';
 
 import CustomDrawerContentComponent from './CustomDrawerContentComponent';
 
@@ -35,8 +42,32 @@ const DrawerNavigation = createDrawerNavigator(
     screen: Welcome,
     path: '/welcome',
   },
+  MonEspace:{
+    screen: MonEspace,
+    path: '/mon-espace',
+  },
+  Parrainage:{
+    screen: Parrainage,
+    path: '/mon-espace',
+  },
+  Tuto:{
+    screen: Tuto,
+    path: '/mon-espace',
+  },
   Projets:{
     screen: Projets,
+    path: '/projets',
+  },
+  Confidentialite:{
+    screen: Confidentialite,
+    path: '/projets',
+  },
+  Aide:{
+    screen: Aide,
+    path: '/projets',
+  },
+  Apropos:{
+    screen: Apropos,
     path: '/projets',
   }
 }
