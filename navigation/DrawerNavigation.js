@@ -13,7 +13,7 @@ const WIDTH = Dimensions.get('window').width ;
 
 
 const DrawerConfig = {
-	 initialRouteName: 'Home',
+	 initialRouteName: 'Login',
 	 contentOptions: {
 	    activeTintColor: '#548ff7',
 	    activeBackgroundColor: 'transparent',
