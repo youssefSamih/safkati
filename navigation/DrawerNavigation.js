@@ -4,8 +4,7 @@ import { createAppContainer } from 'react-navigation';
 import { createDrawerNavigator } from 'react-navigation-drawer';
 
 import Welcome from '../screens/Welcome';
-import Login from '../screens/Login';
-import SignUp from '../screens/SignUp';
+import Projets from '../screens/Projets';
 
 import CustomDrawerContentComponent from './CustomDrawerContentComponent';
 
@@ -13,7 +12,7 @@ const WIDTH = Dimensions.get('window').width ;
 
 
 const DrawerConfig = {
-	 initialRouteName: 'Login',
+	 initialRouteName: 'Home',
 	 contentOptions: {
 	    activeTintColor: '#548ff7',
 	    activeBackgroundColor: 'transparent',
@@ -36,13 +35,10 @@ const DrawerNavigation = createDrawerNavigator(
     screen: Welcome,
     path: '/welcome',
   },
-  Login:{
-    screen: Login,
-    path: '/login',
-  }/*,
-  SignUp:{
-    screen: SignUp
-  }*/
+  Projets:{
+    screen: Projets,
+    path: '/projets',
+  }
 }
 , DrawerConfig);
 

@@ -7,6 +7,7 @@ import { createStackNavigator } from 'react-navigation-stack';
 import {DrawerNavigation} from './DrawerNavigation';
 
 import Welcome from '../screens/Welcome';
+import SelectLang from '../screens/SelectLang';
 import Login from '../screens/Login';
 import SignUp from '../screens/SignUp';
 import Forgot from '../screens/Forgot';
@@ -24,10 +25,31 @@ const AppStack = createStackNavigator(
 
 const AuthStack = createStackNavigator(
   { 
+    SelectLang,
     Login,
     SignUp,
     Forgot
+  }, {
+  defaultNavigationOptions: {
+    headerStyle: {
+      height: theme.sizes.base * 4,
+      backgroundColor: theme.colors.white, // or 'white
+      borderBottomColor: "transparent",
+      elevation: 0, // for android
+    },
+    //headerBackImage: <Image source={require('../assets/icons/back.png')} />,
+    headerBackTitle: null,
+    headerLeftContainerStyle: {
+      alignItems: 'center',
+      marginLeft: theme.sizes.base * 2,
+      paddingRight: theme.sizes.base,
+    },
+    headerRightContainerStyle: {
+      alignItems: 'center',
+      paddingRight: theme.sizes.base,
+    },
   }
+}
 );
 
 
