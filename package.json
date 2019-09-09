@@ -10,6 +10,8 @@
   "dependencies": {
     "expo": "^34.0.1",
     "expo-font": "^6.0.1",
+    "expo-localization": "^6.0.0",
+    "i18n-js": "^3.3.0",
     "native-base": "^2.13.7",
     "react": "16.8.3",
     "react-dom": "^16.8.6",
