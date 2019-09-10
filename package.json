@@ -13,6 +13,7 @@
     "expo-font": "^6.0.1",
     "expo-localization": "^6.0.0",
     "i18n-js": "^3.3.0",
+    "lodash": "^4.17.15",
     "native-base": "^2.13.7",
     "react": "16.8.3",
     "react-dom": "^16.8.6",
