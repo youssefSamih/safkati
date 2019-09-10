@@ -1,6 +1,6 @@
 import axios from 'axios';
 import { Alert } from 'react-native';
-import { Actions } from 'react-native-router-flux';
+//import { Actions } from 'react-native-router-flux';
 
 import {
 	PROJECTS_FETCH,
@@ -75,7 +75,7 @@ const successDeclared = (dispatch) =>{
 		alert.declared_successfully,
 		[{text: 'OK', onPress: () => console.log('OK Pressed')}]
 	);
-	Actions.pop();
+	// Actions.pop();
 }
 
 const failedDeclared = (dispatch) => {

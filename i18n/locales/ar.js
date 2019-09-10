@@ -19,4 +19,6 @@ export default {
    "Enter your password *":"كلمة المرور *",
    "Comfirm your password *":"تأكيد كلمة مرورك *",
    "Accept CGU":"اقبل الشروط",
+   "email placeholder":'email@exemple.com',
+   "password placeholder":'كلمه السر',
 };

@@ -1,5 +1,5 @@
 import axios  from 'axios';
-import { Actions } from 'react-native-router-flux';
+//import { Actions } from 'react-native-router-flux';
 import { AsyncStorage, Alert } from 'react-native';
 import {API_LOGIN, API_SIGNUP} from './urls';
 import {
@@ -32,7 +32,7 @@ export const signUpUser = ({nom,phone,email,password}) =>{
 	    	if(res.status == 201){
 	    		await AsyncStorage.setItem('currentUser', JSON.stringify(res.data.user));
 	    		createUserSuccess(dispatch, res.data.user);
-	    		Actions.main();
+	    		//Actions.main();
 	    	}else{
 	    		createUserFail(dispatch)
 	    	}
@@ -45,14 +45,15 @@ export const loginUser = ({email, password}) =>{
 
 	return (dispatch) =>{
 		dispatch({type: LOGIN_USER});
-
+		console.log(`${API_LOGIN}?login=${email}&password=${password}`);
 		axios.get(`${API_LOGIN}?login=${email}&password=${password}`)
 	    .then(async (res) => {
+		console.log(res.data);
 	    	
 	    	if(res.status == 200){
 	    		await AsyncStorage.setItem('currentUser', JSON.stringify(res.data));
 	    		loginUserSuccess(dispatch, res.data);
-	    		Actions.main();
+	    		//Actions.main();
 	    	}else{
 	    		loginUserFail(dispatch)
 	    	}
@@ -67,7 +68,7 @@ export const signOut = () =>{
 		dispatch({
 			type:INITIAL_ALL_STATE
 		});
-		Actions.auth();
+		// Actions.auth();
 	}
 	
 }
@@ -80,7 +81,7 @@ const loginUserSuccess = (dispatch, user) => {
 		payload: user 
 	});
 
-	Actions.main();
+	// Actions.main();
 };
 
 

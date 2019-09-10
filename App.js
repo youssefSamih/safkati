@@ -1,11 +1,13 @@
 import React from 'react';
 import { StyleSheet, Text, View } from 'react-native';
+import { Provider } from 'react-redux';
+
+import store from './redux/store';
 
 import { AppLoading, Asset } from 'expo';
 import * as Font from 'expo-font';
 import { Ionicons } from '@expo/vector-icons';
 
-import DrawerNavigaton from './navigation/DrawerNavigation';
 import Navigation from './navigation';
 import { Block } from './components';
 
@@ -43,9 +45,11 @@ export default class App extends React.Component {
     }
 
     return (
-      <Block white>
-        <Navigation />
-      </Block>
+      <Provider store={store}>
+        <Block white>
+          <Navigation />
+        </Block>
+      </Provider>
     );
   }
 }

@@ -20,4 +20,7 @@ export default {
    "Comfirm your password *":"Confirmer votre mot de passe *",
    "Accept CGU":"Accepter les CGU",
 
+   "email placeholder":'email@exemple.com',
+   "password placeholder":'mot de passe',
+
 };

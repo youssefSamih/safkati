@@ -24,7 +24,7 @@ class SelectLang extends React.Component {
 	} 
 
 	selectLangue = async (lang) => {
-		console.log(lang);
+		
 		await AsyncStorage.setItem('selectedLang', lang);
 		i18n.locale = lang ;
 		if(lang == 'ar'){
@@ -32,7 +32,6 @@ class SelectLang extends React.Component {
 		}else{
 			I18nManager.forceRTL(false);
 		}
-		console.log('fin');
 		this.props.navigation.navigate('Login');
 
 	}
