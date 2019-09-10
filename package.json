@@ -8,6 +8,7 @@
     "eject": "expo eject"
   },
   "dependencies": {
+    "axios": "^0.19.0",
     "expo": "^34.0.1",
     "expo-font": "^6.0.1",
     "expo-localization": "^6.0.0",
