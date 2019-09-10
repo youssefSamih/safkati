@@ -76,7 +76,7 @@ class SignUp extends React.Component {
 				              <Label>{i18n.t('Comfirm your password *')}</Label>
 				              <Input secureTextEntry />
 				            </Item>
-				            <Item inlineLabel >
+				            <Item inlineLabel last>
 				              <Label>{i18n.t('Accept CGU')}</Label>
 				              <CheckBox
 					              //checked={this.state.checkbox2}

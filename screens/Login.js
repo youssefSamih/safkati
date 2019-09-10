@@ -32,7 +32,7 @@ class Login extends React.Component {
 			<Container style={styles.container}>
 	        <Content padder bordered>
 	        <Block padding={[0, theme.sizes.base * 2]}>
-		       <Divider />
+		       <Divider style={{borderBottomWidth: 0}} />
 		        <Block middle >
 			        <Block center>
 			       	<Image
@@ -60,7 +60,7 @@ class Login extends React.Component {
 			        <Button rounded>
 			           <Text>{i18n.t('Log in')}</Text>
 			        </Button>
-			        <Button transparent>
+			        <Button transparent  onPress={() => this.props.navigation.navigate('SignUp')}>
 			           <Text>{i18n.t('Create an account')}</Text>
 			        </Button>
 		         </Block>

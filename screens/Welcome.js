@@ -7,7 +7,7 @@ import { Container, Header, Left, Body, Right, Button, Icon, Title } from 'nativ
 class Welcome extends React.Component {
 	   static navigationOptions = ({ navigation }) => ({
 		    title: "Home",
-		    drawerLabel: 'Notification',
+		    drawerLabel: 'Home',
 		    drawerIcon: ({ tintColor }) => (
 		      <Ionicons
 					name="md-menu"
