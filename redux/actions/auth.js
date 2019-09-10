@@ -23,12 +23,10 @@ export const setCurrentUser = ({user}) =>{
 };
 
 export const signUpUser = ({nom,phone,email,password}) =>{
-	console.log(JSON.stringify({nom,phone,email,password}));
 	return (dispatch) =>{
 		dispatch({type: USER_CREATE});
 		axios.post(API_SIGNUP,{nom,phone,email,password})
 		.then(async (res) => {
-	    	console.log(res.status);
 	    	if(res.status == 201){
 	    		await AsyncStorage.setItem('currentUser', JSON.stringify(res.data.user));
 	    		createUserSuccess(dispatch, res.data.user);

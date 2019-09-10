@@ -1,7 +1,9 @@
 import React from 'react';
-import {View, Text} from 'react-native';
+import {View} from 'react-native';
 import { Ionicons } from '@expo/vector-icons';
 
+import ProjectList from './project/ProjectList';
+import ProjectNavigation from "../navigation/projectNavigation";
 
 class Projets extends React.Component {
 	static navigationOptions = ({ navigation }) => ({
@@ -17,9 +19,7 @@ class Projets extends React.Component {
 	  });
 	render(){
 		return( 
-			<View>
-				<Text> Projets </Text>
-			</View>
+			 <ProjectNavigation />
 		);
 	}
 }
