@@ -9,6 +9,7 @@ class Projets extends React.Component {
 	static navigationOptions = ({ navigation }) => ({
 	    title: "Projets",
 	    drawerLabel: 'Projets',
+	    header: null
 	    drawerIcon: ({ tintColor }) => (
 	      <Ionicons
 				name="md-menu"

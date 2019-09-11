@@ -6,8 +6,8 @@ import Enconstruction from './EnConstuction';
 
 class Apropos extends React.Component {
 	static navigationOptions = ({ navigation }) => ({
-		    title: "Aide",
-		    drawerLabel: 'Aide',
+		    title: "A propos",
+		    drawerLabel: 'A propos',
 		    drawerIcon: ({ tintColor }) => (
 		      <Ionicons
 					name="md-menu"

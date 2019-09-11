@@ -4,6 +4,7 @@ export default {
   Password:"Password",
   "Forgot your password?": "Forgot your password?",
   "Log in": "Connexion",
+  "Sign Up": "Sign Up",
   "Create an account":"Create an account",
   "Choose the language": "Choose the language :",
   "French":"French",
@@ -19,6 +20,9 @@ export default {
    "Enter your password *":"Enter your password *",
    "Comfirm your password *":"Comfirm your password *",
    "Accept CGU":"Accept les CGU",
+
+   "Caller":"Caller",
+   "Caller Contact":"060000000009 / test@gmail.com",
 
    "email placeholder":'email@exemple.com',
    "password placeholder":'password',

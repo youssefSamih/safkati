@@ -4,6 +4,7 @@ export default {
   Password:"Mot de passe",
   "Forgot your password?": "Mot de passe oublié?",
   "Log in": "Se connecter",
+  "Sign Up": "S'inscrire",
   "Create an account":"Créer un compte",
   "Choose the language": "Choisir la langue : ",
   "French":"Français",
@@ -19,6 +20,9 @@ export default {
    "Enter your password *":"Insérez votre mot de passe *",
    "Comfirm your password *":"Confirmer votre mot de passe *",
    "Accept CGU":"Accepter les CGU",
+
+   "Caller":"Votre Interlocuteur",
+   "Caller Contact":"060000000009 / test@gmail.com",
 
    "email placeholder":'email@exemple.com',
    "password placeholder":'mot de passe',
