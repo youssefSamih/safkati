@@ -4,7 +4,20 @@ import {connect} from 'react-redux';
 
 import _ from 'lodash';
 import { fetchProjects } from '../../redux/actions';
-import { Container, Header, Content, List, ListItem, Thumbnail, Text, Left, Body, Right, Button } from 'native-base';
+import { 
+	Container, 
+	Header, 
+	Content, 
+	List, 
+	ListItem, 
+	Thumbnail, 
+	Text, 
+	Left, 
+	Body, 
+	Right, 
+	Button,
+	Icon, 
+	Title } from 'native-base';
 
 class ProjectList extends React.Component{
 	constructor(props) {
@@ -37,16 +50,13 @@ class ProjectList extends React.Component{
 		
 	}
 	render(){
+		console.log(' 2 - ',this.props.navigation);
 		return (
-			<View>
-				<ScrollView>
 				<FlatList
 					keyExtractor= {(item, index) => index.toString()}
 					data={this.props.projects}
 					renderItem = {this.renderRow}
 				/>
-				</ScrollView>
-			</View>
 		);
 	}
 };

@@ -2,6 +2,8 @@ import React from 'react';
 import { Dimensions, StyleSheet} from 'react-native';
 import { createAppContainer } from 'react-navigation';
 import { createDrawerNavigator } from 'react-navigation-drawer';
+import { createStackNavigator } from 'react-navigation-stack';
+import { Ionicons } from '@expo/vector-icons';
 
 import Welcome from '../screens/Welcome';
 import Projets from '../screens/Projets';
@@ -13,6 +15,10 @@ import Parrainage from '../screens/Parrainage';
 import Tuto from '../screens/Tuto';
 //import Aide from '../screens/Aide';
 
+import DeclareClient from '../screens/project/DeclareClient';
+import ProjectDetail from '../screens/project/ProjectDetail';
+
+import { theme } from '../constants';
 import CustomDrawerContentComponent from './CustomDrawerContentComponent';
 
 const WIDTH = Dimensions.get('window').width ;
@@ -36,6 +42,35 @@ const DrawerConfig = {
   drawerToggleRoute: 'DrawerToggle'
 }
 
+const projectNavigation = createStackNavigator(
+  { 
+    Projets,
+    DeclareClient,
+    ProjectDetail
+  }, {
+  defaultNavigationOptions: {
+    headerStyle: {
+      height: theme.sizes.base * 4,
+      backgroundColor: theme.colors.white, // or 'white
+      borderBottomColor: "transparent",
+      elevation: 0, // for android
+    },
+    //headerBackImage: <Image source={require('../assets/icons/back.png')} />,
+    headerBackTitle: null,
+    headerLeftContainerStyle: {
+      alignItems: 'center',
+      marginLeft: theme.sizes.base * 2,
+      paddingRight: theme.sizes.base,
+    },
+    headerRightContainerStyle: {
+      alignItems: 'center',
+      paddingRight: theme.sizes.base,
+    },
+  }
+}
+);
+
+
 const DrawerNavigation = createDrawerNavigator(
 {
   Home:{
@@ -54,9 +89,19 @@ const DrawerNavigation = createDrawerNavigator(
     screen: Tuto,
     path: '/mon-espace',
   },
+  //Router: { screen: Router }
   Projets:{
-    screen: Projets,
+    screen: projectNavigation,
     path: '/projets',
+    navigationOptions:{
+      drawerIcon: ({ tintColor }) => (
+        <Ionicons
+        name="md-menu"
+        size={32}
+        //onPress={this.props.navigation.openDrawer()}
+        />
+      ),
+    }
   },
   Confidentialite:{
     screen: Confidentialite,
