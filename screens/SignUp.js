@@ -28,6 +28,17 @@ import {
 
 
 class SignUp extends React.Component {
+	renderButton(){
+	    if(this.props.loading){
+	      return <Spinner size="large" />
+	    }
+	    return(
+	      <Button rounded>
+           <Text>{i18n.t('Log in')}</Text>
+        </Button>
+	    );
+	  }
+
 	render(){
 		return( 
 			<Container>
@@ -36,7 +47,7 @@ class SignUp extends React.Component {
 			       		<Image
 			       	 		style={styles.logoImg}
 			          		source={params.app.LOGO} />
-			          	<H1>{i18n.t('Become partner',{ appName: params.app.name })}</H1>
+			          	<H1 style={{color:'#AA2D5A'}}>{i18n.t('Become partner',{ appName: params.app.name })}</H1>
 			       </Block>
 			       <Block center>
 			       <Card style={{width:'90%'}} bordred>
@@ -85,6 +96,7 @@ class SignUp extends React.Component {
 				            </Item>
 				          </Form>
 					</Card>
+					{this.renderButton()}
 					</Block>
 				</Content>
 				<Footer style={{padding:3}}>

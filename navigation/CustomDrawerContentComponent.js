@@ -1,5 +1,5 @@
 import React from 'react';
-import { View,Image,Platform, Dimensions, ScrollView, StyleSheet } from 'react-native';
+import { View,Image,Platform, Dimensions, ScrollView, StyleSheet,TouchableOpacity } from 'react-native';
 import SafeAreaView from 'react-native-safe-area-view';
 import { DrawerNavigatorItems } from 'react-navigation-drawer';
 import { Container, Content, Icon, Header, Body,Text } from 'native-base'
@@ -23,9 +23,10 @@ const CustomDrawerContentComponent = props => (
     <Content>
      {/* <DrawerItems {...props} />*/}
       <DrawerNavigatorItems {...props} />
+      {/*<TouchableOpacity onPress={() => console.log("log out")}>
+          <Text style={{margin: 16,fontWeight: 'bold'}}>Logout</Text>
+      </TouchableOpacity>*/}
     </Content>
-
-
   </Container>
 
     </SafeAreaView>

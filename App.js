@@ -1,7 +1,6 @@
 import React from 'react';
 import { StyleSheet, Text, View } from 'react-native';
 import { Provider } from 'react-redux';
-
 import store from './redux/store';
 
 import { AppLoading, Asset } from 'expo';
@@ -10,6 +9,10 @@ import { Ionicons } from '@expo/vector-icons';
 
 import Navigation from './navigation';
 import { Block } from './components';
+
+import getTheme from './native-base-theme/components';
+import variables from './native-base-theme/variables/variables';
+import { StyleProvider } from 'native-base';
 
 const images = [];
 
@@ -46,9 +49,11 @@ export default class App extends React.Component {
 
     return (
       <Provider store={store}>
+      <StyleProvider style={getTheme(variables)}>
         <Block white>
           <Navigation />
         </Block>
+      </StyleProvider>
       </Provider>
     );
   }
