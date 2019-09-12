@@ -1,7 +1,7 @@
 
 
 import React from 'react';
-import {FlatList, View, ScrollView} from 'react-native';
+import {FlatList, View, ScrollView,Image,TouchableWithoutFeedback  } from 'react-native';
 import { Ionicons } from '@expo/vector-icons';
 
 import {connect} from 'react-redux';
@@ -16,12 +16,16 @@ import {
 	ListItem, 
 	Thumbnail, 
 	Text, 
+	H2, 
 	Left, 
 	Body, 
 	Right, 
 	Button,
 	Icon, 
-	Title 
+	Grid,
+	Row,
+	Col,
+	Title
 } from 'native-base';
 
 class Projets extends React.Component {
@@ -48,12 +52,25 @@ class Projets extends React.Component {
 	}
 	renderRow(project){
 		//return <ProjectItem project={project.item} />
-		 return ( <ListItem thumbnail key={project.index}
+		 return ( <TouchableWithoutFeedback  key={project.index}
 		 	onPress = {() => {
             /* 1. Navigate to the Details route with params */
             this.props.navigation.navigate('ProjectDetail', { project: project.item});
           }}>
-              <Left>
+          <View style={styles.itemProjet}>
+	          <View style={styles.itemBlockImg}> 
+	          	<Image style={styles.itemImg} source={require('../assets/images/plants_2.png')} />
+	          </View>
+	          <View style={styles.itemBlockContent}> 
+	          	<H2 style={{color:'#AA2D5A'}}>{project.item.libelle}</H2>
+	          	<Text note numberOfLines={1}>Appartement</Text>
+	          	<Text note numberOfLines={1}>120m - 3Km</Text>
+	          	<Text note numberOfLines={1}>Terrasse - parking</Text>
+	          	<H2 >12200 DHs</H2>
+
+	          </View>
+          </View>
+              {/*<Left>
                 <Thumbnail square large source={require('../assets/images/plants_2.png')} />
               </Left>
               <Body>
@@ -64,8 +81,8 @@ class Projets extends React.Component {
                 <Button transparent>
                   <Text>View</Text>
                 </Button>
-              </Right>
-            </ListItem> );
+              </Right>*/}
+            </TouchableWithoutFeedback> );
 		
 	}
 	render(){
@@ -82,6 +99,7 @@ class Projets extends React.Component {
 		          </Body>
 		        </Header>				
 				<Content>
+				
 				 	<FlatList
 					keyExtractor= {(item, index) => index.toString()}
 					data={this.props.projects}
@@ -92,6 +110,26 @@ class Projets extends React.Component {
 		);
 	}
 }
+
+const styles = {
+	itemProjet:{
+		flex:1,
+		flexDirection:'row',
+		backgroundColor:'#F5F5F5',
+		marginBottom:2,
+	},
+	itemBlockImg: {
+		
+	},
+	itemImg: {
+		width:150,
+		height:150,
+	},
+	itemBlockContent: {
+		padding:12,
+	}
+}
+
 
 const mapStateToProps = state =>{
 	
