@@ -217,6 +217,7 @@ class SignUp extends React.Component {
 			                  autoCorrect={false}
 			                  returnKeyType="next"
 			                  placeholder={''}
+			                  keyboardType="phone-pad"
 			                  onChangeText={phone => this.setState({ phone })}
 			                  />
 				            </Item>

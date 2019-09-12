@@ -16,14 +16,30 @@ export default {
    "CIN *":"CIN *",
    "Email *":"البريد الإلكتروني *",
    "phone *":"هاتف *",
+   "Age *":"العمر *",
+   "Budget *":"ميزانية *",
+   "Sexe *":"جنس *",
    "entrepreneur *":"مقاول",
    "Enter your password *":"كلمة المرور *",
    "Comfirm your password *":"تأكيد كلمة مرورك *",
    "Accept CGU":"اقبل الشروط",
-
+   "type de bien *":"نوع العقار *",
+   
    "Caller":"الاتصال الخاصة بك",
    "Caller Contact":"060000000009 / test@gmail.com",
 
    "email placeholder":'email@exemple.com',
    "password placeholder":'كلمه السر',
+   "Last Name placeholder":"",
+   "First Name placeholder":"",
+   "Adress placeholder":"",
+   "CIN placeholder":"",
+   "phone placeholder":"رقم هاتفك *",
+   "Budget placeholder":"1600 ",
+   "Age placeholder":"34",
+   "Sexe placeholder": "ذكر",
+   "project placeholder":"اختيار مشروع",
+
+   "Declare client":"أعلن عميل",
+   "Declare a client":"أعلن عميل",
 };

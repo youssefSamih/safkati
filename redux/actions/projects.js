@@ -17,12 +17,12 @@ import {
 import strings from '../../values/strings';
 const alert = strings.alert;
 
-export const declareClient = ({nom,phone,age,email,sexe,selectedProject,smsar_id}) => {
+export const declareClient = ({nom,prenom, phone, age, email, sexe, selectedProject,address, budget,type_de_bien,smsar_id}) => {
 
 	return (dispatch) =>{
-		console.log({nom,phone,age,email,sexe,selectedProject,smsar_id});
+		console.log({nom,prenom, phone, age, email, sexe, selectedProject,address, budget,type_de_bien,smsar_id});
 		dispatch({type: DECLARE_CLIENT_START});
-		axios.post(API_DECLARE_CLIENT,{nom,phone,age,email,sexe,selectedProject,smsar_id})
+		axios.post(API_DECLARE_CLIENT,{nom,prenom, phone, age, email, sexe, selectedProject,address, budget,type_de_bien,smsar_id})
 		.then(res => {
 			console.log(res);
 			if(res.status === 201){

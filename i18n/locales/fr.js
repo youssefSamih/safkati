@@ -16,15 +16,31 @@ export default {
    "CIN *":"CIN *",
    "Email *":"Email *",
    "phone *":"téléphone *",
+   "Age *":"Age *",
+   "Budget *":"Budget *",
+   "Sexe *":"Sexe *",
    "entrepreneur *":"Auto entrepreneur",
    "Enter your password *":"Insérez votre mot de passe *",
    "Comfirm your password *":"Confirmer votre mot de passe *",
    "Accept CGU":"Accepter les CGU",
-
+   "type de bien *":"Type de bien *",
+   
    "Caller":"Votre Interlocuteur",
    "Caller Contact":"060000000009 / test@gmail.com",
 
    "email placeholder":'email@exemple.com',
    "password placeholder":'mot de passe',
+   "Last Name placeholder":"",
+   "First Name placeholder":"",
+   "Adress placeholder":"",
+   "CIN placeholder":"",
+   "phone placeholder":"Votre numéro de téléphone *",
+   "Budget placeholder":"1600 *",
+   "Age placeholder":"34",
+   "Sexe placeholder": "Homme",
+   "project placeholder":"Choisir un projet",
+
+   "Declare client":"Déclarer un client",
+   "Declare a client":"Déclarer un client",
 
 };

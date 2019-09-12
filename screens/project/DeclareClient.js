@@ -1,12 +1,39 @@
 import React from 'react';
 import _ from 'lodash';
-import {View , Text, Picker, ScrollView} from 'react-native';
+import {View , ScrollView, StyleSheet, Image,LayoutAnimation, UIManager} from 'react-native';
 
-import { Input, Button, Icon, Spinner } from 'native-base';
+import { 
+	Container, 
+	Content,
+	Footer, 
+	Right, 
+	Button, 
+	Text,
+	H1,
+	Card,
+	Label,
+	Input,
+	CheckBox,
+	Item,
+	Form,
+	Grid,
+	Row,
+	Col,
+	FooterTab,
+	Spinner,
+	Picker
+} from 'native-base';
 
 import { connect } from 'react-redux';
 import { fetchProjects ,declareClient} from '../../redux/actions';
 import strings from "../../values/strings";
+import {Block} from '../../components';
+import { theme, params } from '../../constants';
+import i18n from '../../i18n/i18n';
+
+// Enable LayoutAnimation on Android
+UIManager.setLayoutAnimationEnabledExperimental &&
+  UIManager.setLayoutAnimationEnabledExperimental(true);
 
 class DeclareClient extends React.Component {
 
@@ -20,16 +47,25 @@ class DeclareClient extends React.Component {
 	    super(props);
 	    this.state = {
 	      nom: '',
+	      prenom: '',
+	      adress:'',
 	      phone: '',
 	      age: '',
 	      email:'',
 	      sexe:'H',
+	      cin:'',
 	      selectedProject: props.selectedProject,
 	      isNomValid: true,
+	      isPrenomValid: true,
 	      isPhoneValid: true,
 	      isAgeValid: true,
 	      isEmailValid: true,
 	      isProjectValid: true,
+	      isCinValid: true,
+	      isAdressValid: true,
+	      isBudgetValid: true,
+	      budget:'',
+	      type_de_bien:'',
 	    };
 	  }
 	validateEmail(email) {
@@ -63,109 +99,183 @@ class DeclareClient extends React.Component {
 		console.log(value);
 	}
 	onPressDeclare(){
-		const {nom, phone, age, email, sexe, selectedProject} = this.state ;
-    	const isEmailValid = this.validateEmail(email) || this.emailInput.shake();
-    	const isNomValid = nom.length >= 3 || this.nomInput.shake();
-    	const isPhoneValid =  this.validatePhone(phone) || this.phoneInput.shake();
+		const {nom,prenom, phone, age, email, sexe, selectedProject,address, budget,type_de_bien} = this.state ;
+    	const isEmailValid = this.validateEmail(email) ;
+    	const isNomValid = nom.length >= 3 ;
+    	const isPhoneValid =  this.validatePhone(phone) ;
 
     	this.setState({isEmailValid,isNomValid,isPhoneValid});
     	if(isEmailValid && isNomValid && isPhoneValid){
-			this.props.declareClient({nom, phone, age, email, sexe, selectedProject, smsar_id: this.props.user.id});
+			this.props.declareClient({nom,prenom, phone, age, email, sexe, selectedProject,address, budget,type_de_bien, smsar_id: this.props.user.id});
 
     	}
 	}
 	renderButton(){
 	    if(this.props.loading){
-	      return <Spinner size="large" />
+	      return <Spinner />
 	    }
 	    return(
-	      <Button onPress={ this.onPressDeclare.bind(this)}>
-			Declare
+	      <Button rounded onPress={ this.onPressDeclare.bind(this)}>
+			<Text>{i18n.t('Declare client')}</Text>
 		  </Button>
 	    );
 	  }
 
 	render(){
-		//console.log('nnnn', this.props.user);
-		const {isEmailValid,isNomValid,isPhoneValid,isAgeValid,isProjectValid} = this.state;
-		return (
-		 <ScrollView style={{backgroundColor: 'white'}} keyboardShouldPersistTaps="handled">
-			<View>
+		console.log(this.state);
+		const {isEmailValid,isNomValid,isPhoneValid,isAgeValid,isProjectValid,isPrenomValid,isCinValid,isAdressValid,isBudgetValid} = this.state;
+	    const isLoading = this.props.loading;
 		
+		return (
+			<Container>
+				<Content>
+				<Block center>
+		       		<Image
+		       	 		style={styles.logoImg}
+		          		source={params.app.LOGO} />
+		          	<H1 style={{color:'#AA2D5A'}}>{i18n.t('Declare a client')}</H1>
+		       </Block>
+			    <Block center>
+			    <Card style={{width:'90%',paddingBottom:10,borderRadius:30}} bordred>
+		 
+				<Form>
+				<Item inlineLabel error={!isNomValid} disabled={isLoading}>
+				    <Label>{i18n.t('Last Name *')}</Label>
 				
 					<Input
-		              label={strings.nom}
-		              placeholder={strings.nom_placeholder} 
+					  keyboardAppearance="light"
+	                  autoFocus={true}
+	                  autoCapitalize="none"
+	                  autoCorrect={false}
+		              placeholder={''}
 		              value={this.state.nom}
-		              labelStyle={styles.labelStyle}
 		              onChangeText={ this.onNomChange.bind(this) }
-		              containerStyle={{marginTop: 16}}
-		              ref={input => (this.nomInput = input)}
-		              errorMessage={
-	                    isNomValid ? null : strings.nom_not_valid
-	                  }
                     />
-				
-				
+				</Item>
+				<Item inlineLabel error={!isPrenomValid} disabled={isLoading}>
+				    <Label>{i18n.t('First Name *')}</Label>
 					<Input
-		              label={strings.phone}
-		              placeholder={strings.phone_placeholder}
-		              labelStyle={styles.labelStyle}
-		              value={this.state.phone}
-		              onChangeText={ this.onPhoneChange.bind(this) }
-		              keyboardType="phone-pad"
-		              ref={input => (this.phoneInput = input)}
-		              errorMessage={
-	                    isPhoneValid ? null : strings.phone_not_valid
-	                  }/>
+					  keyboardAppearance="light"
+	                  autoFocus={false}
+	                  autoCapitalize="none"
+	                  autoCorrect={false}
+		              placeholder={''} 
+		              value={this.state.prenom}
+		              onChangeText={ prenom => this.setState({ prenom }) }
+                    />
+				</Item>
 				
-					<Input
-		              label={strings.email}
-		              placeholder={strings.email_placeholder}
-		              labelStyle={styles.labelStyle}
+				<Item inlineLabel error={!isAdressValid} disabled={isLoading}>
+	              <Label>{i18n.t('Adress *')}</Label>
+	              <Input 
+	              value={this.state.adress}
+                  keyboardAppearance="light"
+                  autoFocus={false}
+                  autoCapitalize="none"
+                  autoCorrect={false}
+                  placeholder={''}
+                  onChangeText={adress => this.setState({ adress })}
+                  />
+	            </Item>
+	            <Item inlineLabel error={!isCinValid} disabled={isLoading}>
+	              <Label>{i18n.t('CIN *')}</Label>
+	              <Input 
+	              value={this.state.cin}
+                  keyboardAppearance="light"
+                  autoFocus={false}
+                  autoCapitalize="none"
+                  autoCorrect={false}
+                  placeholder={''}
+                  onChangeText={cin => this.setState({ cin })}
+                  />
+	            </Item>
+	            <Item inlineLabel error={!isEmailValid} disabled={isLoading}>
+	              <Label>{i18n.t('Email *')}</Label>
+	              
+                  <Input
+		              placeholder={''}
 		              value={this.state.email}
 		              keyboardAppearance="light"
 	                  autoFocus={false}
 	                  autoCapitalize="none"
 	                  autoCorrect={false}
 	                  keyboardType="email-address"
-	                  returnKeyType="next"
 		              onChangeText={ this.onEmailChange.bind(this) }
-		              ref={input => (this.emailInput = input)}
-		              errorMessage={
-	                    isEmailValid ? null : strings.email_not_valid
-	                  }
 	                  />
-					<Input
-		              label={strings.age}
-		              placeholder={strings.age_placeholder}
-		              labelStyle={styles.labelStyle}
+	            </Item>
+	            <Item inlineLabel error={!isPhoneValid} disabled={isLoading}>
+				    <Label>{i18n.t('phone *')}</Label>
+				    <Input
+		              placeholder={''}
+		              value={this.state.phone}
+		              keyboardAppearance="light"
+	                  autoFocus={false}
+	                  autoCapitalize="none"
+	                  autoCorrect={false}
+		              onChangeText={ this.onPhoneChange.bind(this) }
+		              keyboardType="phone-pad"
+		             />
+				</Item>
+
+				<Item inlineLabel error={!isBudgetValid} disabled={isLoading}>
+				    <Label>{i18n.t('Budget *')}</Label>
+				    <Input
+		              placeholder={''}
+		              value={this.state.budget}
+		              keyboardAppearance="light"
+	                  autoFocus={false}
+	                  autoCapitalize="none"
+	                  keyboardType="numeric"
+	                  autoCorrect={false}
+		              onChangeText={budget => this.setState({ budget }) }
+		             />
+				</Item>
+				<Item inlineLabel error={!isAgeValid} disabled={isLoading}>
+				    <Label>{i18n.t('Age *')}</Label>
+				    <Input
+		              placeholder={''}
 		              value={this.state.age}
-		              keyboardType="numeric"
+		              keyboardAppearance="light"
+	                  autoFocus={false}
+	                  autoCapitalize="none"
+	                  autoCorrect={false}
+	                  keyboardType="numeric"
 		              maxLength={3}
 		              onChangeText={ this.onAgeChange.bind(this) }
-		              ref={input => (this.ageInput = input)}
-		              errorMessage={
-	                    isAgeValid ? null : strings.age_not_valid
-	                  }
-	                  />
-				
-				
-					<Text style={styles.textStyle}> {strings.sexe} </Text>
-		              <Picker 
-					 style={styles.pickerStyle}
+		             />
+				</Item>
+				<Item inlineLabel disabled={isLoading}>
+				    <Label>{i18n.t('type de bien *')}</Label>
+				    <Input
+		              placeholder={''}
+		              value={this.state.type_de_bien}
+		              keyboardAppearance="light"
+	                  autoFocus={false}
+	                  autoCapitalize="none"
+	                  autoCorrect={false}
+		              onChangeText={ type_de_bien => this.setState({type_de_bien}) }
+		             />
+				</Item>
+				<Item >
+					<Label>{i18n.t('Sexe *')}</Label>
+		            <Picker 
+		             placeholder={''}
+		             mode="dropdown"
+					 style={{ width: undefined }}
 					 selectedValue={this.state.sexe}
 					 onValueChange={this.onSexeChange.bind(this)}
 					 >
 					 
 					 <Picker.Item label={strings.gender_m} value="H" />
 					 <Picker.Item label={strings.gender_f} value="F" />
-				  </Picker>
-				
-				
-					<Text style={styles.textStyle}> {strings.project} </Text>
+				  	</Picker>
+				</Item>
+	            <Item style={{borderBottomWidth:0}}>
+	            	<Label> {strings.project} </Label>
 					 <Picker 
-					 style={styles.pickerStyle}
+					 placeholder={''}
+					 mode="dropdown"
+					 style={{ width: undefined }}
 					 selectedValue={this.state.selectedProject}
 					 onValueChange={this.onSelectedProject.bind(this)}
 					 >
@@ -177,32 +287,25 @@ class DeclareClient extends React.Component {
 					 }
 					 	
 					 </Picker>
-				
-				
-				{/*this.renderButton()*/}
-				
-				
-                 <Button
-                  //buttonStyle={styles.loginButton}
-                  containerStyle={{ marginTop: 32, flex: 0 }}
-                  activeOpacity={0.8}
-                  title={"Declare"}
-                  onPress={this.onPressDeclare.bind(this)}
-                  //titleStyle={styles.loginTextButton}
-                  loading={this.props.loading}
-                  disabled={this.props.loading}
-                />
-                
-			
-			</View>
-			</ScrollView>
+	            </Item>
 
+				</Form>
+				
+			
+			</Card>
+				<View style={{height:10}}></View>
+				{this.renderButton()}
+				<View style={{height:10}}></View>
+				
+			</Block>
+			</Content>
+			</Container>
 
 		);
 	}
 };
 
-const styles = {
+const styles = StyleSheet.create({
 	labelStyle:{
 		color:'#566270',
 		fontSize:18,
@@ -216,8 +319,27 @@ const styles = {
 	},
 	pickerStyle:{
 		marginLeft: 5
+	},
+	container:{
+		flex: 1,
+	},
+	logoImg:{
+		height: 150,
+	    width: 150,
+	    backgroundColor: '#eee',
+	    borderRadius: 100,
+	},
+	faceImg: {
+		height: 50,
+	    width: 50,
+	    backgroundColor: '#eee',
+	    borderRadius: 100,
+	},
+	footerText:{
+		color:'white',
+		fontSize: 18
 	}
-};
+});
 
 const mapStatoToProps = (state) => {
 	const projects = _.map(state.projects.projectsList, (val, uid) => {
