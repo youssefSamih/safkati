@@ -1,6 +1,7 @@
 import axios from 'axios';
 import { Alert } from 'react-native';
 //import { Actions } from 'react-native-router-flux';
+import NavigationService from '../../navigation/NavigationService';
 
 import {
 	PROJECTS_FETCH,
@@ -75,6 +76,7 @@ const successDeclared = (dispatch) =>{
 		alert.declared_successfully,
 		[{text: 'OK', onPress: () => console.log('OK Pressed')}]
 	);
+	NavigationService.navigate('Projets');
 	// Actions.pop();
 }
 

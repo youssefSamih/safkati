@@ -122,7 +122,6 @@ class DeclareClient extends React.Component {
 	  }
 
 	render(){
-		console.log(this.state);
 		const {isEmailValid,isNomValid,isPhoneValid,isAgeValid,isProjectValid,isPrenomValid,isCinValid,isAdressValid,isBudgetValid} = this.state;
 	    const isLoading = this.props.loading;
 		

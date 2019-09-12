@@ -8,6 +8,8 @@ import * as Font from 'expo-font';
 import { Ionicons } from '@expo/vector-icons';
 
 import Navigation from './navigation';
+import NavigationService from './navigation/NavigationService';
+
 import { Block } from './components';
 
 import getTheme from './native-base-theme/components';
@@ -51,7 +53,11 @@ export default class App extends React.Component {
       <Provider store={store}>
       <StyleProvider style={getTheme(variables)}>
         <Block white>
-          <Navigation />
+          <Navigation 
+            ref={navigatorRef => {
+              NavigationService.setTopLevelNavigator(navigatorRef);
+            }}
+          />
         </Block>
       </StyleProvider>
       </Provider>
