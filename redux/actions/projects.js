@@ -76,7 +76,7 @@ const successDeclared = (dispatch) =>{
 		alert.declared_successfully,
 		[{text: 'OK', onPress: () => console.log('OK Pressed')}]
 	);
-	NavigationService.navigate('Projets');
+	NavigationService.goBack();
 	// Actions.pop();
 }
 

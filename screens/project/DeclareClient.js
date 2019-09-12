@@ -54,7 +54,7 @@ class DeclareClient extends React.Component {
 	      email:'',
 	      sexe:'H',
 	      cin:'',
-	      selectedProject: props.selectedProject,
+	      selectedProject: this.props.navigation.getParam('projectId',null),
 	      isNomValid: true,
 	      isPrenomValid: true,
 	      isPhoneValid: true,

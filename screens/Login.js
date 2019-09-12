@@ -47,28 +47,7 @@ class Login extends React.Component {
 	      error: '' 
 	    };
 	}
-	componentWillMount(){
-		if(this.props.user){
-    		this.props.navigation.navigate('App');
-		}
-	}
-	/*componentDidMount() {
-    	this._isMounted = true;
-  	}*/
-	componentDidUpdate(prevProps, prevState, snapshot){
-		if(this.props.user){
-			/*_isMounted = false;
-			this.setState({
-		      email: '',
-		      password: '',
-		      //isLoading: false,
-		      isEmailValid: true,
-		      isPasswordValid: true,
-		      error: '' 
-		    });*/
-    		this.props.navigation.navigate('App');
-		}
-	}
+	
  validateEmail(email) {
     var re = /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
 

@@ -67,7 +67,7 @@ const { width, height } = Dimensions.get('window');
 			  containerStyle={{ marginTop: 32, flex: 0 }}
               activeOpacity={0.8}
               title={"Declare Client"}
-			  onPress={() => this.props.navigation.navigate('DeclareClient', { project: project.id})}
+			  onPress={() => this.props.navigation.navigate('DeclareClient', { projectId: project.id})}
         >
 			</Button>
     		</View>

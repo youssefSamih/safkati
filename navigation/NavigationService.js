@@ -7,6 +7,15 @@ function setTopLevelNavigator(navigatorRef) {
   _navigator = navigatorRef;
 }
 
+
+function goBack(key=null){
+	_navigator.dispatch(
+	    NavigationActions.back({
+	       key,
+	    })
+	  );	
+}
+
 function navigate(routeName, params) {
   _navigator.dispatch(
     NavigationActions.navigate({
@@ -21,4 +30,5 @@ function navigate(routeName, params) {
 export default {
   navigate,
   setTopLevelNavigator,
+  goBack
 };

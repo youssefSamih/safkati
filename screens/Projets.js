@@ -69,10 +69,9 @@ class Projets extends React.Component {
 		
 	}
 	render(){
-		console.log(' 1 - ',this.props.navigation);
 		return( 
 			<Container>
-				<Header noShadow>
+				<Header noRight>
 		          <Left>
 		            <Button transparent onPress={() =>  this.props.navigation.openDrawer()}>
 		              <Icon name="menu" />

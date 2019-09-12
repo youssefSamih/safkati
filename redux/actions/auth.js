@@ -1,4 +1,5 @@
 import axios  from 'axios';
+import NavigationService from '../../navigation/NavigationService';
 //import { Actions } from 'react-native-router-flux';
 import { AsyncStorage, Alert } from 'react-native';
 import {API_LOGIN, API_SIGNUP} from './urls';
@@ -31,7 +32,7 @@ export const signUpUser = ({ prenom, nom, phone, email, password, cin, adress, e
 	    	if(res.status == 201){
 	    		await AsyncStorage.setItem('currentUser', JSON.stringify(res.data.user));
 	    		createUserSuccess(dispatch, res.data.user);
-	    		//Actions.main();
+	    		
 	    	}else{
 	    		createUserFail(dispatch)
 	    	}
@@ -52,7 +53,7 @@ export const loginUser = ({email, password}) =>{
 	    	if(res.status == 200){
 	    		await AsyncStorage.setItem('currentUser', JSON.stringify(res.data));
 	    		loginUserSuccess(dispatch, res.data);
-	    		//Actions.main();
+	    		//NavigationService.navigate('App');
 	    	}else{
 	    		loginUserFail(dispatch)
 	    	}
@@ -67,7 +68,7 @@ export const signOut = () =>{
 		dispatch({
 			type:INITIAL_ALL_STATE
 		});
-		// Actions.auth();
+		NavigationService.navigate('Auth');
 	}
 	
 }
@@ -80,7 +81,7 @@ const loginUserSuccess = (dispatch, user) => {
 		payload: user 
 	});
 
-	// Actions.main();
+	NavigationService.navigate('App');
 };
 
 
@@ -94,7 +95,7 @@ const createUserSuccess = (dispatch, user) =>{
 		alert.user_create,
 		[{text: 'OK', onPress: () => console.log('OK Pressed')}]
 	);
-
+	NavigationService.navigate('App');
 }
 const createUserFail = (dispatch) =>{
 	dispatch({type: USER_CREATE_FAIL});
