@@ -1,7 +1,7 @@
 
 
 import React from 'react';
-import {FlatList, View, ScrollView,Image,TouchableWithoutFeedback  } from 'react-native';
+import {FlatList, View, ScrollView, Image, TouchableWithoutFeedback, StyleSheet } from 'react-native';
 import { Ionicons } from '@expo/vector-icons';
 
 import {connect} from 'react-redux';
@@ -25,7 +25,9 @@ import {
 	Grid,
 	Row,
 	Col,
-	Title
+	Title,
+	Item,
+	Picker
 } from 'native-base';
 
 class Projets extends React.Component {
@@ -57,19 +59,21 @@ class Projets extends React.Component {
             /* 1. Navigate to the Details route with params */
             this.props.navigation.navigate('ProjectDetail', { project: project.item});
           }}>
-          <View style={styles.itemProjet}>
-	          <View style={styles.itemBlockImg}> 
+          <Grid>
+          <Row style={styles.itemProjet}>
+	          <Col size={1} style={styles.itemBlockImg}> 
 	          	<Image style={styles.itemImg} source={require('../assets/images/plants_2.png')} />
-	          </View>
-	          <View style={styles.itemBlockContent}> 
-	          	<H2 style={{color:'#AA2D5A'}}>{project.item.libelle}</H2>
+	          </Col>
+	          <Col size={2} style={styles.itemBlockContent}> 
+	          	<H2 style={styles.libelleStyle}>{project.item.libelle}</H2>
 	          	<Text note numberOfLines={1}>Appartement</Text>
 	          	<Text note numberOfLines={1}>120m - 3Km</Text>
 	          	<Text note numberOfLines={1}>Terrasse - parking</Text>
 	          	<H2 >12200 DHs</H2>
 
-	          </View>
-          </View>
+	          </Col>
+          </Row>
+          </Grid>
               {/*<Left>
                 <Thumbnail square large source={require('../assets/images/plants_2.png')} />
               </Left>
@@ -99,7 +103,6 @@ class Projets extends React.Component {
 		          </Body>
 		        </Header>				
 				<Content>
-				
 				 	<FlatList
 					keyExtractor= {(item, index) => index.toString()}
 					data={this.props.projects}
@@ -111,10 +114,9 @@ class Projets extends React.Component {
 	}
 }
 
-const styles = {
+const styles = StyleSheet.create({
 	itemProjet:{
-		flex:1,
-		flexDirection:'row',
+
 		backgroundColor:'#F5F5F5',
 		marginBottom:2,
 	},
@@ -122,13 +124,17 @@ const styles = {
 		
 	},
 	itemImg: {
-		width:150,
-		height:150,
+		width:"100%",
+		height:"100%",
+	},
+	libelleStyle:{
+		color:'#AA2D5A',
+		//fontWeight: '500'
 	},
 	itemBlockContent: {
 		padding:12,
 	}
-}
+});
 
 
 const mapStateToProps = state =>{
