@@ -116,7 +116,6 @@ class Projets extends React.Component {
 
 const styles = StyleSheet.create({
 	itemProjet:{
-
 		backgroundColor:'#F5F5F5',
 		marginBottom:2,
 	},
