@@ -1,6 +1,7 @@
 import React from 'react';
 import {View, Text, ScrollView, Dimensions, Image, FlatList,StyleSheet } from 'react-native';
 //import { Actions } from 'react-native-router-flux';
+import { SliderBox } from 'react-native-image-slider-box';
 
 import { Card, H2, Input, Button, Icon,Container,Content , Header,Right,Left,Body,Title } from 'native-base';
 import {Block} from '../../components';
@@ -24,8 +25,11 @@ const { width, height } = Dimensions.get('window');
  	}
  	  renderGallery() {
     const images = [
-      require('../../assets/images/plants_1.png'),
-      //require('../../assets/images/plants_2.png'),
+    'https://odis.homeaway.com/odis/listing/82c05ddc-515c-47a0-a78a-d04d2991c761.c10.jpg',
+    'https://www.realista.com/wp-content/uploads/2018/11/This-one-of-a-kind-villa-Las-Brisas-for-sale_Realista-Quality-Real-Estate-Marbella-3.jpg',
+    'https://odis.homeaway.com/odis/listing/7e04139f-1678-4a69-a9dc-d86be6bd80c6.c10.jpg',
+     /* '../../assets/images/plants_1.png',
+     //require('../../assets/images/plants_2.png'),
      // require('../../assets/images/plants_3.png'),
       // showing only 3 images, show +6 for the rest
       require('../../assets/images/plants_1.png'),
@@ -33,8 +37,14 @@ const { width, height } = Dimensions.get('window');
       //require('../../assets/images/plants_3.png'),
       require('../../assets/images/plants_1.png'),
       //require('../../assets/images/plants_2.png'),
-      //require('../../assets/images/plants_3.png'),
+      //require('../../assets/images/plants_3.png'),*/
     ];
+    return <SliderBox 
+    sliderBoxHeight={400}
+    images={images}
+    circleLoop
+    dotColor="#AA2D5A"
+     />;
     return (
       <FlatList
         horizontal
