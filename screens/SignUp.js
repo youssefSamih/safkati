@@ -46,6 +46,7 @@ class SignUp extends React.Component {
 	      email: '',
 	      password: '',
 	      cin:'',
+	      ville:'',
 	      entrepreneur: false,
 	      cgu: false,
 	      //isLoading: false,
@@ -57,6 +58,9 @@ class SignUp extends React.Component {
 	      isAdressValid: true,
 	      isPhoneValid: true,
 	      isCinValid: true,
+	      isEntrepreneurValid: true,
+	      isCguValid: true,
+	      isVilleValid: true,
 	      error: '' 
 	    };
 
@@ -69,17 +73,23 @@ class SignUp extends React.Component {
 	}
   	signUp() {
 
-  		const { prenom, nom, phone, email, password, passwordConfirmation, cin, adress, entrepreneur, cgu } = this.state;
-	    const isEmailValid = this.validateEmail(email);
+  		const { prenom, nom, phone, email, ville, password, passwordConfirmation, cin, adress, entrepreneur, cgu } = this.state;
+	    const isEmailValid = !email || this.validateEmail(email);
 	    const isNomValid = nom.length >= 3 ;
+	    const isPrenomValid = prenom.length >= 3 ;
+	    const isAdressValid = adress.length >= 3 ;
+	    const isCinValid = cin ;
+	    const isCguValid = cgu ;
+	    const isEntrepreneurValid = entrepreneur ;
 	    const isPhoneValid = phone.length >= 8 ;
 	    const isPasswordValid = password.length >= 6 ;
+	    const isVilleValid = ville;
 	    const isConfirmationValid =
 	      password === passwordConfirmation ;
 
-	    if(isEmailValid && isNomValid && isPhoneValid && isPasswordValid && isConfirmationValid){
-	    	console.log({ prenom, nom, phone, email, password, passwordConfirmation, cin, adress, entrepreneur, cgu });
-	      this.props.signUpUser({ prenom, nom, phone, email, password, passwordConfirmation, cin, adress, entrepreneur, cgu });
+	    if(isVilleValid && isEmailValid && isNomValid && isPrenomValid && isAdressValid && isPhoneValid && isPasswordValid && isConfirmationValid, isCinValid, isCguValid, isEntrepreneurValid){
+	    	console.log({ prenom, nom, phone, email, ville, password, passwordConfirmation, cin, adress, entrepreneur, cgu });
+	      	this.props.signUpUser({ prenom, nom, phone, email, ville, password, passwordConfirmation, cin, adress, entrepreneur, cgu });
 	    }
 	    //this.setState({ isLoading: true });
 	    // Simulate an API call
@@ -92,6 +102,12 @@ class SignUp extends React.Component {
 	        isEmailValid,
 	        isPasswordValid,
 	        isConfirmationValid,
+	        isPrenomValid,
+			isAdressValid,
+			isCinValid,
+			isCguValid,
+			isEntrepreneurValid,
+			isVilleValid,
 	      });
 	    }, 1000);
   	}
@@ -117,6 +133,9 @@ class SignUp extends React.Component {
 	      isPhoneValid,
 	      isAdressValid,
 	      isCinValid,
+	      isCguValid,
+	      isEntrepreneurValid,
+	      isVilleValid,
 	      nom,
 	      prenom,
 	      cin,
@@ -127,6 +146,7 @@ class SignUp extends React.Component {
 	      email,
 	      password,
 	      passwordConfirmation,
+	      ville
 	    } = this.state;
 	    const isLoading = this.props.loading;
 
@@ -181,8 +201,21 @@ class SignUp extends React.Component {
 			                  onChangeText={adress => this.setState({ adress })}
 			                  />
 				            </Item>
+				            <Item inlineLabel error={!isVilleValid} disabled={isLoading}>
+				              <Label>{i18n.t('Ville *')}</Label>
+				              <Input 
+				              value={ville}
+			                  keyboardAppearance="light"
+			                  autoFocus={false}
+			                  autoCapitalize="none"
+			                  autoCorrect={false}
+			                  returnKeyType="next"
+			                  placeholder={''}
+			                  onChangeText={ville => this.setState({ ville })}
+			                  />
+				            </Item>
 				            <Item inlineLabel error={!isEmailValid} disabled={isLoading}>
-				              <Label>{i18n.t('Email *')}</Label>
+				              <Label>{i18n.t('Email')}</Label>
 				              <Input 
 				              value={email}
 			                  keyboardAppearance="light"
@@ -221,7 +254,7 @@ class SignUp extends React.Component {
 			                  onChangeText={phone => this.setState({ phone })}
 			                  />
 				            </Item>
-				            <Item inlineLabel  style={{height:45}}>
+				            <Item inlineLabel error={!isEntrepreneurValid} style={{height:45}}>
 				              <Label>{i18n.t('entrepreneur *')}</Label>
 				              <CheckBox
 				              checked={this.state.entrepreneur}
@@ -254,13 +287,14 @@ class SignUp extends React.Component {
 			                  onChangeText={passwordConfirmation => this.setState({ passwordConfirmation })}
 			                  />
 				            </Item>
-				            <Item inlineLabel error={true} style={{height:45,borderBottomWidth:0}} >
+				            <Item inlineLabel  style={{height:45,borderBottomWidth:0}} >
 				              <Label>{i18n.t('Accept CGU')}</Label>
 				              <CheckBox
 					              checked={this.state.cgu}
 					              onPress={() => this.setState({cgu: !this.state.cgu})}
 					            />
 				            </Item>
+					            {!isCguValid && <Text small style={{paddingLeft: 20,color:'red'}}>{i18n.t('Accept CGU')}</Text>}
 				          </Form>
 					</Card>
 					<View style={{height:10}}></View>

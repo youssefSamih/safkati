@@ -37,6 +37,7 @@ export default {
    "Age *":"العمر *",
    "Budget *":"ميزانية *",
    "Sexe *":"جنس *",
+   "Ville *":"المدينة *",
    "entrepreneur *":"مقاول",
    "Enter your password *":"كلمة المرور *",
    "Comfirm your password *":"تأكيد كلمة مرورك *",

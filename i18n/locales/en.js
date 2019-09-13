@@ -37,6 +37,7 @@ export default {
    "Age *":"Age *",
    "Budget *":"Budget *",
    "Sexe *":"Sexe *",
+   "Ville *":"Ville *",
    "entrepreneur *":"Auto entrepreneur",
    "Enter your password *":"Enter your password *",
    "Comfirm your password *":"Comfirm your password *",

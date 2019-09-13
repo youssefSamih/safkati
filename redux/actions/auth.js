@@ -23,10 +23,11 @@ export const setCurrentUser = ({user}) =>{
 	}
 };
 
-export const signUpUser = ({ prenom, nom, phone, email, password, cin, adress, entrepreneur, cgu }) =>{
+export const signUpUser = ({ prenom, nom, phone, email, ville, password, cin, adress, entrepreneur, cgu }) =>{
 	return (dispatch) =>{
 		dispatch({type: USER_CREATE});
-		axios.post(API_SIGNUP,{ prenom, nom, phone, email, password, cin, adress, entrepreneur, cgu })
+		console.log({ prenom, nom, phone, email, ville, password, cin, adress, entrepreneur, cgu });
+		axios.post(API_SIGNUP,{ prenom, nom, phone, email, ville, password, cin, adress, entrepreneur, cgu })
 		.then(async (res) => {
 			console.log(res.data);
 	    	if(res.status == 201){
@@ -81,7 +82,7 @@ const loginUserSuccess = (dispatch, user) => {
 		payload: user 
 	});
 
-	NavigationService.navigate('App');
+	NavigationService.navigate('AuthLoading');
 };
 
 
@@ -95,7 +96,7 @@ const createUserSuccess = (dispatch, user) =>{
 		alert.user_create,
 		[{text: 'OK', onPress: () => console.log('OK Pressed')}]
 	);
-	NavigationService.navigate('App');
+	NavigationService.navigate('AuthLoading');
 }
 const createUserFail = (dispatch) =>{
 	dispatch({type: USER_CREATE_FAIL});
