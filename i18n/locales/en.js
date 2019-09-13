@@ -1,6 +1,7 @@
 export default { 
  "Projets title":"Projects", 
  "Projet Detail":"Projet Detail",
+ "logout":"logout",
 
   greeting: 'Hi!',
   Username:"Username",

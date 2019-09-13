@@ -1,5 +1,6 @@
 import React from 'react';
-import {View, StyleSheet, Image, LayoutAnimation, UIManager} from 'react-native';
+import {View, StyleSheet, Image, LayoutAnimation, UIManager,I18nManager,AsyncStorage} from 'react-native';
+import RNRestart from "react-native-restart";
 
 import { connect } from 'react-redux';
 import { loginUser, signUpUser } from '../redux/actions';
@@ -47,6 +48,7 @@ class Login extends React.Component {
 	      error: '' 
 	    };
 	}
+
 	
  validateEmail(email) {
     var re = /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;

@@ -1,5 +1,7 @@
 import React from 'react';
-import { StyleSheet, Text, View } from 'react-native';
+import { StyleSheet, Text, View,I18nManager,AsyncStorage } from 'react-native';
+import RNRestart from "react-native-restart";
+
 import { Provider } from 'react-redux';
 import store from './redux/store';
 
@@ -11,6 +13,7 @@ import Navigation from './navigation';
 import NavigationService from './navigation/NavigationService';
 
 import { Block } from './components';
+import i18n from './i18n/i18n';
 
 import getTheme from './native-base-theme/components';
 import variables from './native-base-theme/variables/variables';
@@ -22,6 +25,24 @@ export default class App extends React.Component {
   state = {
     isLoadingComplete: false,
   }
+  componentDidMount() {
+    AsyncStorage.getItem("selectedLang")
+      .then(language => {
+        if (language === "ar") {
+          I18nManager.forceRTL(true);
+          if (!I18nManager.isRTL) {
+            RNRestart.Restart();
+          }
+        } else {
+          I18nManager.forceRTL(false);
+          if (I18nManager.isRTL) {
+            RNRestart.Restart();
+          }
+        }
+        console.log("AsyncStorage",language )
+        i18n.locale = language;
+      });
+}
 
   handleResourcesAsync = async () => {
     // we're caching all the images

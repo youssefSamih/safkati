@@ -1,7 +1,8 @@
 export default {
  "Projets title":"Projets",
  "Projet Detail":"Détails du projet",
-
+ "logout":"Se déconnecter",
+  
 
   greeting: 'Bonjour !',
   Username:"Identifiant",

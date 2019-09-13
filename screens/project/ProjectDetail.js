@@ -12,12 +12,10 @@ import { infoProject, initialCurrentProjet } from '../../redux/actions';
 import i18n from '../../i18n/i18n';
 
 const { width, height } = Dimensions.get('window');
-const TITLE = i18n.t('Projet Detail');
 
 class ProjectDetail extends React.Component {
   static navigationOptions = ({ navigation }) => ({
       header: null,
-      
     });
  	componentWillMount(){
     const { navigation } = this.props;
@@ -89,7 +87,7 @@ class ProjectDetail extends React.Component {
           </Button>
         </Left>
         <Body>
-          <Title>{TITLE}</Title>
+          <Title>{i18n.t('Projet Detail')}</Title>
         </Body>
       </Header>
 			<Content >

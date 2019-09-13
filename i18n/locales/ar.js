@@ -1,6 +1,7 @@
 export default { 
   "Projets title":"مشاريع",
   "Projet Detail":"تفاصيل المشروع",
+  "logout":"الخروج",
 
 
   greeting: 'مرحبا!',

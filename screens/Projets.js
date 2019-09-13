@@ -32,13 +32,12 @@ import {
 
 import i18n from '../i18n/i18n';
 
-const TITLE = i18n.t('Projets title');
 
 class Projets extends React.Component {
 
 	static navigationOptions = ({ navigation }) => ({
-	    title: TITLE,
-	    drawerLabel: TITLE,
+	    title: i18n.t('Projets title'),
+	    drawerLabel: i18n.t('Projets title'),
 	    header: null,
 	    drawerIcon: ({ tintColor }) => (
 	      <Ionicons
@@ -117,7 +116,7 @@ class Projets extends React.Component {
 		            </Button>
 		          </Left>
 		          <Body>
-		            <Title>{TITLE}</Title>
+		            <Title>{i18n.t('Projets title')}</Title>
 		          </Body>
 		        </Header>				
 				<Content>

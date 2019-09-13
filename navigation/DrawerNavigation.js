@@ -13,11 +13,14 @@ import Apropos from '../screens/Apropos';
 import Confidentialite from '../screens/Confidentialite';
 import Parrainage from '../screens/Parrainage';
 import Tuto from '../screens/Tuto';
+import Logout from '../screens/Logout';
+
 //import Aide from '../screens/Aide';
 
 import DeclareClient from '../screens/project/DeclareClient';
 import ProjectDetail from '../screens/project/ProjectDetail';
 
+import i18n from '../i18n/i18n';
 import { theme } from '../constants';
 import CustomDrawerContentComponent from './CustomDrawerContentComponent';
 
@@ -36,7 +39,7 @@ const DrawerConfig = {
 	 },
   contentComponent: props => CustomDrawerContentComponent(props),
   drawerWidth: WIDTH * 0.83,
-  drawerPosition: 'left',
+  //drawerPosition: 'left',
   drawerOpenRoute: 'DrawerOpen',
   drawerCloseRoute: 'DrawerClose',
   drawerToggleRoute: 'DrawerToggle'
@@ -94,6 +97,7 @@ const DrawerNavigation = createDrawerNavigator(
     screen: projectNavigation,
     path: '/projets',
     navigationOptions:{
+      drawerLabel: i18n.t('Projets title'),
       drawerIcon: ({ tintColor }) => (
         <Ionicons
         name="md-menu"
@@ -101,7 +105,7 @@ const DrawerNavigation = createDrawerNavigator(
         //onPress={this.props.navigation.openDrawer()}
         />
       ),
-    }
+    },
   },
   Confidentialite:{
     screen: Confidentialite,
@@ -114,7 +118,11 @@ const DrawerNavigation = createDrawerNavigator(
   Apropos:{
     screen: Apropos,
     path: '/projets',
-  }
+  },
+  Logout:{
+    screen: Logout,
+    path: '/logout',
+  },
 }
 , DrawerConfig);
 
