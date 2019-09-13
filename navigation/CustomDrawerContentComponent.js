@@ -1,11 +1,15 @@
 import React from 'react';
-import { View,Image,Platform, Dimensions, ScrollView, StyleSheet,TouchableOpacity } from 'react-native';
+import { AsyncStorage,View,Image,Platform, Dimensions, ScrollView, StyleSheet,TouchableOpacity } from 'react-native';
 import SafeAreaView from 'react-native-safe-area-view';
 import { DrawerNavigatorItems } from 'react-navigation-drawer';
 import { Container, Content, Icon, Header, Body,Text } from 'native-base'
 
 
-const CustomDrawerContentComponent = props => (
+const CustomDrawerContentComponent =  (props) => {
+  //const user =  await AsyncStorage.getItem('currentUser');
+  // console.log("props ",props.nom);
+  const userInfo = props.navigation.getParam('userInfo');
+  return (
   <ScrollView>
     <SafeAreaView
       style={styles.container}
@@ -17,7 +21,7 @@ const CustomDrawerContentComponent = props => (
         <Image
           style={styles.drawerImage}
           source={require('../assets/user-hp.png')} />
-          <Text>Abderrahim Soumer</Text>
+          <Text>{userInfo.nom}</Text>
       </Body>
     </Header>
     <Content>
@@ -32,7 +36,7 @@ const CustomDrawerContentComponent = props => (
     </SafeAreaView>
   </ScrollView>
 );
-
+}
 
 const styles = StyleSheet.create({
 	container: {

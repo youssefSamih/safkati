@@ -76,7 +76,7 @@ export default class App extends React.Component {
         <Block white>
           <Navigation 
             ref={navigatorRef => {
-              NavigationService.setTopLevelNavigator(navigatorRef);
+            NavigationService.setTopLevelNavigator(navigatorRef);
             }}
           />
         </Block>

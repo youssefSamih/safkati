@@ -22,7 +22,7 @@ class AuthLoading extends React.Component {
     // This will switch to the App screen or Auth screen and this loading
     // screen will be unmounted and thrown away.
     if(currentUser) this.props.setCurrentUser({user: JSON.parse(currentUser)});
-    this.props.navigation.navigate(currentUser ? 'App' : 'Auth');
+    this.props.navigation.navigate(currentUser ? 'App' : 'Auth',{userInfo: JSON.parse(currentUser)});
 
   };
 

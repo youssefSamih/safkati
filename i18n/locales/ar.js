@@ -1,8 +1,15 @@
 export default { 
   "Projets title":"مشاريع",
   "Projet Detail":"تفاصيل المشروع",
+  "Espace pro title":"مساحة شخصية",
   "logout":"الخروج",
 
+ "My activities":"النشاطات",
+ "My account":"حسابي",
+ "My voicemail":"بريدي",
+ "My clients declared":"أعلن موكلي",
+ "My commissions":"عمولاتي",
+ "My referrals":"الرعاة",
 
   greeting: 'مرحبا!',
   Username:"المستخدم",

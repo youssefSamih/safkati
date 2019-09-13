@@ -1,8 +1,15 @@
 export default {
  "Projets title":"Projets",
  "Projet Detail":"Détails du projet",
+ "Espace pro title":"Espace Perso",
  "logout":"Se déconnecter",
-  
+
+ "My activities":"Mes activités",
+ "My account":"Mon compte",
+ "My voicemail":"Ma Messagerie",
+ "My clients declared":"Mes client déclarés",
+ "My commissions":"Mes commissions",
+ "My referrals":"Mes parrainages",
 
   greeting: 'Bonjour !',
   Username:"Identifiant",

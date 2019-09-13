@@ -1,6 +1,7 @@
 const app = {
 LOGO: require('../assets/logo.png'),
-name:"SAFKATI"
+name:"SAFKATI",
+FACE:require('../assets/user-hp.png'),
 };
 export {
 	app
