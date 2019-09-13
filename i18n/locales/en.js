@@ -32,6 +32,7 @@ export default {
    "Adress *":"Adress *",
    "CIN *":"CIN *",
    "Email *":"Email *",
+   "Email":"Email",
    "phone *":"Phone *",
    "Age *":"Age *",
    "Budget *":"Budget *",
@@ -59,4 +60,10 @@ export default {
 
    "Declare client":"Declare a client",
    "Declare a client":"Declare a client",
+
+   "default project":"Default project",
+   "Apartment":"Apartment",
+   "Villa":"Villa",
+   "Ground":"Ground",
+
 };

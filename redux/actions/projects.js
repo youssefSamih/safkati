@@ -22,12 +22,12 @@ import {
 import strings from '../../values/strings';
 const alert = strings.alert;
 
-export const declareClient = ({nom,prenom, phone, age, email, sexe, selectedProject,address, budget,type_de_bien,smsar_id}) => {
+export const declareClient = ({nom,prenom, phone, age, email, cin, sexe, selectedProject,adress, budget,type_de_bien,smsar_id}) => {
 
 	return (dispatch) =>{
-		console.log({nom,prenom, phone, age, email, sexe, selectedProject,address, budget,type_de_bien,smsar_id});
+		console.log({nom,prenom, phone, age, email, cin, sexe, selectedProject,adress, budget,type_de_bien,smsar_id});
 		dispatch({type: DECLARE_CLIENT_START});
-		axios.post(API_DECLARE_CLIENT,{nom,prenom, phone, age, email, sexe, selectedProject,address, budget,type_de_bien,smsar_id})
+		axios.post(API_DECLARE_CLIENT,{nom,prenom, phone, age, email, cin, sexe, selectedProject,adress, budget,type_de_bien,smsar_id})
 		.then(res => {
 			console.log(res);
 			if(res.status === 201){
@@ -46,7 +46,7 @@ export const declareClient = ({nom,prenom, phone, age, email, sexe, selectedProj
 // get the listing of the project
 export const fetchProjects = () =>{
 	return (dispatch) =>{
-		//console.log(API_PROJECTS);
+		console.log(API_PROJECTS);
 		axios.get(API_PROJECTS)
 		.then(res => successFetch(res.data, dispatch))
 		.catch(error => console.log("FAITCHED DATA FAILD",error));

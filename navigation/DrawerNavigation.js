@@ -76,10 +76,6 @@ const projectNavigation = createStackNavigator(
 
 const DrawerNavigation = createDrawerNavigator(
 {
-  Home:{
-    screen: Welcome,
-    path: '/welcome',
-  },
   MonEspace:{
     screen: MonEspace,
     path: '/mon-espace',

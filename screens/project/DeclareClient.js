@@ -64,13 +64,14 @@ class DeclareClient extends React.Component {
 	      isCinValid: true,
 	      isAdressValid: true,
 	      isBudgetValid: true,
+	      isTypeValid: true,
+		  isSelectedProjet: true,
 	      budget:'',
-	      type_de_bien:'',
+	      type_de_bien:'A',
 	    };
 	  }
 	validateEmail(email) {
 	    var re = /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
-
 	    return re.test(email);
 	}
 	validatePhone(phone) {
@@ -99,16 +100,36 @@ class DeclareClient extends React.Component {
 		console.log(value);
 	}
 	onPressDeclare(){
-		const {nom,prenom, phone, age, email, sexe, selectedProject,address, budget,type_de_bien} = this.state ;
-    	const isEmailValid = this.validateEmail(email) ;
+		const {nom,prenom, phone, age, email, cin, sexe, selectedProject,adress, budget,type_de_bien} = this.state ;
+    	const isEmailValid = !email || this.validateEmail(email) ;
     	const isNomValid = nom.length >= 3 ;
+    	const isPrenomValid = prenom.length >= 3 ;
+    	const isAdressValid = adress.length >= 3 ;
+    	const isCinValid = cin.length >= 3 ;
+    	const isBudgetValid = budget ;
+    	const isTypeValid = type_de_bien;
+    	const isSelectedProjet = selectedProject;
     	const isPhoneValid =  this.validatePhone(phone) ;
 
-    	this.setState({isEmailValid,isNomValid,isPhoneValid});
-    	if(isEmailValid && isNomValid && isPhoneValid){
-			this.props.declareClient({nom,prenom, phone, age, email, sexe, selectedProject,address, budget,type_de_bien, smsar_id: this.props.user.id});
-
+    	//this.setState({isEmailValid,isNomValid,isPhoneValid});
+    	if(isEmailValid && isNomValid && isPrenomValid && isPhoneValid && isAdressValid && isCinValid && isBudgetValid && isTypeValid && isSelectedProjet){
+			this.props.declareClient({nom,prenom, phone, age, email, cin, sexe, selectedProject,adress, budget,type_de_bien, smsar_id: this.props.user.id});
     	}
+    	setTimeout(() => {
+        LayoutAnimation.easeInEaseOut();
+        this.setState({
+            isEmailValid,
+			isNomValid,
+			isPrenomValid,
+			isAdressValid,
+			isCinValid,
+			isBudgetValid,
+			isTypeValid,
+			isSelectedProjet,
+			isPhoneValid,
+        });
+      }, 1000);
+
 	}
 	renderButton(){
 	    if(this.props.loading){
@@ -122,7 +143,7 @@ class DeclareClient extends React.Component {
 	  }
 
 	render(){
-		const {isEmailValid,isNomValid,isPhoneValid,isAgeValid,isProjectValid,isPrenomValid,isCinValid,isAdressValid,isBudgetValid} = this.state;
+		const {isEmailValid,isNomValid,isPhoneValid,isAgeValid,isProjectValid,isPrenomValid,isCinValid,isAdressValid,isBudgetValid,isTypeValid, isSelectedProjet} = this.state;
 	    const isLoading = this.props.loading;
 		
 		return (
@@ -189,7 +210,7 @@ class DeclareClient extends React.Component {
                   />
 	            </Item>
 	            <Item inlineLabel error={!isEmailValid} disabled={isLoading}>
-	              <Label>{i18n.t('Email *')}</Label>
+	              <Label>{i18n.t('Email')}</Label>
 	              
                   <Input
 		              placeholder={''}
@@ -229,7 +250,7 @@ class DeclareClient extends React.Component {
 		              onChangeText={budget => this.setState({ budget }) }
 		             />
 				</Item>
-				<Item inlineLabel error={!isAgeValid} disabled={isLoading}>
+				{/*<Item inlineLabel error={!isAgeValid} disabled={isLoading}>
 				    <Label>{i18n.t('Age *')}</Label>
 				    <Input
 		              placeholder={''}
@@ -242,20 +263,23 @@ class DeclareClient extends React.Component {
 		              maxLength={3}
 		              onChangeText={ this.onAgeChange.bind(this) }
 		             />
-				</Item>
-				<Item inlineLabel disabled={isLoading}>
+				</Item>*/}
+				<Item inlineLabel error={!isTypeValid} disabled={isLoading}>
 				    <Label>{i18n.t('type de bien *')}</Label>
-				    <Input
-		              placeholder={''}
-		              value={this.state.type_de_bien}
-		              keyboardAppearance="light"
-	                  autoFocus={false}
-	                  autoCapitalize="none"
-	                  autoCorrect={false}
-		              onChangeText={ type_de_bien => this.setState({type_de_bien}) }
-		             />
+		            <Picker 
+		             placeholder={''}
+		             mode="dropdown"
+					 style={{ width: undefined }}
+					 selectedValue={this.state.type_de_bien}
+					 onValueChange={ type_de_bien => this.setState({type_de_bien}) }
+					 >
+					 
+					 <Picker.Item label={i18n.t('Apartment')} value="A" />
+					 <Picker.Item label={i18n.t('Ground')} value="T" />
+					 <Picker.Item label={i18n.t('Villa')} value="V" />
+				  	</Picker>
 				</Item>
-				<Item >
+				{/*<Item >
 					<Label>{i18n.t('Sexe *')}</Label>
 		            <Picker 
 		             placeholder={''}
@@ -268,9 +292,9 @@ class DeclareClient extends React.Component {
 					 <Picker.Item label={strings.gender_m} value="H" />
 					 <Picker.Item label={strings.gender_f} value="F" />
 				  	</Picker>
-				</Item>
-	            <Item style={{borderBottomWidth:0}}>
-	            	<Label> {strings.project} </Label>
+				</Item>*/}
+	            <Item style={{borderBottomWidth:0}} error={!isSelectedProjet}>
+	            	<Label> {i18n.t('default project')} </Label>
 					 <Picker 
 					 placeholder={''}
 					 mode="dropdown"

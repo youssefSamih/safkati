@@ -32,6 +32,7 @@ export default {
    "Adress *":"العنوان *",
    "CIN *":"CIN *",
    "Email *":"البريد الإلكتروني *",
+   "Email":"البريد الإلكتروني ",
    "phone *":"هاتف *",
    "Age *":"العمر *",
    "Budget *":"ميزانية *",
@@ -59,4 +60,9 @@ export default {
 
    "Declare client":"أعلن عميل",
    "Declare a client":"أعلن عميل",
+
+   "default project":"Projet par défaut",
+   "Apartment":"شقة",
+   "Villa":"فيلا",
+   "Ground":"أرض",
 };
