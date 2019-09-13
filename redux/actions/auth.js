@@ -42,12 +42,12 @@ export const signUpUser = ({ prenom, nom, phone, email, ville, password, cin, ad
 	}
 };
 
-export const loginUser = ({email, password}) =>{
+export const loginUser = ({username, password}) =>{
 
 	return (dispatch) =>{
 		dispatch({type: LOGIN_USER});
-		console.log(`${API_LOGIN}?login=${email}&password=${password}`);
-		axios.get(`${API_LOGIN}?login=${email}&password=${password}`)
+		console.log(`${API_LOGIN}?login=${username}&password=${password}`);
+		axios.get(`${API_LOGIN}?login=${username}&password=${password}`)
 	    .then(async (res) => {
 		console.log(res.data);
 	    	

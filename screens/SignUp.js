@@ -78,7 +78,7 @@ class SignUp extends React.Component {
 	    const isNomValid = nom.length >= 3 ;
 	    const isPrenomValid = prenom.length >= 3 ;
 	    const isAdressValid = adress.length >= 3 ;
-	    const isCinValid = cin ;
+	    const isCinValid = cin.length >= 6 ;
 	    const isCguValid = cgu ;
 	    const isEntrepreneurValid = entrepreneur ;
 	    const isPhoneValid = phone.length >= 8 ;

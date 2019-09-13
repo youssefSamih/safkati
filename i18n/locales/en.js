@@ -48,6 +48,7 @@ export default {
    "Caller Contact":"060000000009 / test@gmail.com",
 
    "email placeholder":'email@exemple.com',
+   "username placeholder" : "cin23333",
    "password placeholder":'password',
    "Last Name placeholder":"",
    "First Name placeholder":"",

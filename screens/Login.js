@@ -40,10 +40,10 @@ class Login extends React.Component {
 	    super(props);
 
 	    this.state = {
-	      email: '',
+	      username: '',
 	      password: '',
 	      //isLoading: false,
-	      isEmailValid: true,
+	      isUsernameValid: true,
 	      isPasswordValid: true,
 	      error: '' 
 	    };
@@ -58,18 +58,19 @@ class Login extends React.Component {
 //check the email and password are valid and the call the function loginUser
 // the function call an rest api to see the credentials are correct
   login() {
-    const { email, password } = this.state;
-    const isEmailValid = this.validateEmail(email);// || this.emailInput.shake();
+    const { username, password } = this.state;
+    const isUsernameValid = username.length >= 6;// || this.emailInput.shake();
+    //const isEmailValid = this.validateEmail(email);// || this.emailInput.shake();
     const isPasswordValid = password.length >= 6 ;//|| this.passwordInput.shake();
-    if(isEmailValid && isPasswordValid){
+    if(isUsernameValid && isPasswordValid){
          // Simulate an API call
-       this.props.loginUser({email, password}); 
+       this.props.loginUser({username, password}); 
     }
-    console.log({ email, password });
+
     setTimeout(() => {
         LayoutAnimation.easeInEaseOut();
         this.setState({
-          isEmailValid,
+          isUsernameValid,
           isPasswordValid,
         });
       }, 1000);
@@ -100,9 +101,9 @@ class Login extends React.Component {
 
 	render(){
 		const {
-	      isEmailValid,
+	      isUsernameValid,
 	      isPasswordValid,
-	      email,
+	      username,
 	      password,
 	      error
 	    } = this.state;
@@ -122,23 +123,23 @@ class Login extends React.Component {
 			       </Block>
 		          <Form style={{paddingTop: 20}}>
 		              <Label style={styles.labelText}>{i18n.t('Username')} </Label>
-		            <Item rounded error={!isEmailValid} disabled={isLoading}>
+		            <Item rounded error={!isUsernameValid} disabled={isLoading}>
 		              <Input 
 		              //ref={input => (this.emailInput = input)}
 		              disabled={isLoading}
-		              value={email}
+		              value={username}
 	                  keyboardAppearance="light"
 	                  autoFocus={false}
 	                  autoCapitalize="none"
 	                  autoCorrect={false}
-	                  keyboardType="email-address"
+	                  //keyboardType="email-address"
 	                  returnKeyType="next"
 	                  inputStyle={{ marginLeft: 10 }}
-	                  placeholder={i18n.t('email placeholder')}
-	                  onChangeText={email => this.setState({ email })}
+	                  placeholder={i18n.t('username placeholder')}
+	                  onChangeText={username => this.setState({ username })}
 	                  
 		              />
-		             {isEmailValid || <IconNB name="ios-close-circle" /> } 
+		             {isUsernameValid || <IconNB name="ios-close-circle" /> } 
 		            </Item>
 		              <Label style={styles.labelText}>{i18n.t('Password')}</Label>
 		            <Item rounded error={!isPasswordValid} disabled={isLoading}>
