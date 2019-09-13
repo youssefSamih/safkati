@@ -30,11 +30,15 @@ import {
 	Picker
 } from 'native-base';
 
+import i18n from '../i18n/i18n';
+
+const TITLE = i18n.t('Projets title');
+
 class Projets extends React.Component {
 
 	static navigationOptions = ({ navigation }) => ({
-	    title: "Projets",
-	    drawerLabel: 'Projets',
+	    title: TITLE,
+	    drawerLabel: TITLE,
 	    header: null,
 	    drawerIcon: ({ tintColor }) => (
 	      <Ionicons
@@ -52,6 +56,21 @@ class Projets extends React.Component {
 	componentWillMount(){
 		this.props.fetchProjects();
 	}
+
+	printPrix(min,max){
+	    /*if(min && max){
+	      return i18n.t('min - max',{min,max});
+	    }
+	    if(min){
+	      return i18n.t('from price',{prix:min});
+	    }*/
+	    if(min){
+	    	return i18n.t('price dhs',{prix:min}) ;
+	    }
+	    return ;
+
+	  }
+
 	renderRow(project){
 		//return <ProjectItem project={project.item} />
 		 return ( <TouchableWithoutFeedback  key={project.index}
@@ -66,10 +85,9 @@ class Projets extends React.Component {
 	          </Col>
 	          <Col size={2} style={styles.itemBlockContent}> 
 	          	<H2 style={styles.libelleStyle}>{project.item.libelle}</H2>
-	          	<Text note numberOfLines={1}>Appartement</Text>
-	          	<Text note numberOfLines={1}>120m - 3Km</Text>
-	          	<Text note numberOfLines={1}>Terrasse - parking</Text>
-	          	<H2 >12200 DHs</H2>
+	          	<Text note numberOfLines={1}>{project.item.type_de_bien}</Text>
+	          	<Text note numberOfLines={2}>{project.item.tags}</Text>
+	          	<H2>{this.printPrix(project.item.prix_min,project.item.prix_max) /*&& i18n.t('from price',{prix:project.item.prix_min})*/}</H2>
 
 	          </Col>
           </Row>
@@ -99,7 +117,7 @@ class Projets extends React.Component {
 		            </Button>
 		          </Left>
 		          <Body>
-		            <Title>Project</Title>
+		            <Title>{TITLE}</Title>
 		          </Body>
 		        </Header>				
 				<Content>
@@ -139,8 +157,10 @@ const styles = StyleSheet.create({
 const mapStateToProps = state =>{
 	
 	const projects = _.map(state.projects.projectsList, (val, uid) => {
-		const {id,libelle,description,lieu,address} = val
-		return  {id,libelle,description,lieu,address} ; 
+		let {tags} = val;
+		tags = tags && tags.replace(/,/gi, " - "); 
+		return {...val, tags};
+		//return  {id,libelle,description,lieu,address} ; 
 	});
 
 	return { 

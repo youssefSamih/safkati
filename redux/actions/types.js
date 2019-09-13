@@ -20,3 +20,4 @@ export const DECLARE_CLIENT_FAIL = 'declare_client_fail';
 export const GET_USER_INFO = 'get_user_info';
 export const GET_USER_INFO_SUCCESS = 'get_user_info_success';
 export const GET_USER_INFO_FAIL = 'get_user_info_fail';
+export const INITIAL_PROJET_INFO = 'initial_projet_info';

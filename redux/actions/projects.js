@@ -8,7 +8,11 @@ import {
 	PROJECTS_FETCH_SUCCESS,
 	DECLARE_CLIENT_START,
 	DECLARE_CLIENT_SUCCESS,
-	DECLARE_CLIENT_FAIL
+	DECLARE_CLIENT_FAIL,
+	GET_USER_INFO,
+	GET_USER_INFO_SUCCESS,
+	GET_USER_INFO_FAIL,
+	INITIAL_PROJET_INFO
 } from './types';
 import {
 	API_PROJECTS,
@@ -48,13 +52,26 @@ export const fetchProjects = () =>{
 		.catch(error => console.log("FAITCHED DATA FAILD",error));
 	}
 };
-
+// initial the current projet
+export const initialCurrentProjet = (data) =>{
+	return{
+		type: INITIAL_PROJET_INFO,
+		payload: data
+	}
+}
 // get the information of the selected project
 export const infoProject = ({id}) =>{
 	return (dispatch) => {
+		dispatch({type: GET_USER_INFO})
 		axios.get(`${API_PROJECT_INFO}?id=${id}`)
-		.then(res => console.log(res.data))
-		.catch(error => console.log(error));
+		.then(res => {
+			console.log(res.data);
+			dispatch({type:GET_USER_INFO_SUCCESS, payload:res.data});
+		})
+		.catch(error =>{ 
+			console.log(error);
+			dispatch({type:GET_USER_INFO_FAIL});
+		});
 	}
 };
 

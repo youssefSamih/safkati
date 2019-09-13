@@ -1,4 +1,7 @@
-export default {  
+export default { 
+ "Projets title":"Projects", 
+ "Projet Detail":"Projet Detail",
+
   greeting: 'Hi!',
   Username:"Username",
   Password:"Password",
@@ -9,7 +12,12 @@ export default {
   "Choose the language": "Choose the language :",
   "French":"French",
   "Arabic":"Arabe",
+
   "Become partner":"Become a {{appName}} partner",
+  "from price":"from {{prix}} dhs",
+  "price dhs" :"{{prix}} dhs",
+  "min - max":"{{prix}} dhs - {{max}} dhs",
+
   "Last Name *":"Name *",
    "First Name *":"First name *", 
    "Adress *":"Adress *",
@@ -24,7 +32,7 @@ export default {
    "Comfirm your password *":"Comfirm your password *",
    "Accept CGU":"Accept les CGU",
    "type de bien *":"Type de bien *",
-   
+
    "Caller":"Caller",
    "Caller Contact":"060000000009 / test@gmail.com",
 

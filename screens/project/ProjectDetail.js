@@ -3,17 +3,18 @@ import {View, Text, ScrollView, Dimensions, Image, FlatList,StyleSheet } from 'r
 //import { Actions } from 'react-native-router-flux';
 import { SliderBox } from 'react-native-image-slider-box';
 
-import { Card, H2, Input, Button, Icon,Container,Content , Header,Right,Left,Body,Title } from 'native-base';
+import { Card, H2, Input, Button, Icon,Container,Content , Header,Right,Left,Body,Title, Spinner } from 'native-base';
 import {Block} from '../../components';
 
 import { connect } from 'react-redux';
-import { infoProject } from '../../redux/actions';
+import { infoProject, initialCurrentProjet } from '../../redux/actions';
 
 import i18n from '../../i18n/i18n';
 
 const { width, height } = Dimensions.get('window');
+const TITLE = i18n.t('Projet Detail');
 
- class ProjectDetail extends React.Component {
+class ProjectDetail extends React.Component {
   static navigationOptions = ({ navigation }) => ({
       header: null,
       
@@ -21,26 +22,36 @@ const { width, height } = Dimensions.get('window');
  	componentWillMount(){
     const { navigation } = this.props;
     const project = navigation.getParam('project');
+    // use project info from the listing until the request http for gettion all the project info is completed
+    this.props.initialCurrentProjet(project) ;
  		this.props.infoProject({id: project.id});
  	}
+  printPrix(min,max){
+    if(min && max){
+      return i18n.t('min - max',{min,max});
+    }
+    if(min){
+      return i18n.t('from price',{prix:min});
+    }
+    return ;
+
+  }
+  printTags(tags){
+    tags = tags && tags.replace(/,/gi, " - "); 
+    return tags;
+  }
+  
  	  renderGallery() {
-    const images = [
-    'https://odis.homeaway.com/odis/listing/82c05ddc-515c-47a0-a78a-d04d2991c761.c10.jpg',
-    'https://www.realista.com/wp-content/uploads/2018/11/This-one-of-a-kind-villa-Las-Brisas-for-sale_Realista-Quality-Real-Estate-Marbella-3.jpg',
-    'https://odis.homeaway.com/odis/listing/7e04139f-1678-4a69-a9dc-d86be6bd80c6.c10.jpg',
-     /* '../../assets/images/plants_1.png',
-     //require('../../assets/images/plants_2.png'),
-     // require('../../assets/images/plants_3.png'),
-      // showing only 3 images, show +6 for the rest
-      require('../../assets/images/plants_1.png'),
-      //require('../../assets/images/plants_2.png'),
-      //require('../../assets/images/plants_3.png'),
-      require('../../assets/images/plants_1.png'),
-      //require('../../assets/images/plants_2.png'),
-      //require('../../assets/images/plants_3.png'),*/
-    ];
+    const images = this.props.gallery;
+    if(!images){
+      return (
+        <Block center middle style={{height:height/2.4}}>
+        <Spinner />
+        </Block>
+        );
+    }
     return <SliderBox 
-    sliderBoxHeight={400}
+    sliderBoxHeight={height/2.4}
     images={images}
     circleLoop
     dotColor="#AA2D5A"
@@ -64,8 +75,11 @@ const { width, height } = Dimensions.get('window');
       />
     );
   }
+
 	render(){
-    const project = this.props.navigation.getParam('project');
+    
+    const project = this.props.project;
+    
 		return (
       <Container>
       <Header  noRight>
@@ -75,21 +89,21 @@ const { width, height } = Dimensions.get('window');
           </Button>
         </Left>
         <Body>
-          <Title>Project</Title>
+          <Title>{TITLE}</Title>
         </Body>
       </Header>
 			<Content >
 			{this.renderGallery()}
       <View style={styles.itemProjet}> 
-        <H2 style={styles.libelleStyle}>{project.libelle}</H2>
-        <Text note numberOfLines={1}>Appartement</Text>
-        <Text note numberOfLines={1}>120m - 3Km - Terrasse - parking</Text>
-        <View><Text style={styles.prixStyle} >12200 DHs</Text></View>
+        <H2 style={styles.libelleStyle}>{project && project.libelle}</H2>
+        <Text note numberOfLines={1}>{project && project.type_de_bien}</Text>
+        <Text note numberOfLines={1}>{project && this.printTags(project.tags)}</Text>
+        <View><Text style={styles.prixStyle} >{project &&  this.printPrix(project.prix_min,project.prix_max)}</Text></View>
       </View>
       <View style={{paddingHorizontal:16 * 2,
     paddingVertical:25}}>
 			<Text note>
-			    {project.description}
+			    {project && project.description}
 			</Text>	
       </View>
       <Block center>
@@ -131,4 +145,16 @@ const styles = StyleSheet.create({
   
 });
 
-export default connect(null, { infoProject })(ProjectDetail);
+const mapStateToProps = (state) => {
+   /* let {tags} = state.currentProject.project;
+    tags = tags && tags.replace(/,/gi, " - "); */
+   
+  return {
+    error: state.currentProject.error,
+    loading: state.currentProject.loading,
+    project: {...state.currentProject.project},
+    gallery: state.currentProject.gallery
+  };
+};
+
+export default connect(mapStateToProps, { infoProject,initialCurrentProjet })(ProjectDetail);
