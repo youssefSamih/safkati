@@ -12,20 +12,15 @@ i18n.locale = 'fr';
 if(lang){
  i18n.locale = lang;
 }*/
-console.log("lang ", i18n.locale)
-/*if(i18n.locale == 'ar'){
-	I18nManager.forceRTL(true);
-	//I18nManager.forceLTR(true);
-}else{
-	//I18nManager.forceLTR(false);
-	I18nManager.forceRTL(false);
-}*/
-//
 
 i18n.translations = {
-  en,
   fr,
   ar
 };
+
+console.log("lang ", i18n.locale);
+I18nManager.allowRTL(i18n.locale in i18n.translations);
+i18n.start  = I18nManager.isRTL ? 'right' : 'left';
+i18n.end    = I18nManager.isRTL ? 'left' : 'right';
 
 export default i18n;

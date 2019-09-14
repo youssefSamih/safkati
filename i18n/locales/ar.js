@@ -25,7 +25,7 @@ export default {
   "Become partner":"كن شريكًا في {{appName}}",
   "from price":"ابتداء من {{prix}} درهم",
   "price dhs" :"{{prix}} درهم",
-  "min - max":"{{prix}} درهم - {{max}} درهم",
+  "min - max":"{{min}} درهم - {{max}} درهم",
 
    "Last Name *":"الاسم *",
    "First Name *":"الاسم الأول *", 

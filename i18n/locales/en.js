@@ -25,7 +25,7 @@ export default {
   "Become partner":"Become a {{appName}} partner",
   "from price":"from {{prix}} dhs",
   "price dhs" :"{{prix}} dhs",
-  "min - max":"{{prix}} dhs - {{max}} dhs",
+  "min - max":"{{min}} dhs - {{max}} dhs",
 
   "Last Name *":"Name *",
    "First Name *":"First name *", 

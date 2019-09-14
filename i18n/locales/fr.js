@@ -20,12 +20,12 @@ export default {
   "Create an account":"Créer un compte",
   "Choose the language": "Choisir la langue : ",
   "French":"Français",
-  "Arabe":"Arabe",
+  "Arabic":"Arabe",
 
   "Become partner":"Devenez partenaire de {{appName}}",
   "from price":"à partir de {{prix}} dhs",
   "price dhs" :"{{prix}} dhs",
-  "min - max":"{{prix}} dhs - {{max}} dhs",
+  "min - max":"{{min}} dhs - {{max}} dhs",
   
    "Last Name *":"Nom *",
    "First Name *":"Prénom *", 

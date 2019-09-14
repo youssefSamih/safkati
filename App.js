@@ -39,8 +39,8 @@ export default class App extends React.Component {
             RNRestart.Restart();
           }
         }
-        console.log("AsyncStorage",language )
-        i18n.locale = language;
+        //console.log("AsyncStorage",language )
+        if(language) i18n.locale = language;
       });
 }
 

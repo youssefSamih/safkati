@@ -80,7 +80,7 @@ class Projets extends React.Component {
           <Grid>
           <Row style={styles.itemProjet}>
 	          <Col size={1} style={styles.itemBlockImg}> 
-	          	<Image style={styles.itemImg} source={require('../assets/images/plants_2.png')} />
+	          	<Image style={styles.itemImg} source={{uri: project.item.cover}} />
 	          </Col>
 	          <Col size={2} style={styles.itemBlockContent}> 
 	          	<H2 style={styles.libelleStyle}>{project.item.libelle}</H2>
