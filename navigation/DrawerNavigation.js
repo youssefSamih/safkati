@@ -5,10 +5,7 @@ import { createDrawerNavigator } from 'react-navigation-drawer';
 import { createStackNavigator } from 'react-navigation-stack';
 import { Ionicons } from '@expo/vector-icons';
 
-import MonEspace from '../screens/MonEspace';
 
-import Welcome from '../screens/Welcome';
-import Projets from '../screens/Projets';
 import Aide from '../screens/Aide';
 import Apropos from '../screens/Apropos';
 import Confidentialite from '../screens/Confidentialite';
@@ -51,7 +48,7 @@ const DrawerNavigation = createDrawerNavigator(
     screen: espacePersoNavigation,
     path: '/mon-espace',
     navigationOptions:{
-      drawerLabel: "Espace perso",
+      drawerLabel: i18n.t("Espace pro title"),
       drawerIcon: ({ tintColor }) => (
         <Ionicons
         name="md-menu"
@@ -102,11 +99,5 @@ const DrawerNavigation = createDrawerNavigator(
   },
 }
 , DrawerConfig);
-
-const styles = StyleSheet.create({
-	container: {
-		flex: 1,
-	}
-});
 
 export {DrawerNavigation}

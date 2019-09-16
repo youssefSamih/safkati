@@ -1,5 +1,5 @@
 import React from 'react';
-import { Image,Dimensions } from 'react-native';
+import { Dimensions } from 'react-native';
 
 import { createAppContainer } from 'react-navigation';
 import { createStackNavigator } from 'react-navigation-stack';
@@ -25,7 +25,6 @@ const projectNavigation = createStackNavigator(
       borderBottomColor: "transparent",
       elevation: 0, // for android
     },
-    //headerBackImage: <Image source={require('../assets/icons/back.png')} />,
     headerBackTitle: null,
     headerLeftContainerStyle: {
       alignItems: 'center',
