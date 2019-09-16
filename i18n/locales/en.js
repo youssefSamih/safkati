@@ -2,6 +2,18 @@ export default {
  "Projets title":"Projects", 
  "Projet Detail":"Projet Detail",
  "Espace pro title":"Espace Perso",
+ "Espace pro label":"Espace Perso",
+ "Aide title":"Aide",
+ "Aide label":"Aide",
+ "About title":"About",
+ "About label":"About",
+ "Confidentiality title":"Confidentiality",
+ "Confidentiality label":"Confidentiality",
+ "Sponsorship title":"Sponsorship",
+ "Sponsorship label":"Sponsorship",
+ "How it works title":"How it works",
+ "How it works label":"How it works",
+
  "logout":"logout",
 
  "My activities":"My activities",

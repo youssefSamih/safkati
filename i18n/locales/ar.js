@@ -2,6 +2,18 @@ export default {
   "Projets title":"مشاريع",
   "Projet Detail":"تفاصيل المشروع",
   "Espace pro title":"مساحة شخصية",
+  "Espace pro label":"مساحة شخصية",
+  "Aide title":"مساعدة",
+  "Aide label":"مساعدة",
+  "About title":"معلومات عنا",
+  "About label":"معلومات عنا",
+  "Confidentiality title":"خصوصية",
+  "Confidentiality label":"خصوصية",
+  "Sponsorship title":"رعاية",
+  "Sponsorship label":"رعاية",
+  "How it works title":"كيف يعمل؟",
+  "How it works label":"كيف يعمل؟",
+
   "logout":"الخروج",
 
  "My activities":"النشاطات",
