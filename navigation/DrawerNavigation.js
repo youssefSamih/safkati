@@ -5,9 +5,10 @@ import { createDrawerNavigator } from 'react-navigation-drawer';
 import { createStackNavigator } from 'react-navigation-stack';
 import { Ionicons } from '@expo/vector-icons';
 
+import MonEspace from '../screens/MonEspace';
+
 import Welcome from '../screens/Welcome';
 import Projets from '../screens/Projets';
-import MonEspace from '../screens/MonEspace';
 import Aide from '../screens/Aide';
 import Apropos from '../screens/Apropos';
 import Confidentialite from '../screens/Confidentialite';
@@ -16,9 +17,8 @@ import Tuto from '../screens/Tuto';
 import Logout from '../screens/Logout';
 
 //import Aide from '../screens/Aide';
-
-import DeclareClient from '../screens/project/DeclareClient';
-import ProjectDetail from '../screens/project/ProjectDetail';
+import projectNavigation from './projectNavigation';
+import espacePersoNavigation from './espacePersoNavigation';
 
 import i18n from '../i18n/i18n';
 import { theme } from '../constants';
@@ -45,48 +45,29 @@ const DrawerConfig = {
   drawerToggleRoute: 'DrawerToggle'
 }
 
-const projectNavigation = createStackNavigator(
-  { 
-    Projets,
-    DeclareClient,
-    ProjectDetail
-  }, {
-  defaultNavigationOptions: {
-    headerStyle: {
-      height: theme.sizes.base * 4,
-      backgroundColor: theme.colors.white, // or 'white
-      borderBottomColor: "transparent",
-      elevation: 0, // for android
-    },
-    //headerBackImage: <Image source={require('../assets/icons/back.png')} />,
-    headerBackTitle: null,
-    headerLeftContainerStyle: {
-      alignItems: 'center',
-      marginLeft: theme.sizes.base * 2,
-      paddingRight: theme.sizes.base,
-    },
-    headerRightContainerStyle: {
-      alignItems: 'center',
-      paddingRight: theme.sizes.base,
-    },
-  }
-}
-);
-
-
 const DrawerNavigation = createDrawerNavigator(
 {
   MonEspace:{
-    screen: MonEspace,
+    screen: espacePersoNavigation,
     path: '/mon-espace',
+    navigationOptions:{
+      drawerLabel: "Espace perso",
+      drawerIcon: ({ tintColor }) => (
+        <Ionicons
+        name="md-menu"
+        size={32}
+        //onPress={this.props.navigation.openDrawer()}
+        />
+      ),
+    },
   },
   Parrainage:{
     screen: Parrainage,
-    path: '/mon-espace',
+    path: '/parrainage',
   },
   Tuto:{
     screen: Tuto,
-    path: '/mon-espace',
+    path: '/tuto',
   },
   //Router: { screen: Router }
   Projets:{
@@ -105,15 +86,15 @@ const DrawerNavigation = createDrawerNavigator(
   },
   Confidentialite:{
     screen: Confidentialite,
-    path: '/projets',
+    path: '/confidentialite',
   },
   Aide:{
     screen: Aide,
-    path: '/projets',
+    path: '/aide',
   },
   Apropos:{
     screen: Apropos,
-    path: '/projets',
+    path: '/apropos',
   },
   Logout:{
     screen: Logout,

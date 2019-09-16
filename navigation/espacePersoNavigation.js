@@ -4,18 +4,22 @@ import { Image,Dimensions } from 'react-native';
 import { createAppContainer } from 'react-navigation';
 import { createStackNavigator } from 'react-navigation-stack';
 
-import Projets from '../screens/Projets';
-import DeclareClient from '../screens/project/DeclareClient';
-import ProjectDetail from '../screens/project/ProjectDetail';
+import MonEspace from '../screens/MonEspace';
+import ClientsDeclare from '../screens/espace-perso/ClientsDeclare';
+import MesCommissions from '../screens/espace-perso/MesCommissions';
+import MesParrinage from '../screens/espace-perso/MesParrinage';
+import MesMessageries from '../screens/espace-perso/MesMessageries';
 
 import { theme } from '../constants';
 const WIDTH = Dimensions.get('window').width;
 
-const projectNavigation = createStackNavigator(
+const espacePersoNavigation = createStackNavigator(
   { 
-    Projets,
-    DeclareClient,
-    ProjectDetail
+    MonEspace,
+    ClientsDeclare,
+    MesCommissions,
+    MesParrinage,
+    MesMessageries
   }, {
   defaultNavigationOptions: {
     header:null,
@@ -41,7 +45,7 @@ const projectNavigation = createStackNavigator(
 );
 
 
-export default createAppContainer(projectNavigation);
+export default createAppContainer(espacePersoNavigation);
 
 
 

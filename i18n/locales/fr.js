@@ -63,7 +63,7 @@ export default {
    "Declare client":"Déclarer un client",
    "Declare a client":"Déclarer un client",
 
-   "projet par défaut":"Projet par défaut",
+   "default project":"Projet par défaut",
    "Apartment":"Appartement",
    "Villa":"Villa",
    "Ground":"Terrain",

@@ -87,19 +87,7 @@ class MonEspace extends React.Component {
 				      />
 			       </Block>
 			       <Separator bordered />
-			       <ListItem icon>
-		            <Left>
-		              <Button >
-		                <Icon name="star-half" />
-		              </Button>
-		            </Left>
-		            <Body>
-		              <Text>{i18n.t('My activities')}</Text>
-		            </Body>
-		            <Right>
-		              {Platform.OS === "ios" && <Icon active name="arrow-forward" />}
-		            </Right>
-		          </ListItem>
+			      
 		          <ListItem icon>
 		            <Left>
 		              <Button>

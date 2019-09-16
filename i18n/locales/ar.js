@@ -63,7 +63,7 @@ export default {
    "Declare client":"أعلن عميل",
    "Declare a client":"أعلن عميل",
 
-   "default project":"Projet par défaut",
+   "default project":"المشروع الافتراضي",
    "Apartment":"شقة",
    "Villa":"فيلا",
    "Ground":"أرض",
