@@ -5,8 +5,13 @@ import {View , ScrollView, StyleSheet, Image,LayoutAnimation, UIManager} from 'r
 import { 
 	Container, 
 	Content,
+	Header,
+	Body,
+	Title,
 	Footer, 
 	Right, 
+	Left, 
+	Icon, 
 	Button, 
 	Text,
 	H1,
@@ -148,6 +153,16 @@ class DeclareClient extends React.Component {
 		
 		return (
 			<Container>
+			<Header  noRight>
+		        <Left>
+		          <Button transparent onPress={() =>  this.props.navigation.goBack()}>
+		            <Icon name="arrow-back" />
+		          </Button>
+		        </Left>
+		        <Body>
+		          <Title>{i18n.t('Declare a client')}</Title>
+		        </Body>
+		    </Header>
 				<Content>
 				<Block center>
 		       		<Image
