@@ -13,6 +13,8 @@ export default {
  "Sponsorship label":"Sponsorship",
  "How it works title":"How it works",
  "How it works label":"How it works",
+ "Customers declared title":"Customers declared",
+ "Customers declared label":"Customers declared",
 
  "logout":"logout",
 
@@ -79,5 +81,7 @@ export default {
    "Apartment":"Apartment",
    "Villa":"Villa",
    "Ground":"Ground",
+
+   "View status":"View status",
 
 };

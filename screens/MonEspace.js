@@ -114,7 +114,7 @@ class MonEspace extends React.Component {
 		              {Platform.OS === "ios" && <Icon active name="arrow-forward" />}
 		            </Right>
 		          </ListItem>
-		          <ListItem icon>
+		          <ListItem icon onPress={() =>  this.props.navigation.navigate('ClientsDeclare')}>
 		            <Left>
 		              <Button >
 		                <Icon  name="bookmark" />

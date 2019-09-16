@@ -13,6 +13,8 @@ export default {
   "Sponsorship label":"رعاية",
   "How it works title":"كيف يعمل؟",
   "How it works label":"كيف يعمل؟",
+  "Customers declared title":"أعلن العملاء",
+  "Customers declared label":"أعلن العملاء",
 
   "logout":"الخروج",
 
@@ -79,4 +81,6 @@ export default {
    "Apartment":"شقة",
    "Villa":"فيلا",
    "Ground":"أرض",
+
+   "View status":"عرض الحالة",
 };

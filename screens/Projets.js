@@ -121,10 +121,10 @@ class Projets extends React.Component {
 		        </Header>				
 				<Content>
 				 	<FlatList
-					keyExtractor= {(item, index) => index.toString()}
-					data={this.props.projects}
-					renderItem = {this.renderRow}
-				/>
+						keyExtractor= {(item, index) => index.toString()}
+						data={this.props.projects}
+						renderItem = {this.renderRow}
+					/>
 				</Content>
 			</Container>
 		);

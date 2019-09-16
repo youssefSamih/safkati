@@ -13,6 +13,8 @@ export default {
  "Sponsorship label":"Parrainage",
  "How it works title":"Comment ça marche",
  "How it works label":"Comment ça marche",
+ "Customers declared title":"Clients déclarés",
+ "Customers declared label":"Clients déclarés",
 
  "logout":"Se déconnecter",
 
@@ -79,5 +81,7 @@ export default {
    "Apartment":"Appartement",
    "Villa":"Villa",
    "Ground":"Terrain",
+
+   "View status":"Voir l'état",
 
 };
