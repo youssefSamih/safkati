@@ -15,6 +15,8 @@ export default {
   "How it works label":"كيف يعمل؟",
   "Customers declared title":"أعلن العملاء",
   "Customers declared label":"أعلن العملاء",
+  "Client title":"تفاصيل العملاء",
+  "Client label":"تفاصيل العملاء",
 
   "logout":"الخروج",
 
@@ -57,6 +59,11 @@ export default {
    "Comfirm your password *":"تأكيد كلمة مرورك *",
    "Accept CGU":"اقبل الشروط",
    "type de bien *":"نوع العقار *",
+   "type de bien":"نوع العقار",
+   "Name":"اسم",
+
+   "Declare the": "أعلن",
+   "Project":"مشروع",
 
    "Caller":"الاتصال الخاصة بك",
    "Caller Contact":"060000000009 / test@gmail.com",
@@ -83,4 +90,15 @@ export default {
    "Ground":"أرض",
 
    "View status":"عرض الحالة",
+   "Customer state declares":"حالة العميل",
+
+   "In the process of validation":"يجري التحقق من صحة",
+   "Making appointments":"أخذ موعد",
+   "Appointment":"موعد",
+   "Signature of the sales agreement":"توقيع اتفاقية البيع",
+   "Signature of deed of sale":"توقيع صك البيع",
+   "Interested customer":"العميل مهتم",
+   "Customer not interested":"العميل غير مهتم",
+   "Valid":"تم التحقق",
+   "Canceled":"ألغيت",
 };

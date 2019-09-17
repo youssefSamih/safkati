@@ -9,9 +9,9 @@ import {
 	DECLARE_CLIENT_START,
 	DECLARE_CLIENT_SUCCESS,
 	DECLARE_CLIENT_FAIL,
-	GET_USER_INFO,
-	GET_USER_INFO_SUCCESS,
-	GET_USER_INFO_FAIL,
+	GET_PROJET_INFO,
+	GET_PROJET_INFO_SUCCESS,
+	GET_PROJET_INFO_FAIL,
 	INITIAL_PROJET_INFO
 } from './types';
 import {
@@ -62,15 +62,15 @@ export const initialCurrentProjet = (data) =>{
 // get the information of the selected project
 export const infoProject = ({id}) =>{
 	return (dispatch) => {
-		dispatch({type: GET_USER_INFO})
+		dispatch({type: GET_PROJET_INFO})
 		axios.get(`${API_PROJECT_INFO}?id=${id}`)
 		.then(res => {
 			console.log(res.data);
-			dispatch({type:GET_USER_INFO_SUCCESS, payload:res.data});
+			dispatch({type:GET_PROJET_INFO_SUCCESS, payload:res.data});
 		})
 		.catch(error =>{ 
 			console.log(error);
-			dispatch({type:GET_USER_INFO_FAIL});
+			dispatch({type:GET_PROJET_INFO_FAIL});
 		});
 	}
 };

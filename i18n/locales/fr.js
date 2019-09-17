@@ -15,6 +15,8 @@ export default {
  "How it works label":"Comment ça marche",
  "Customers declared title":"Clients déclarés",
  "Customers declared label":"Clients déclarés",
+ "Client title":"Détail du client",
+ "Client label":"Détail du client",
 
  "logout":"Se déconnecter",
 
@@ -57,6 +59,11 @@ export default {
    "Comfirm your password *":"Confirmer votre mot de passe *",
    "Accept CGU":"Accepter les CGU",
    "type de bien *":"Type de bien *",
+   "type de bien":"Type de bien",
+   "Name":"Nom",
+
+   "Declare the": "Déclare le",
+   "Project":"Projet",
 
    "Caller":"Votre Interlocuteur",
    "Caller Contact":"060000000009 / test@gmail.com",
@@ -83,5 +90,16 @@ export default {
    "Ground":"Terrain",
 
    "View status":"Voir l'état",
+   "Customer state declares":"État du client déclare",
+
+   "In the process of validation":"En cours de validation",
+   "Making appointments":"Prise de rendez-vous",
+   "Appointment":"Rendez-vous",
+   "Signature of the sales agreement":"Signature du compromis de vente",
+   "Signature of deed of sale":"Signature d'acte de vente",
+   "Interested customer":"Client intéressé",
+   "Customer not interested":"Client non intéressé",
+   "Valid":"Validé",
+   "Canceled":"Annulé",
 
 };

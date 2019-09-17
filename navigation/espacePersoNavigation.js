@@ -9,6 +9,7 @@ import ClientsDeclare from '../screens/espace-perso/ClientsDeclare';
 import MesCommissions from '../screens/espace-perso/MesCommissions';
 import MesParrinage from '../screens/espace-perso/MesParrinage';
 import MesMessageries from '../screens/espace-perso/MesMessageries';
+import Client from '../screens/espace-perso/Client';
 
 import { theme } from '../constants';
 const WIDTH = Dimensions.get('window').width;
@@ -16,10 +17,11 @@ const WIDTH = Dimensions.get('window').width;
 const espacePersoNavigation = createStackNavigator(
   { 
     MonEspace,
-    ClientsDeclare,
     MesCommissions,
     MesParrinage,
-    MesMessageries
+    MesMessageries,
+    ClientsDeclare,
+    Client
   }, {
   defaultNavigationOptions: {
     header:null,

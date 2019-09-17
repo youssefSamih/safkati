@@ -47,16 +47,15 @@ class ClientsDeclare extends React.Component {
 	printFullname(client){
 		let fullname = "";
 		if(client.nom) fullname += client.nom;
-		if(client.prenom) fullname += client.prenom;
+		if(client.prenom) fullname +=" "+client.prenom;
 		return fullname;
 	}
 	renderRow(client){
-		console.log(client);
 		//return <ProjectItem project={project.item} />
 		 return ( 
 		 <TouchableWithoutFeedback  key={client.item.index}
 		 	onPress = {() => {
-            //this.props.navigation.navigate('ProjectDetail', { project: project.item});
+            this.props.navigation.navigate('Client', { client: client.item});
           }}>
           <Card style={styles.cardStyle}>
           <Grid>
