@@ -83,6 +83,7 @@ export default {
 
    "Declare client":"أعلن عميل",
    "Declare a client":"أعلن عميل",
+   "I sponsor":" رعاية",
 
    "default project":"المشروع الافتراضي",
    "Apartment":"شقة",

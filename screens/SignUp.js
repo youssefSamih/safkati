@@ -87,8 +87,7 @@ class SignUp extends React.Component {
 	    const isConfirmationValid =
 	      password === passwordConfirmation ;
 
-	    if(isVilleValid && isEmailValid && isNomValid && isPrenomValid && isAdressValid && isPhoneValid && isPasswordValid && isConfirmationValid, isCinValid, isCguValid, isEntrepreneurValid){
-	    	console.log({ prenom, nom, phone, email, ville, password, passwordConfirmation, cin, adress, entrepreneur, cgu });
+	    if(isVilleValid && isEmailValid && isNomValid && isPrenomValid && isAdressValid && isPhoneValid && isPasswordValid && isConfirmationValid && isCinValid && isCguValid && isEntrepreneurValid){
 	      	this.props.signUpUser({ prenom, nom, phone, email, ville, password, passwordConfirmation, cin, adress, entrepreneur, cgu });
 	    }
 	    //this.setState({ isLoading: true });

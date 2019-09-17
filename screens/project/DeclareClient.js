@@ -168,7 +168,7 @@ class DeclareClient extends React.Component {
 		       		<Image
 		       	 		style={styles.logoImg}
 		          		source={params.app.LOGO} />
-		          	<H1 style={{color:'#AA2D5A'}}>{i18n.t('Declare a client')}</H1>
+		          	<H1 style={{color:theme.colors.primary}}>{i18n.t('Declare a client')}</H1>
 		       </Block>
 			    <Block center>
 			    <Card style={{width:'90%',paddingBottom:10,borderRadius:30}} bordred>

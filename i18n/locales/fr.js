@@ -83,6 +83,7 @@ export default {
 
    "Declare client":"Déclarer un client",
    "Declare a client":"Déclarer un client",
+   "I sponsor":"Je parraine",
 
    "default project":"Projet par défaut",
    "Apartment":"Appartement",
