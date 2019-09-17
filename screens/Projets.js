@@ -1,7 +1,7 @@
 
 
 import React from 'react';
-import {FlatList, View, ScrollView, Image, TouchableWithoutFeedback, StyleSheet } from 'react-native';
+import {FlatList, View, ScrollView, Image, TouchableWithoutFeedback, StyleSheet, Alert } from 'react-native';
 import { Ionicons } from '@expo/vector-icons';
 
 import {connect} from 'react-redux';
@@ -34,7 +34,11 @@ import i18n from '../i18n/i18n';
 
 
 class Projets extends React.Component {
-
+	state = {
+	    location: null,
+	    long: null,
+	    lat: null,
+	  };
 	static navigationOptions = ({ navigation }) => ({
 	    title: i18n.t('Projets title'),
 	    drawerLabel: i18n.t('Projets title'),
@@ -47,13 +51,25 @@ class Projets extends React.Component {
 				/>
 	    ),
 	  });
+	  findCoordinates = () => {
+	    navigator.geolocation.getCurrentPosition(
+	      position => {
+	        const location = JSON.stringify(position);
+	        console.log(location);
+	        this.setState({ location:position, long: position.coords.longitude, lat: position.coords.latitude });
 
+	      },
+	      error => Alert.alert(error.message),
+	      { enableHighAccuracy: true, timeout: 20000, maximumAge: 1000 }
+	    );
+	  };
 	constructor(props) {
 	    super(props);
 	    this.renderRow = this.renderRow.bind(this);
 	}
 	componentWillMount(){
 		this.props.fetchProjects();
+		this.findCoordinates();
 	}
 
 	printPrix(min,max){
