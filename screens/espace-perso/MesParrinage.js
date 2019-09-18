@@ -62,36 +62,36 @@ class MesParrinage extends React.Component {
           <Card style={styles.cardStyle}>
  			<Grid>
 	          <Row style={styles.cardRow}>
-	          	<Left>
+	          	<Col>
 	          		<H2>{i18n.t('Name')} :</H2>
-	          	</Left>
-          		<Right>
+	          	</Col>
+          		<Col>
           			<H2 style={{color:theme.colors.primary}}>{row.item.nom +" "+row.item.prenom}</H2>
-          		</Right>
+          		</Col>
 	          </Row>
 	          <Row style={styles.cardRow}>
-	          	<Left>
+	          	<Col>
 	          		<H2>{i18n.t('Created in')} :</H2>
-	          	</Left>
-          		<Right>
+	          	</Col>
+          		<Col>
           			<H2 style={{color:theme.colors.primary}}>{Moment(row.item.date_creation).format('DD/MM/Y')}</H2>
-          		</Right>
+          		</Col>
 	          </Row>
 	          <Row style={styles.cardRow}>
-	          	<Left>
+	          	<Col>
 	          		<H2>{i18n.t('Email')} :</H2>
-	          	</Left>
-          		<Right>
+	          	</Col>
+          		<Col>
           			<H2 style={{color:theme.colors.primary}}>{row.item.email}</H2>
-          		</Right>
+          		</Col>
 	          </Row>
 	          <Row style={[styles.cardRow, styles.cardRowLast]}>
-	          	<Left>
+	          	<Col>
 	          		<H2>{i18n.t('phone')} :</H2>
-	          	</Left>
-          		<Right>
+	          	</Col>
+          		<Col>
           			<H2 style={{color:theme.colors.primary}}>{row.item.phone}</H2>
-          		</Right>
+          		</Col>
 	          </Row>
 	          
           	</Grid>
