@@ -19,6 +19,8 @@ export default {
   "Client label":"تفاصيل العملاء",
   "My referrals title":"إحالاتي",
   "My referrals label":"إحالاتي",
+  "My commissions title":"عمولاتي",
+  "My commissions label":"عمولاتي",
 
   "logout":"الخروج",
 
@@ -68,6 +70,8 @@ export default {
    "Declare the": "أعلن",
    "Created in":"تم إنشاؤه في ",
    "Project":"مشروع",
+   "Customer name":"اسم العميل",
+   "Commission":"عمولة",
 
    "Caller":"الاتصال الخاصة بك",
    "Caller Contact":"060000000009 / test@gmail.com",

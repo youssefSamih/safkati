@@ -19,6 +19,8 @@ export default {
  "Client label":"Détail du client",
  "My referrals title":"Mes parrainages",
  "My referrals label":"Mes parrainages",
+ "My commissions title":"Mes commissions",
+ "My commissions label":"Mes commissions",
 
 
  "logout":"Se déconnecter",
@@ -69,6 +71,8 @@ export default {
    "Declare the": "Déclare le",
    "Created in":"Créé en",
    "Project":"Projet",
+   "Customer name":"Nom du client",
+   "Commission":"Commission",
 
    "Caller":"Votre Interlocuteur",
    "Caller Contact":"060000000009 / test@gmail.com",

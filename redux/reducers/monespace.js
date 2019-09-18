@@ -5,10 +5,12 @@ import {
 	FETCH_PARRAINAGES,
 	INITIAL_ALL_STATE,
 	INITIAL_SELECTED_CLIENT,
+	FETCH_COMMISSIONS
 } from '../actions/types';
 
 const INITIAL_STATE = {
 	clients:[],
+	commissions: [],
 	mes_parraines:[],
 	selectedClient:null,
 	loading:false,
@@ -25,6 +27,8 @@ export default (state=INITIAL_STATE, action) =>{
 			return {...state, loading: false};
 		case FETCH_PARRAINAGES:
 			return {...state, mes_parraines: action.payload}
+		case FETCH_COMMISSIONS:
+			return {...state, commissions: action.payload}
 		case INITIAL_SELECTED_CLIENT:
 			return {...state, selectedClient: action.payload};
 		case INITIAL_ALL_STATE:

@@ -10,10 +10,17 @@ import {
 	PARRAINE_SUCCESS,
 	PARRAINE_FAIL,
 	INITIAL_FORM,
-	FETCH_PARRAINAGES
+	FETCH_PARRAINAGES,
+	FETCH_COMMISSIONS
 } from './types';
 
-import {API_MONESPACE, API_PARRAINE, API_MESPARRAINE} from './urls';
+import {
+	API_MONESPACE, 
+	API_PARRAINE, 
+	API_MESPARRAINE,
+	API_COMMISSIONS
+} from './urls';
+
 import i18n from '../../i18n/i18n';
 
 export const getUserInfo = ({id}) => {
@@ -56,6 +63,21 @@ export const fetchParrainage = (smsar_id) =>{
 			});
 		})
 		.catch((e) => {
+			console.log(e);
+		});
+	}
+}
+
+export const fetchCommissions = (smsar_id) =>{
+	return (dispatch) => {
+		axios.get(`${API_COMMISSIONS}?id=${smsar_id}`)
+		.then( (res) =>{
+			dispatch({
+				type: FETCH_COMMISSIONS,
+				payload: res.data
+			});
+		})
+		.catch((e) =>{
 			console.log(e);
 		});
 	}

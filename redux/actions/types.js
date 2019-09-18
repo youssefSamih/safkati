@@ -30,6 +30,7 @@ export const PARRAINE_SUCCESS = 'PARRAINE_SUCCESS';
 export const PARRAINE_FAIL = 'PARRAINE_FAIL';
 export const INITIAL_FORM = 'initial_form';
 export const FETCH_PARRAINAGES = 'fetch_parrainages';
+export const FETCH_COMMISSIONS = 'fetch_commissions';
 
 export const INITIAL_PROJET_INFO = 'initial_projet_info';
 export const INITIAL_SELECTED_CLIENT = 'initial_selected_client';

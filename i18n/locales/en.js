@@ -19,6 +19,8 @@ export default {
  "Client label":"Client detail",
  "My referrals title":"Mes parrainages",
  "My referrals label":"Mes parrainages",
+ "My commissions title":"My commissions",
+ "My commissions label":"My commissions",
 
  "logout":"logout",
 
@@ -68,6 +70,8 @@ export default {
    "Declare the": "Declare the",
    "Created in":"Created in",
    "Project":"Project",
+   "Customer name":"Customer's name",
+   "Commission":"Commission",
 
 
    "Caller":"Caller",
