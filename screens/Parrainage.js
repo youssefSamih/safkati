@@ -1,5 +1,5 @@
 import React from 'react';
-import {View , ScrollView, StyleSheet, Image,LayoutAnimation, UIManager} from 'react-native';
+import {View , ScrollView, StyleSheet, LayoutAnimation, UIManager} from 'react-native';
 import { Ionicons } from '@expo/vector-icons';
 import { 
 	Container, 
@@ -25,7 +25,8 @@ import {
 	Col,
 	FooterTab,
 	Spinner,
-	Picker
+	Picker,
+	Thumbnail
 } from 'native-base';
 import { connect } from 'react-redux';
 import { parraineSmsar, initialForm } from '../redux/actions';
@@ -178,11 +179,12 @@ class Parrainage extends React.Component {
 				  </Body>
 				</Header>				
 				<Content>
-				 	<Block center>
-		       		<Image
-		       	 		style={styles.logoImg}
-		          		source={params.app.LOGO} />
-		          	<H1 style={{color:theme.colors.primary}}>{i18n.t('Sponsorship title')}</H1>
+			       <Block center padding={18}>
+			       		<Thumbnail
+			       	  		large
+			       	 		style={styles.logoImg}
+			          		source={params.app.LOGO} />
+			          	<H1 style={{color:theme.colors.primary}}>{i18n.t('Sponsorship title')}</H1>
 			       </Block>
 				    <Block center>
 				    <Card style={{width:'90%',paddingBottom:10,borderRadius:30}} bordred>
@@ -314,8 +316,6 @@ const styles = StyleSheet.create({
 		flex: 1,
 	},
 	logoImg:{
-		height: 150,
-	    width: 150,
 	    backgroundColor: '#eee',
 	    borderRadius: 100,
 	},

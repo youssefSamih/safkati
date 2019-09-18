@@ -87,7 +87,7 @@ class ClientsDeclare extends React.Component {
 				  </Body>
 				</Header>				
 				<Content>
-					<Block center>
+					<Block center padding={18}>
 			       		<Thumbnail
 			       	  		large
 			       	 		style={styles.logoImg}

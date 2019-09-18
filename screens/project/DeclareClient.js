@@ -5,6 +5,7 @@ import {View , ScrollView, StyleSheet, Image,LayoutAnimation, UIManager} from 'r
 import { 
 	Container, 
 	Content,
+	Thumbnail,
 	Header,
 	Body,
 	Title,
@@ -164,8 +165,10 @@ class DeclareClient extends React.Component {
 		        </Body>
 		    </Header>
 				<Content>
-				<Block center>
-		       		<Image
+				
+		       <Block center padding={18}>
+		       		<Thumbnail
+		       	  		large
 		       	 		style={styles.logoImg}
 		          		source={params.app.LOGO} />
 		          	<H1 style={{color:theme.colors.primary}}>{i18n.t('Declare a client')}</H1>
@@ -362,8 +365,6 @@ const styles = StyleSheet.create({
 		flex: 1,
 	},
 	logoImg:{
-		height: 150,
-	    width: 150,
 	    backgroundColor: '#eee',
 	    borderRadius: 100,
 	},
