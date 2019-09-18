@@ -9,10 +9,11 @@ import {
 	PARRAINE_START,
 	PARRAINE_SUCCESS,
 	PARRAINE_FAIL,
-	INITIAL_FORM
+	INITIAL_FORM,
+	FETCH_PARRAINAGES
 } from './types';
 
-import {API_MONESPACE, API_PARRAINE} from './urls';
+import {API_MONESPACE, API_PARRAINE, API_MESPARRAINE} from './urls';
 import i18n from '../../i18n/i18n';
 
 export const getUserInfo = ({id}) => {
@@ -41,6 +42,21 @@ export const parraineSmsar = (obj) =>{
 		.catch((e) => {
 			console.log(e);
 			parraineFail(dispatch,res.data);
+		});
+	}
+}
+
+export const fetchParrainage = (smsar_id) =>{
+	return (dispatch) =>{
+		axios.get(`${API_MESPARRAINE}?id=${smsar_id}`)
+		.then( (res) =>{
+			dispatch({
+				type: FETCH_PARRAINAGES,
+				payload: res.data
+			});
+		})
+		.catch((e) => {
+			console.log(e);
 		});
 	}
 }

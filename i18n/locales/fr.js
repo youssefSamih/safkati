@@ -17,6 +17,9 @@ export default {
  "Customers declared label":"Clients déclarés",
  "Client title":"Détail du client",
  "Client label":"Détail du client",
+ "My referrals title":"Mes parrainages",
+ "My referrals label":"Mes parrainages",
+
 
  "logout":"Se déconnecter",
 
@@ -49,7 +52,8 @@ export default {
    "CIN *":"CIN *",
    "Email *":"Email *",
    "Email":"Email",
-   "phone *":"téléphone *",
+   "phone *":"Téléphone *",
+   "phone":"Téléphone",
    "Age *":"Age *",
    "Budget *":"Budget *",
    "Sexe *":"Sexe *",
@@ -63,6 +67,7 @@ export default {
    "Name":"Nom",
 
    "Declare the": "Déclare le",
+   "Created in":"Créé en",
    "Project":"Projet",
 
    "Caller":"Votre Interlocuteur",

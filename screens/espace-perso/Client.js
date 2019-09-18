@@ -91,7 +91,7 @@ class Client extends React.Component {
 				 			<Grid>
 					          <Row style={styles.cardRow}>
 					          	<Left>
-					          		<H2>Nom :</H2>
+					          		<H2>{i18n.t('Name')} :</H2>
 					          	</Left>
 				          		<Right>
 				          			<H2 style={{color:theme.colors.primary}}>{client && client.nom}</H2>

@@ -9,14 +9,16 @@ export default {
   "About label":"معلومات عنا",
   "Confidentiality title":"خصوصية",
   "Confidentiality label":"خصوصية",
-  "Sponsorship title":"رعاية",
-  "Sponsorship label":"رعاية",
+  "Sponsorship title":"إحالة",
+  "Sponsorship label":"إحالة",
   "How it works title":"كيف يعمل؟",
   "How it works label":"كيف يعمل؟",
   "Customers declared title":"أعلن العملاء",
   "Customers declared label":"أعلن العملاء",
   "Client title":"تفاصيل العملاء",
   "Client label":"تفاصيل العملاء",
+  "My referrals title":"إحالاتي",
+  "My referrals label":"إحالاتي",
 
   "logout":"الخروج",
 
@@ -25,7 +27,7 @@ export default {
  "My voicemail":"بريدي",
  "My clients declared":"أعلن موكلي",
  "My commissions":"عمولاتي",
- "My referrals":"الرعاة",
+ "My referrals":"إحالاتي",
 
   greeting: 'مرحبا!',
   Username:"المستخدم",
@@ -50,6 +52,7 @@ export default {
    "Email *":"البريد الإلكتروني *",
    "Email":"البريد الإلكتروني ",
    "phone *":"هاتف *",
+   "phone":"هاتف ",
    "Age *":"العمر *",
    "Budget *":"ميزانية *",
    "Sexe *":"جنس *",
@@ -63,6 +66,7 @@ export default {
    "Name":"اسم",
 
    "Declare the": "أعلن",
+   "Created in":"تم إنشاؤه في ",
    "Project":"مشروع",
 
    "Caller":"الاتصال الخاصة بك",
