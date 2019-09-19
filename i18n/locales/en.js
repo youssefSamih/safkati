@@ -30,6 +30,11 @@ export default {
  "My clients declared":"My clients declared",
  "My commissions":"My commissions",
  "My referrals":"My referrals",
+ "Declared customers": "Declared customers",
+ "Customers to be confirmed": "Customers to be confirmed",
+ "Verified customers":"Verified customers",
+ "Canceled customers":"Canceled customers",
+
 
   greeting: 'Hi!',
   Username:"Username",

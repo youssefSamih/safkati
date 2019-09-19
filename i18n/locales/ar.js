@@ -30,6 +30,10 @@ export default {
  "My clients declared":"أعلن موكلي",
  "My commissions":"عمولاتي",
  "My referrals":"إحالاتي",
+ "Declared customers": "العملاء المعلنين",
+ "Customers to be confirmed": "العملاء للتأكيد",
+ "Verified customers":"العملاء التحقق",
+ "Canceled customers":"عملاء ملغاة",
 
   greeting: 'مرحبا!',
   Username:"المستخدم",

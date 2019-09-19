@@ -5,6 +5,7 @@ import { createAppContainer } from 'react-navigation';
 import { createStackNavigator } from 'react-navigation-stack';
 
 import MonEspace from '../screens/MonEspace';
+import ClientDeclaredMenu from '../screens/espace-perso/ClientDeclaredMenu';
 import ClientsDeclare from '../screens/espace-perso/ClientsDeclare';
 import MesCommissions from '../screens/espace-perso/MesCommissions';
 import MesParrinage from '../screens/espace-perso/MesParrinage';
@@ -21,6 +22,7 @@ const espacePersoNavigation = createStackNavigator(
     MesParrinage,
     MesMessageries,
     ClientsDeclare,
+    ClientDeclaredMenu,
     Client
   }, {
   defaultNavigationOptions: {

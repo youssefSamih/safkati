@@ -31,6 +31,10 @@ export default {
  "My clients declared":"Mes client déclarés",
  "My commissions":"Mes commissions",
  "My referrals":"Mes parrainages",
+ "Declared customers": "Clients déclarés",
+ "Customers to be confirmed": "Clients à confirmer",
+ "Verified customers": "Clients validés",
+ "Canceled customers": "Clients annulés",
 
   greeting: 'Bonjour !',
   Username:"Identifiant",

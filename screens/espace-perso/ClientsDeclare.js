@@ -44,6 +44,49 @@ class ClientsDeclare extends React.Component {
 	    ),
 	  });
 
+	constructor(props) {
+	    super(props);
+	    this.state = {
+	      status_client: null,
+	      clients: [],
+	      title:i18n.t('Customers declared title')
+	    }
+	  }
+
+	 componentWillMount(){
+	 	status_client = this.props.navigation.getParam('status_client');
+
+	 	this.setState({status_client});
+
+	 	if(status_client !=null && status_client != undefined){
+	 		if(status_client == 1){
+	 			this.setState({title: i18n.t('Verified customers')});
+	 		}else if(status_client == 9){
+	 			this.setState({title: i18n.t('Canceled customers')});
+	 		}else if(status_client == 0){
+	 			this.setState({title: i18n.t('Customers to be confirmed')});
+	 		}else{
+	 			this.setState({title: i18n.t('Declared customers')});
+	 		}
+	 		const clients = [];
+	 		this.props.clients.map((client, index) =>{
+		 		if(client.status_validate == status_client){
+		 			clients.push(client);
+		 		}// pour les client à comfirmer 0 test aussi si la valeur de status est null
+		 		else if(status_client == 0 && client.status_validate == null){
+		 			clients.push(client);
+		 		}
+		 	});
+		 	console.log("clients " ,clients);
+		 	this.setState({clients});
+
+	 	}else{
+	 		this.setState({clients: this.props.clients});
+	 	}
+	 	//console.log(this.props.clients);
+	 	
+	 }
+
 	printFullname(client){
 		let fullname = "";
 		if(client.nom) fullname += client.nom;
@@ -83,7 +126,7 @@ class ClientsDeclare extends React.Component {
 			          </Button>
 			      </Left>
 				  <Body>
-				    <Title>{i18n.t('Customers declared title')}</Title>
+				    <Title>{this.state.title}</Title>
 				  </Body>
 				</Header>				
 				<Content>
@@ -92,11 +135,11 @@ class ClientsDeclare extends React.Component {
 			       	  		large
 			       	 		style={styles.logoImg}
 			          		source={params.app.LOGO} />
-			          	<H1 style={{color:theme.colors.primary}}>{i18n.t('My clients declared')}</H1>
+			          	<H1 style={{color:theme.colors.primary}}>{this.state.title}</H1>
 			       </Block>
 					<FlatList
 						keyExtractor= {(item, index) => index.toString()}
-						data={this.props.clients}
+						data={this.state.clients}
 						renderItem = {this.renderRow.bind(this)}
 					/>
 				 	
