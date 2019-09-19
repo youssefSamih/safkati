@@ -81,7 +81,7 @@ class MonEspace extends React.Component {
 				        halfStar={'ios-star-half'}
 				        iconSet={'Ionicons'}
 				        maxStars={5}
-				        rating={this.state.starCount}
+				        rating={parseFloat(this.props.user.rating)}
 				        //selectedStar={(rating) => this.onStarRatingPress(rating)}
 				        fullStarColor={theme.colors.primary}
 				      />
