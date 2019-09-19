@@ -52,8 +52,11 @@ class ClientsDeclare extends React.Component {
 	      title:i18n.t('Customers declared title')
 	    }
 	  }
-
-	 componentWillMount(){
+	  componentWillMount(){
+	  	const {id} = this.props.user;
+		this.props.getUserInfo({id});
+	  }
+	 componentDidMount(){
 	 	status_client = this.props.navigation.getParam('status_client');
 
 	 	this.setState({status_client});

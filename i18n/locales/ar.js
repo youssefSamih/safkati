@@ -106,7 +106,9 @@ export default {
    "Customer state declares":"حالة العميل",
 
    "In the process of validation":"يجري التحقق من صحة",
+   "in the process of validating appointment":"في عملية التحقق من الموعد",
    "Making appointments":"أخذ موعد",
+   "Made an appointment on": "تم تحديد موعد في  {{date}}",
    "Appointment":"موعد",
    "Signature of the sales agreement":"توقيع اتفاقية البيع",
    "Signature of deed of sale":"توقيع صك البيع",

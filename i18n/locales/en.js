@@ -108,7 +108,9 @@ export default {
    "Customer state declares":"Customer state declares",
 
    "In the process of validation":"In the process of validation",
+   "in the process of validating appointment":"In the process of validating appointment",
    "Making appointments":"Making appointments",
+   "Made an appointment on": "Made an appointment on {{date}}",
    "Appointment":"Appointment",
    "Signature of the sales agreement":"Signature of the sales agreement",
    "Signature of deed of sale":"Signature of deed of sale",

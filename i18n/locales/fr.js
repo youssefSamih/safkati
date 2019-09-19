@@ -107,7 +107,9 @@ export default {
    "Customer state declares":"État du client déclare",
 
    "In the process of validation":"En cours de validation",
+   "in the process of validating appointment":"En cours de validation de rendez-vous",
    "Making appointments":"Prise de rendez-vous",
+   "Made an appointment on": "Pris de rendez-vous le {{date}}",
    "Appointment":"Rendez-vous",
    "Signature of the sales agreement":"Signature du compromis de vente",
    "Signature of deed of sale":"Signature d'acte de vente",

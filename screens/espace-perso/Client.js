@@ -1,5 +1,5 @@
 import React from 'react';
-import {View, StyleSheet, Platform} from 'react-native';
+import {View, StyleSheet, Platform, Image} from 'react-native';
 import { Ionicons } from '@expo/vector-icons';
 import { connect } from 'react-redux';
 import Moment from 'moment';
@@ -63,9 +63,206 @@ class Client extends React.Component {
 	 	// this.props.infoProject({id: project.id});
  	}
 
+ 	renderStatusValide(status){
+ 		let text = i18n.t('In the process of validation');
+ 		if(status == 1){
+ 			text = i18n.t('Valid');
+
+ 		}else if(status == 9){
+ 			text = i18n.t('Canceled');
+ 		}
+
+ 		return (
+ 			<ListItem icon>
+		        <Left>
+		          <Button transparent>
+		            <Thumbnail
+		            	small
+		            	square
+			          	source={params.status.valid} />
+		          </Button>
+		        </Left>
+		        <Body>
+		          <Text>{text }</Text>
+		        </Body>
+		        <Right>
+		          {Platform.OS === "ios" && <Icon active name="arrow-forward" />}
+		        </Right>
+	        </ListItem>
+        );
+ 		
+ 	}
+ 	renderPrisRdv(prisRdv){
+ 		let text = i18n.t('Making appointments');
+ 		if(prisRdv){
+ 			text = i18n.t('Made an appointment on',{date: Moment(prisRdv).format('DD/MM/Y')});
+ 		}
+
+ 		return(
+ 			<ListItem icon>
+            <Left>
+              <Button transparent>
+                <Thumbnail
+	            	small
+	            	square
+		          	source={params.status.pris_rdv} />
+              </Button>
+            </Left>
+            <Body>
+              <Text>{text}</Text>
+            </Body>
+            <Right>
+              {Platform.OS === "ios" && <Icon active name="arrow-forward" />}
+            </Right>
+          </ListItem>
+ 		);
+ 	}
+ 	renderStatusRdv(status){
+ 		let text = i18n.t('in the process of validating appointment');
+
+ 		if(status == 1){
+ 			text = i18n.t('Appointment')+" : "+i18n.t('Valid');
+ 		}else if(status == 9){
+ 			text = i18n.t('Appointment')+" : "+i18n.t('Canceled');
+ 		}
+
+
+ 		return (
+ 			<ListItem icon>
+	            <Left>
+	              <Button transparent>
+	                <Thumbnail
+		            	small
+		            	square
+			          	source={params.status.status_rdv} />
+	              </Button>
+	            </Left>
+	            <Body>
+	              <Text>{text}</Text>
+	            </Body>
+	            <Right>
+	              {Platform.OS === "ios" && <Icon active name="arrow-forward" />}
+	            </Right>
+	        </ListItem>
+ 		);
+ 	}
+
+ 	renderStatusScv(status){
+ 		let text = i18n.t('Signature of the sales agreement');
+ 		if(status == 1){
+ 			text += " : "+i18n.t('Valid');
+ 		}
+
+ 		return (<ListItem icon>
+            <Left>
+              <Button transparent>
+                <Thumbnail
+	            	small
+	            	square
+		          	source={params.status.scv} />
+              </Button>
+            </Left>
+            <Body>
+              <Text>{text}</Text>
+            </Body>
+            <Right>
+              {Platform.OS === "ios" && <Icon active name="arrow-forward" />}
+            </Right>
+          </ListItem>)
+ 	}
+ 	renderStatusSav(status){
+ 		let text = i18n.t('Signature of deed of sale');
+ 		if(status == 1){
+ 			text += " : "+i18n.t('Valid');
+ 		}
+ 		return (
+ 			<ListItem icon>
+            <Left>
+              <Button transparent>
+                <Thumbnail
+	            	small
+	            	square
+		          	source={params.status.sav} />
+              </Button>
+            </Left>
+            <Body>
+              <Text>{text}</Text>
+            </Body>
+            <Right>
+              {Platform.OS === "ios" && <Icon active name="arrow-forward" />}
+            </Right>
+          </ListItem>
+ 		);
+ 	}
+
+ 	renderStatusInterest(status){
+ 		//let text = i18n.t('Customer not interested');
+ 		if(status == 1){
+ 			text = i18n.t('Interested customer');
+ 		}else if(status == 2){
+ 			text = i18n.t('Customer not interested');
+ 		}else {
+ 			return ;
+ 		}
+ 		// 
+ 		return(
+ 			<ListItem icon>
+            <Left>
+              <Button transparent>
+                <Thumbnail
+	            	small
+	            	square
+		          	source={params.status.client_interest} />
+              </Button>
+            </Left>
+            <Body>
+              <Text>{text}</Text>
+            </Body>
+            <Right>
+              {Platform.OS === "ios" && <Icon active name="arrow-forward" />}
+            </Right>
+          </ListItem>
+        );
+ 	}
+
+ 	renderStatus(){
+ 		console.log("this.props.client ", this.props.client);
+ 		const {
+ 			status_validate, 
+ 			prise_de_rdv, 
+ 			status_rdv, 
+ 			status_compromis_vente, 
+ 			status_acts_vente, 
+ 			status_interest 
+ 		} = this.props.client;
+ 		return(
+ 		<View style={styles.stateStyle}>
+          {this.renderStatusValide(status_validate)}
+          {this.renderPrisRdv(prise_de_rdv)}
+          {this.renderStatusRdv(status_rdv)}
+          {this.renderStatusScv(status_compromis_vente)}
+          {this.renderStatusSav(status_acts_vente)}
+          {this.renderStatusInterest(status_interest)}
+          {/*
+          <ListItem icon>
+            <Left>
+              <Button transparent>
+                <Icon large name="star" />
+              </Button>
+            </Left>
+            <Body>
+              <Text>{i18n.t('Customer not interested')}</Text>
+            </Body>
+            <Right>
+              {Platform.OS === "ios" && <Icon active name="arrow-forward" />}
+            </Right>
+          </ListItem>*/}
+          </View>
+          );
+ 	}
+
 	render(){
 		const client = this.props.client;
-		console.log(client);
 		return( 
 			<Container>
 				<Header noRight>
@@ -94,7 +291,7 @@ class Client extends React.Component {
 					          		<H2>{i18n.t('Name')} :</H2>
 					          	</Left>
 				          		<Right>
-				          			<H2 style={{color:theme.colors.primary}}>{client && client.nom}</H2>
+				          			<H2 style={{color:theme.colors.primary}}>{client && client.nom+' '+client.prenom}</H2>
 				          		</Right>
 					          </Row>
 					          <Row style={styles.cardRow}>
@@ -125,99 +322,7 @@ class Client extends React.Component {
 				 		</Card>
 				 		
 				 	</View>
-			      <View style={styles.stateStyle}>
-		          <ListItem icon>
-		            <Left>
-		              <Button transparent>
-		                <Icon large name="star" />
-		              </Button>
-		            </Left>
-		            <Body>
-		              <Text>{i18n.t('In the process of validation')} / {i18n.t('Valid')}</Text>
-		            </Body>
-		            <Right>
-		              {Platform.OS === "ios" && <Icon active name="arrow-forward" />}
-		            </Right>
-		          </ListItem>
-		          <ListItem icon>
-		            <Left>
-		              <Button transparent>
-		                <Icon large name="star" />
-		              </Button>
-		            </Left>
-		            <Body>
-		              <Text>{i18n.t('Making appointments')}</Text>
-		            </Body>
-		            <Right>
-		              {Platform.OS === "ios" && <Icon active name="arrow-forward" />}
-		            </Right>
-		          </ListItem>
-		          <ListItem icon>
-		            <Left>
-		              <Button transparent>
-		                <Icon large name="star" />
-		              </Button>
-		            </Left>
-		            <Body>
-		              <Text>{i18n.t('Appointment')} : {i18n.t('Valid')} / {i18n.t('Canceled')}</Text>
-		            </Body>
-		            <Right>
-		              {Platform.OS === "ios" && <Icon active name="arrow-forward" />}
-		            </Right>
-		          </ListItem>
-		          <ListItem icon>
-		            <Left>
-		              <Button transparent>
-		                <Icon large name="star" />
-		              </Button>
-		            </Left>
-		            <Body>
-		              <Text>{i18n.t('Signature of the sales agreement')}</Text>
-		            </Body>
-		            <Right>
-		              {Platform.OS === "ios" && <Icon active name="arrow-forward" />}
-		            </Right>
-		          </ListItem>
-		          <ListItem icon>
-		            <Left>
-		              <Button transparent>
-		                <Icon large name="star" />
-		              </Button>
-		            </Left>
-		            <Body>
-		              <Text>{i18n.t('Signature of deed of sale')}</Text>
-		            </Body>
-		            <Right>
-		              {Platform.OS === "ios" && <Icon active name="arrow-forward" />}
-		            </Right>
-		          </ListItem>
-		          <ListItem icon>
-		            <Left>
-		              <Button transparent>
-		                <Icon large name="star" />
-		              </Button>
-		            </Left>
-		            <Body>
-		              <Text>{i18n.t('Interested customer')} / {i18n.t('Customer not interested')} </Text>
-		            </Body>
-		            <Right>
-		              {Platform.OS === "ios" && <Icon active name="arrow-forward" />}
-		            </Right>
-		          </ListItem>
-		          <ListItem icon>
-		            <Left>
-		              <Button transparent>
-		                <Icon large name="star" />
-		              </Button>
-		            </Left>
-		            <Body>
-		              <Text>{i18n.t('Customer not interested')}</Text>
-		            </Body>
-		            <Right>
-		              {Platform.OS === "ios" && <Icon active name="arrow-forward" />}
-		            </Right>
-		          </ListItem>
-		          </View>
+			      {client && this.renderStatus()}
 				</Content>
 			</Container>
 		);
