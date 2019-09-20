@@ -26,7 +26,8 @@ import {
 	Row,
 	Col,
 	FooterTab,
-	Spinner
+	Spinner,
+	Thumbnail
 } from 'native-base';
 
 // Enable LayoutAnimation on Android
@@ -35,6 +36,9 @@ UIManager.setLayoutAnimationEnabledExperimental &&
 
 
 class SignUp extends React.Component {
+	static navigationOptions = ({ navigation }) => ({
+	    
+	  });
 	constructor(props) {
 	    super(props);
 
@@ -152,12 +156,14 @@ class SignUp extends React.Component {
 		return( 
 			<Container>
 				<Content>
-					<Block center>
-			       		<Image
-			       	 		style={styles.logoImg}
-			          		source={params.app.LOGO} />
-			          	<H1 style={{color:'#AA2D5A'}}>{i18n.t('Become partner',{ appName: params.app.name })}</H1>
-			       </Block>
+				<Block center padding={18}>
+		       		<Thumbnail
+		       	  		large
+		       	 		style={styles.logoImg}
+		          		source={params.app.LOGO} />
+		          	<H1 style={{color:theme.colors.primary}}>{i18n.t('Become partner',{ appName: params.app.name })}</H1>
+		       </Block>
+					
 			       <Block center>
 			       <Card style={{width:'90%',paddingBottom:10,borderRadius:30}} bordred>
 						 <Form>
@@ -332,10 +338,7 @@ const styles = StyleSheet.create({
 		flex: 1,
 	},
 	logoImg:{
-		height: 150,
-	    width: 150,
 	    backgroundColor: '#eee',
-	    borderRadius: 100,
 	},
 	faceImg: {
 		height: 50,
@@ -345,7 +348,7 @@ const styles = StyleSheet.create({
 	},
 	footerText:{
 		color:'white',
-		fontSize: 18
+		fontSize: 12
 	}
 });
 

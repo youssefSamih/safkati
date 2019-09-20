@@ -23,7 +23,9 @@ import {
 	Label,
 	IconNB,
 	Input,
-	Spinner 
+	Spinner,
+	Thumbnail,
+	H1 
 
 } from 'native-base';
 
@@ -35,6 +37,10 @@ UIManager.setLayoutAnimationEnabledExperimental &&
   UIManager.setLayoutAnimationEnabledExperimental(true);
 
 class Login extends React.Component {
+	 
+    static navigationOptions = ({ navigation }) => ({
+
+	  });
 	// _isMounted = false;
 	  constructor(props) {
 	    super(props);
@@ -112,16 +118,18 @@ class Login extends React.Component {
 		return( 
 			
 			<Container style={styles.container}>
-	        <Content padder bordered>
+	        <Content>
+	        <Block center padding={18}>
+	       		<Thumbnail
+	       	  		large
+	       	 		style={styles.logoImg}
+	          		source={params.app.LOGO} />
+	          		<H1 style={{color:theme.colors.primary}}>{i18n.t('sign in')}</H1>
+	       </Block>
+
 	        <Block padding={[0, theme.sizes.base * 2]}>
-		       <Divider style={{borderBottomWidth: 0}} />
 		        <Block middle >
-			        <Block center>
-			       	<Image
-			       	 style={styles.logoImg}
-			          source={params.app.LOGO} />
-			       </Block>
-		          <Form style={{paddingTop: 20}}>
+		          <Form >
 		              <Label style={styles.labelText}>{i18n.t('Username')} </Label>
 		            <Item rounded error={!isUsernameValid} disabled={isLoading}>
 		              <Input 
@@ -187,10 +195,7 @@ const styles = StyleSheet.create({
 		flex: 1,
 	},
 	logoImg:{
-		height: 150,
-	    width: 150,
 	    backgroundColor: '#eee',
-	    borderRadius: 100,
 	},
 	header: {
 		backgroundColor: "#AA2D5A"

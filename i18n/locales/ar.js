@@ -46,6 +46,7 @@ export default {
   "Change your password?": "تغيير كلمة المرور",
   "Log in": "تسجيل الدخول",
   "Sign Up": "تسجيل",
+  "sign in":"تسجيل الدخول",
   "Save" : "حفظ",
   "Create an account":"إنشاء حساب",
   "Choose the language": "اختر اللغة",

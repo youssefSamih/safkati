@@ -47,6 +47,7 @@ export default {
   "Change your password?": "Modifier le mot de passe",
   "Log in": "Se connecter",
   "Sign Up": "S'inscrire",
+  "sign in":"Se connecter",
   "Save" : "Enregistrer",
   "Create an account":"Créer un compte",
   "Choose the language": "Choisir la langue : ",
