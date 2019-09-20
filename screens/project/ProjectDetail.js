@@ -143,7 +143,7 @@ class ProjectDetail extends React.Component {
           <Title>{i18n.t('Projet Detail')}</Title>
         </Body>
       </Header>
-      <ScrollView horizontal pagingEnabled decelerationRate={0.993}>
+      {/*<ScrollView horizontal pagingEnabled decelerationRate={0.993}>*/}
 			<Content style={{width}}>
 			{this.renderGallery()}
       <View style={styles.itemProjet}> 
@@ -167,9 +167,11 @@ class ProjectDetail extends React.Component {
 			</Button>
       </Block>
 			</Content>
-      {this.renderMap()}
+      {
+      //this.renderMap()
+      }
       
-      </ScrollView>
+      {/*</ScrollView>*/}
       </Container>
 		);
 	}
