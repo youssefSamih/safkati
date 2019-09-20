@@ -48,13 +48,23 @@ class ProjectDetail extends React.Component {
         </Block>
         );
     }
+    if (images && images.constructor === Array && images.length === 0) {   
+       return(
+          <Image
+            source={{uri: this.props.project.cover}}
+            //source={this.props.cover}
+           // resizeMode="contain"
+            style={{ width, height: height / 2.4 ,margin:0}}
+          />
+        );
+    }
     return <SliderBox 
     sliderBoxHeight={height/2.4}
     images={images}
     circleLoop
     dotColor="#AA2D5A"
      />;
-    return (
+    /*return (
       <FlatList
         horizontal
         pagingEnabled
@@ -71,7 +81,7 @@ class ProjectDetail extends React.Component {
           />
         )}
       />
-    );
+    );*/
   }
 
 	render(){
@@ -95,7 +105,7 @@ class ProjectDetail extends React.Component {
       <View style={styles.itemProjet}> 
         <H2 style={styles.libelleStyle}>{project && project.libelle}</H2>
         <Text note numberOfLines={1}>{project && project.type_de_bien}</Text>
-        <Text note numberOfLines={1}>{project && this.printTags(project.tags)}</Text>
+        <Text note >{project && this.printTags(project.tags)}</Text>
         <View><Text style={styles.prixStyle} >{project &&  this.printPrix(project.prix_min,project.prix_max)}</Text></View>
       </View>
       <View style={{paddingHorizontal:16 * 2,
