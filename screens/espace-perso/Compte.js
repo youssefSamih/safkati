@@ -66,6 +66,7 @@ class Compte extends React.Component {
 	    super(props);
 	    this.state = {
 	      nom: '',
+	      username: '',
 	      prenom: '',
 	      phone: '',
 	      adress: '',
@@ -147,6 +148,7 @@ class Compte extends React.Component {
 	      isEntrepreneurValid,
 	      isVilleValid,
 	      nom,
+	      username,
 	      prenom,
 	      cin,
 	      adress,
@@ -190,6 +192,14 @@ class Compte extends React.Component {
 			       </Block>
 			       <Separator bordered />
 			      	<Form>
+			      	<Item fixedLabel  disabled={true}>
+		              <Label>{i18n.t('Username')}</Label>
+		              <Input
+		              disabled
+		              value={username}
+		               />
+		            </Item>
+
 			            <Item fixedLabel error={!isNomValid} disabled={isLoading}>
 			              <Label>{i18n.t('Last Name *')}</Label>
 			              <Input
@@ -203,6 +213,7 @@ class Compte extends React.Component {
 		                  onChangeText={nom => this.setState({ nom })}
 			               />
 			            </Item>
+
 			            <Item fixedLabel error={!isPrenomValid} disabled={isLoading}>
 			              <Label>{i18n.t('First Name *')}</Label>
 			              <Input
@@ -290,6 +301,13 @@ class Compte extends React.Component {
 			            />
 			            </Item>
 			            {this.renderButton()}
+			            <Block center>
+			            <Button transparent  onPress={() => this.props.navigation.navigate('ChangePassword')}>
+			              <Text>
+			                {i18n.t('Change your password?')}
+			              </Text>
+			           </Button>
+			           </Block>
 			        </Form>
 		          
 		        </Content>

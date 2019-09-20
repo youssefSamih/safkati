@@ -12,6 +12,7 @@ import MesParrinage from '../screens/espace-perso/MesParrinage';
 import MesMessageries from '../screens/espace-perso/MesMessageries';
 import Client from '../screens/espace-perso/Client';
 import Compte from '../screens/espace-perso/Compte';
+import ChangePassword from '../screens/espace-perso/ChangePassword';
 
 import { theme } from '../constants';
 const WIDTH = Dimensions.get('window').width;
@@ -25,7 +26,8 @@ const espacePersoNavigation = createStackNavigator(
     ClientsDeclare,
     ClientDeclaredMenu,
     Client,
-    Compte
+    Compte,
+    ChangePassword
   }, {
   defaultNavigationOptions: {
     header:null,

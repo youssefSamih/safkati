@@ -23,6 +23,8 @@ export default {
   "My commissions label":"عمولاتي",
   "Compte title":"حسابي",
   "Compte label":"حسابي",
+  "Change password title":"تغيير كلمة المرور",
+  "Change password label":"تغيير كلمة المرور",
 
   "logout":"الخروج",
 
@@ -41,6 +43,7 @@ export default {
   Username:"المستخدم",
   Password:"كلمة السر",
   "Forgot your password?": "نسيت كلمة المرور؟",
+  "Change your password?": "تغيير كلمة المرور",
   "Log in": "تسجيل الدخول",
   "Sign Up": "تسجيل",
   "Save" : "حفظ",

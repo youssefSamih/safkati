@@ -23,6 +23,8 @@ export default {
  "My commissions label":"Mes commissions",
  "Compte title":"Mon compte",
  "Compte label":"Mon compte",
+ "Change password title":"Modifier le mot de passe",
+ "Change password label":"Modifier le mot de passe",
 
 
  "logout":"Se déconnecter",
@@ -42,6 +44,7 @@ export default {
   Username:"Identifiant",
   Password:"Mot de passe",
   "Forgot your password?": "Mot de passe oublié?",
+  "Change your password?": "Modifier le mot de passe",
   "Log in": "Se connecter",
   "Sign Up": "S'inscrire",
   "Save" : "Enregistrer",
