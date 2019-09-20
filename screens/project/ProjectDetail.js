@@ -2,6 +2,7 @@ import React from 'react';
 import {View, Text, ScrollView, Dimensions, Image, FlatList,StyleSheet } from 'react-native';
 //import { Actions } from 'react-native-router-flux';
 import { SliderBox } from 'react-native-image-slider-box';
+import MapView ,{ Marker }from 'react-native-maps';
 
 import { Card, H2, Input, Button, Icon,Container,Content , Header,Right,Left,Body,Title, Spinner } from 'native-base';
 import {Block} from '../../components';
@@ -12,6 +13,10 @@ import { infoProject, initialCurrentProjet } from '../../redux/actions';
 import i18n from '../../i18n/i18n';
 
 const { width, height } = Dimensions.get('window');
+
+const ASPECT_RATIO = width / height;
+const LATITUDE_DELTA = 0.0922;
+const LONGITUDE_DELTA = LATITUDE_DELTA * ASPECT_RATIO;
 
 class ProjectDetail extends React.Component {
   static navigationOptions = ({ navigation }) => ({
@@ -84,10 +89,48 @@ class ProjectDetail extends React.Component {
     );*/
   }
 
+  renderMap(){
+    const coords = {
+      latitude: parseFloat(this.props.project.geo_latitude),
+      longitude: parseFloat(this.props.project.geo_longitude),
+    }
+    if(coords.longitude && coords.latitude){
+          return(<Content style={{width}}>
+            <MapView style={{ flex: 1, height, width }}
+                showsMyLocationButton
+                showsUserLocation
+                followsUserLocation
+                zoomEnabled
+                zoomTapEnabled
+                zoomControlEnabled
+                showsScale
+                showsBuildings
+                showsTraffic
+                region={{
+                  latitude: coords.latitude,
+                  longitude: coords.longitude,
+                  latitudeDelta: LATITUDE_DELTA,
+                  longitudeDelta: LONGITUDE_DELTA,
+                }}
+                >
+                <Marker coordinate={{
+                  latitude: coords.latitude,
+                  longitude: coords.longitude,
+                }}>
+                </Marker>
+                </MapView>
+            </Content>);        
+        }
+      return ;
+  }
 	render(){
     
     const project = this.props.project;
-    
+    const coords = {
+      latitude: parseFloat(project.geo_latitude),
+      longitude: parseFloat(project.geo_longitude),
+    }
+    console.log(coords);
 		return (
       <Container>
       <Header  noRight>
@@ -100,7 +143,8 @@ class ProjectDetail extends React.Component {
           <Title>{i18n.t('Projet Detail')}</Title>
         </Body>
       </Header>
-			<Content >
+      <ScrollView horizontal pagingEnabled decelerationRate={0.993}>
+			<Content style={{width}}>
 			{this.renderGallery()}
       <View style={styles.itemProjet}> 
         <H2 style={styles.libelleStyle}>{project && project.libelle}</H2>
@@ -123,6 +167,9 @@ class ProjectDetail extends React.Component {
 			</Button>
       </Block>
 			</Content>
+      {this.renderMap()}
+      
+      </ScrollView>
       </Container>
 		);
 	}
@@ -149,6 +196,21 @@ const styles = StyleSheet.create({
     color:'white',
     padding: 12,
     fontSize:20,
+  },
+  myMarker: {
+    zIndex: 2,
+    width: 60,
+    height: 60,
+    borderRadius: 60,
+    justifyContent: 'center',
+    alignItems: 'center',
+    backgroundColor: 'rgba(51, 83, 251, 0.2)'
+  },
+  myMarkerDot: {
+    width: 12,
+    height: 12,
+    borderRadius: 12,
+    backgroundColor: '#3353FB'
   }
   
 });
