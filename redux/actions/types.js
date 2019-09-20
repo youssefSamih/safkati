@@ -9,6 +9,9 @@ export const USER_CREATE = 'user_create';
 export const USER_CREATE_SUCCESS = 'user_create_success';
 export const USER_CREATE_FAIL = 'user_create_fail';
 
+export const USER_UPDATE = 'user_update';
+export const USER_UPDATE_SUCCESS = 'user_update_success';
+export const USER_UPDATE_FAIL = 'user_update_fail'
 
 export const PROJECTS_FETCH = 'projects_fetch';
 export const PROJECTS_FETCH_SUCCESS = 'projects_fetch_success';

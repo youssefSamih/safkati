@@ -88,7 +88,7 @@ class MonEspace extends React.Component {
 			       </Block>
 			       <Separator bordered />
 			      
-		          <ListItem icon>
+		          <ListItem icon onPress={() =>  this.props.navigation.navigate('Compte')}>
 		            <Left>
 		              <Button>
 		                <Icon  name="person" />

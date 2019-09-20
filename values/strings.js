@@ -30,7 +30,9 @@ export default {
 	signOut:'Déconnexion',
 	alert:{
 		user_create:'Utilisateur créé avec succès',
+		user_update:'Utilisateur modifier avec succès',
 		unable_user_create:'Unable to create user',
+		unable_user_update:'Unable to update user',
 		declared_title:'Déclare Client',
 		declared_successfully:'Le client a été déclaré avec succès',
 		declared_fail:'Unable to declare client',

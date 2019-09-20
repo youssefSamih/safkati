@@ -21,6 +21,8 @@ export default {
   "My referrals label":"إحالاتي",
   "My commissions title":"عمولاتي",
   "My commissions label":"عمولاتي",
+  "Compte title":"حسابي",
+  "Compte label":"حسابي",
 
   "logout":"الخروج",
 
@@ -41,6 +43,7 @@ export default {
   "Forgot your password?": "نسيت كلمة المرور؟",
   "Log in": "تسجيل الدخول",
   "Sign Up": "تسجيل",
+  "Save" : "حفظ",
   "Create an account":"إنشاء حساب",
   "Choose the language": "اختر اللغة",
   "French":"الفرنسية",

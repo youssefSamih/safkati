@@ -1,10 +1,13 @@
 import axios from 'axios';
-import { Alert } from 'react-native';
+import { Alert, AsyncStorage } from 'react-native';
 
 import {
 	GET_USER_INFO,
 	GET_USER_INFO_SUCCESS,
 	GET_USER_INFO_FAIL,
+	USER_UPDATE,
+	USER_UPDATE_SUCCESS,
+	USER_UPDATE_FAIL,
 	INITIAL_SELECTED_CLIENT,
 	PARRAINE_START,
 	PARRAINE_SUCCESS,
@@ -18,10 +21,13 @@ import {
 	API_MONESPACE, 
 	API_PARRAINE, 
 	API_MESPARRAINE,
-	API_COMMISSIONS
+	API_COMMISSIONS,
+	API_UPDATE
 } from './urls';
 
 import i18n from '../../i18n/i18n';
+import strings from '../../values/strings';
+const alert = strings.alert;
 
 export const getUserInfo = ({id}) => {
 	return (dispatch) =>{
@@ -29,6 +35,33 @@ export const getUserInfo = ({id}) => {
 		.then(res => getInfoSuccess(dispatch,res.data))
 		.catch(error => getInfoFail(dispatch));
 	};
+}
+
+export const updateCompte = (obj) => {
+	console.log(obj);
+
+	return (dispatch) => {
+		dispatch({type: USER_UPDATE});
+		console.log("obj" , obj);
+
+		axios.post(API_UPDATE, obj)
+		.then(async (res) =>{
+			console.log(res.data);
+			if(res.status == 201){
+	    		await AsyncStorage.setItem('currentUser', JSON.stringify(res.data.user));
+	    		updateUserSuccess(dispatch, res.data.user);
+	    		
+	    	}else{
+	    		updateUserFail(dispatch)
+	    	}
+		})
+		.catch((e) => {
+			console.log(e);
+			updateUserFail(dispatch)
+		});
+
+	}
+
 }
 
 export const initialForm = () =>{
@@ -125,3 +158,23 @@ const getInfoFail = (dispatch)=>{
 	});
 }
 
+
+const updateUserSuccess = (dispatch, user) =>{
+	dispatch({
+		type: USER_UPDATE_SUCCESS,
+		payload: user 
+	});
+	Alert.alert(
+		'Auth',
+		alert.user_update,
+		[{text: 'OK', onPress: () => console.log('OK Pressed')}]
+	);
+}
+const updateUserFail = (dispatch) =>{
+	dispatch({type: USER_UPDATE_FAIL});
+	Alert.alert(
+		'Auth',
+		alert.unable_user_update,
+		[{text: 'OK', onPress: () => console.log('OK Pressed')}]
+	);
+}

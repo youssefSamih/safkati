@@ -21,6 +21,8 @@ export default {
  "My referrals label":"Mes parrainages",
  "My commissions title":"My commissions",
  "My commissions label":"My commissions",
+ "Compte title":"My account",
+ "Compte label":"Mon account",
 
  "logout":"logout",
 
@@ -42,6 +44,7 @@ export default {
   "Forgot your password?": "Forgot your password?",
   "Log in": "Connexion",
   "Sign Up": "Sign Up",
+  "Save" : "Save",
   "Create an account":"Create an account",
   "Choose the language": "Choose the language :",
   "French":"French",
