@@ -20,6 +20,8 @@ import getTheme from './native-base-theme/components';
 import variables from './native-base-theme/variables/variables';
 import { StyleProvider } from 'native-base';
 
+console.disableYellowBox = true;
+
 const images = [
 '../assets/logo.png',
 '../assets/user-hp.png'
