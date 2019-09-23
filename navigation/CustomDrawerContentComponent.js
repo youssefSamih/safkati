@@ -3,14 +3,13 @@ import { AsyncStorage,View,Image,Platform, Dimensions, ScrollView, StyleSheet,To
 import SafeAreaView from 'react-native-safe-area-view';
 import { DrawerNavigatorItems } from 'react-navigation-drawer';
 import { Container, Content, Icon, Header, Body,Text } from 'native-base'
-
+import { theme, params } from '../constants';
 
 const CustomDrawerContentComponent =  (props) => {
   //const user =  await AsyncStorage.getItem('currentUser');
   // console.log("props ",props.nom);
   const userInfo = props.navigation.getParam('userInfo');
   return (
-  <ScrollView>
     <SafeAreaView
       style={styles.container}
       forceInset={{ top: 'always', horizontal: 'never' }}
@@ -20,7 +19,7 @@ const CustomDrawerContentComponent =  (props) => {
       <Body style={{flex:1,alignItems:'center'}}>
         <Image
           style={styles.drawerImage}
-          source={require('../assets/user-hp.png')} />
+          source={params.app.FACE} />
           <Text>{userInfo.nom}</Text>
       </Body>
     </Header>
@@ -34,7 +33,6 @@ const CustomDrawerContentComponent =  (props) => {
   </Container>
 
     </SafeAreaView>
-  </ScrollView>
 );
 }
 
