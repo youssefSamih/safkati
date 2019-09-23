@@ -5,7 +5,8 @@ import RNRestart from "react-native-restart";
 import { Provider } from 'react-redux';
 import store from './redux/store';
 
-import { AppLoading, Asset } from 'expo';
+import { AppLoading } from 'expo';
+import {Asset} from 'expo-asset';
 import * as Font from 'expo-font';
 import { Ionicons } from '@expo/vector-icons';
 
