@@ -158,7 +158,7 @@ class ProjectDetail extends React.Component {
 			    {project && project.description}
 			</Text>	
       </View>
-      <Block center>
+      <Block style={{paddingBottom: 10}} center>
 			<Button 
       rounded
 			  onPress={() => this.props.navigation.navigate('DeclareClient', { projectId: project.id})}
