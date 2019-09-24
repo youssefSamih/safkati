@@ -19,6 +19,9 @@ const INITIAL_STATE = {
   resetForm: false
 };
 
+import i18n from '../../i18n/i18n';
+
+
 export default (state = INITIAL_STATE, action) =>{
   //console.log(action);
   switch(action.type){
@@ -31,7 +34,7 @@ export default (state = INITIAL_STATE, action) =>{
     case LOGIN_USER_SUCCESS:
       return {...state, ...INITIAL_STATE, user: action.payload};
     case LOGIN_USER_FAIL:
-      return {...state, error:'Authentication Failed', loading:false};
+      return {...state, error:i18n.t('Authentication Failed'), loading:false};
     case USER_UPDATE_SUCCESS:
     case USER_CREATE_SUCCESS:
       return {...state, ...INITIAL_STATE,user: action.payload};
