@@ -28,9 +28,14 @@ export const GET_PROJET_INFO = 'get_projet_info';
 export const GET_PROJET_INFO_SUCCESS = 'get_projet_info_success';
 export const GET_PROJET_INFO_FAIL = 'get_projet_info_fail';
 
-export const PARRAINE_START = 'PARRAINE_START';
-export const PARRAINE_SUCCESS = 'PARRAINE_SUCCESS';
-export const PARRAINE_FAIL = 'PARRAINE_FAIL';
+export const PARRAINE_START = 'parraine_start';
+export const PARRAINE_SUCCESS = 'parraine_success';
+export const PARRAINE_FAIL = 'parraine_fail';
+
+export const PW_CHANGE_START = 'pw_change_start';
+export const PW_CHANGE_SUCCESS = 'pw_change_success';
+export const PW_CHANGE_FAIL = 'pw_change_fail';
+
 export const INITIAL_FORM = 'initial_form';
 export const FETCH_PARRAINAGES = 'fetch_parrainages';
 export const FETCH_COMMISSIONS = 'fetch_commissions';

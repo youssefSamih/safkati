@@ -4,6 +4,7 @@ import IP from '../../constants/IP';
 export const API_LOGIN = `${IP}/api_rest/smsar/login.php`;
 export const API_SIGNUP = `${IP}/api_rest/smsar/create.php`;
 export const API_UPDATE = `${IP}/api_rest/smsar/update.php`;
+export const API_UPDATE_PW = `${IP}/api_rest/smsar/change_password.php`;
 export const API_MONESPACE = `${IP}/api_rest/smsar/read_one.php`;
 export const API_PARRAINE =`${IP}/api_rest/smsar/parraine.php`;
 export const API_MESPARRAINE =`${IP}/api_rest/smsar/read_mesparraine.php`;

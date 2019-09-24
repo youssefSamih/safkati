@@ -301,13 +301,13 @@ class Compte extends React.Component {
 			            />
 			            </Item>
 			            {this.renderButton()}
-			            {/*<Block center>
+			            {<Block center>
 			            <Button transparent  onPress={() => this.props.navigation.navigate('ChangePassword')}>
 			              <Text>
 			                {i18n.t('Change your password?')}
 			              </Text>
 			           </Button>
-			           </Block>*/}
+			           </Block>}
 			        </Form>
 		          
 		        </Content>

@@ -14,7 +14,10 @@ import {
 	PARRAINE_FAIL,
 	INITIAL_FORM,
 	FETCH_PARRAINAGES,
-	FETCH_COMMISSIONS
+	FETCH_COMMISSIONS,
+	PW_CHANGE_START,
+	PW_CHANGE_SUCCESS,
+	PW_CHANGE_FAIL
 } from './types';
 
 import {
@@ -22,7 +25,8 @@ import {
 	API_PARRAINE, 
 	API_MESPARRAINE,
 	API_COMMISSIONS,
-	API_UPDATE
+	API_UPDATE,
+	API_UPDATE_PW
 } from './urls';
 
 import i18n from '../../i18n/i18n';
@@ -59,6 +63,31 @@ export const updateCompte = (obj) => {
 			console.log(e);
 			updateUserFail(dispatch)
 		});
+
+	}
+
+}
+
+export const changePassword = (obj) => {
+	return (dispatch) => {
+		dispatch({type:PW_CHANGE_START});
+		console.log("obj" , obj);
+		axios.post(API_UPDATE_PW,obj)
+		.then((res) =>{
+			if(res.status == 201){
+				console.log(res);
+				changePasswordSuccessed(dispatch,res.data);
+			}else{
+				changePasswordFailed(dispatch,res.data);
+			}
+			
+		})
+		.catch( 
+			e => {
+				console.log(e);
+				changePasswordFailed(dispatch);
+			} 
+		);
 
 	}
 
@@ -175,6 +204,28 @@ const updateUserFail = (dispatch) =>{
 	Alert.alert(
 		'Auth',
 		alert.unable_user_update,
+		[{text: 'OK', onPress: () => console.log('OK Pressed')}]
+	);
+}
+
+const changePasswordSuccessed = (dispatch, data) =>{
+	dispatch({
+		type: PW_CHANGE_SUCCESS,
+		payload:data,
+	});
+	Alert.alert(
+		i18n.t('Change password title'),
+		data.message,
+		[{text: 'OK', onPress: () => console.log('OK Pressed')}]
+	);
+}
+const changePasswordFailed = (dispatch, data={}) =>{
+	dispatch({
+		type: PW_CHANGE_FAIL
+	});
+	Alert.alert(
+		i18n.t('Change password title'),
+		data.message || 'Unable to change password',
 		[{text: 'OK', onPress: () => console.log('OK Pressed')}]
 	);
 }
