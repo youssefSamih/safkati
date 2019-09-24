@@ -1,5 +1,6 @@
 import React from 'react';
-import {View , ScrollView, StyleSheet, LayoutAnimation, UIManager} from 'react-native';
+import {View , ScrollView, StyleSheet, LayoutAnimation, UIManager, KeyboardAvoidingView} from 'react-native';
+
 import { Ionicons } from '@expo/vector-icons';
 import { 
 	Container, 
@@ -177,7 +178,9 @@ class Parrainage extends React.Component {
 				  <Body>
 				    <Title>{i18n.t('Sponsorship title')}</Title>
 				  </Body>
-				</Header>				
+				</Header>
+
+			    <KeyboardAvoidingView style={{flex:1}} behavior="padding" enabled>
 				<Content>
 			       <Block center padding={18}>
 			       		<Thumbnail
@@ -292,6 +295,8 @@ class Parrainage extends React.Component {
 					
 				</Block>
 				</Content>
+			    </KeyboardAvoidingView>
+
 			</Container>
 		);
 	}

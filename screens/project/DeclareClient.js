@@ -1,6 +1,6 @@
 import React from 'react';
 import _ from 'lodash';
-import {View , ScrollView, StyleSheet, Image,LayoutAnimation, UIManager} from 'react-native';
+import {View , ScrollView, StyleSheet, Image,LayoutAnimation, UIManager,KeyboardAvoidingView} from 'react-native';
 
 import { 
 	Container, 
@@ -164,6 +164,7 @@ class DeclareClient extends React.Component {
 		          <Title>{i18n.t('Declare a client')}</Title>
 		        </Body>
 		    </Header>
+			    <KeyboardAvoidingView style={{flex:1}} behavior="padding" enabled>
 				<Content>
 				
 		       <Block center padding={18}>
@@ -340,6 +341,8 @@ class DeclareClient extends React.Component {
 				
 			</Block>
 			</Content>
+			</KeyboardAvoidingView>
+
 			</Container>
 
 		);

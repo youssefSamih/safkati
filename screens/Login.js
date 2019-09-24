@@ -1,5 +1,5 @@
 import React from 'react';
-import {View, StyleSheet, Image, LayoutAnimation, UIManager,I18nManager,AsyncStorage} from 'react-native';
+import {View, StyleSheet, Image, LayoutAnimation, UIManager,I18nManager,AsyncStorage, KeyboardAvoidingView} from 'react-native';
 import RNRestart from "react-native-restart";
 
 import { connect } from 'react-redux';
@@ -118,6 +118,7 @@ class Login extends React.Component {
 		return( 
 			
 			<Container style={styles.container}>
+			    <KeyboardAvoidingView style={{flex:1}} behavior="padding" enabled>
 	        <Content>
 	        <Block center padding={18}>
 	       		<Thumbnail
@@ -184,7 +185,7 @@ class Login extends React.Component {
 		         </Block>
 	         </Block>
 	        </Content>
-	        
+			</KeyboardAvoidingView>
 	      </Container>
 		);
 	}

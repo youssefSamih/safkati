@@ -1,5 +1,5 @@
 import React from 'react';
-import {View, StyleSheet, LayoutAnimation, UIManager} from 'react-native';
+import {View, StyleSheet, LayoutAnimation, UIManager, KeyboardAvoidingView} from 'react-native';
 import { Ionicons } from '@expo/vector-icons';
 import StarRating from 'react-native-star-rating';
 
@@ -171,6 +171,7 @@ class Compte extends React.Component {
 		            <Title>{i18n.t('Compte title')}</Title>
 		          </Body>
 		        </Header>
+			    <KeyboardAvoidingView style={{flex:1}} behavior="padding" enabled>
 		        <Content>
 		        	<Block center padding={18}>
 			       	<Thumbnail
@@ -311,6 +312,7 @@ class Compte extends React.Component {
 			        </Form>
 		          
 		        </Content>
+			    </KeyboardAvoidingView>
 			</Container>
 		);
 	}

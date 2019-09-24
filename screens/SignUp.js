@@ -1,5 +1,5 @@
 import React from 'react';
-import {View, Image, StyleSheet , LayoutAnimation, UIManager} from 'react-native';
+import {View, Image, StyleSheet , LayoutAnimation, UIManager, KeyboardAvoidingView} from 'react-native';
 import i18n from '../i18n/i18n';
 
 import {Block} from '../components';
@@ -155,6 +155,7 @@ class SignUp extends React.Component {
 
 		return( 
 			<Container>
+			    <KeyboardAvoidingView style={{flex:1}} behavior="padding" enabled>
 				<Content>
 				<Block center padding={18}>
 		       		<Thumbnail
@@ -307,6 +308,7 @@ class SignUp extends React.Component {
 					<View style={{height:10}}></View>
 					</Block>
 				</Content>
+			    </KeyboardAvoidingView>
 				<Footer style={{padding:3}}>
 				<FooterTab>
 				<Grid>
