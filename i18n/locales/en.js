@@ -129,4 +129,23 @@ export default {
    "Valid":"Valid",
    "Canceled":"Canceled",
 
+
+   // alerts
+  "Auth":"Auth",
+  user_create:'User created successfully',
+  user_update:'User modify successfully',
+  unable_user_create:'Unable to create user',
+  unable_user_update:'Unable to update user',
+  declared_title:'Declares Customer',
+  declared_successfully:'The customer has been successfully declared',
+  declared_fail:'Unable to declare client',
+  "Unable to create parrainage":"Can not create a referral",
+  "Unable to change password":"Unable to change password",
+  "parrainage was created":"parrainage was created",
+  "password has changed":"password has changed",
+  "Unable to change password":"Unable to change password",
+  "the password doesn't match":"the password doesn't match",
+
+  //error
+  'Authentication Failed':'Authentication Failed',
 };
