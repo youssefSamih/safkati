@@ -126,22 +126,4 @@ export default {
    "Customer not interested":"العميل غير مهتم",
    "Valid":"تم التحقق",
    "Canceled":"ألغيت",
-
-    // alerts
-  user_create:'تم إنشاء المستخدم بنجاح',
-  user_update:'تعديل المستخدم بنجاح',
-  unable_user_create:'غير قادر على إنشاء المستخدم',
-  unable_user_update:'غير قادر على تحديث المستخدم',
-  declared_title:'اعلان عميل',
-  declared_successfully:'تم إعلان العميل بنجاح',
-  declared_fail:'غير قادر على إعلان العميل',
-  "Unable to create parrainage":"لا يمكن إنشاء الإحالة",
-  "Unable to change password":"غير قادر على تغيير كلمة المرور",
-  "parrainage was created":"تم إنشاء الرعاية",
-  "password has changed":"لقد تغيرت كلمة المرور",
-  "Unable to change password":"غير قادر على تغيير كلمة المرور",
-  "the password doesn't match":"كلمة المرور غير متطابقة",
-
-  //error
-  'Authentication Failed':'فشل المصادقة',
 };

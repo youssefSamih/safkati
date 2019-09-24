@@ -13,7 +13,8 @@ import {
 	USER_CREATE_FAIL,
 	INITIAL_ALL_STATE
 } from './types';
-import i18n from '../../i18n/i18n';
+import strings from '../../values/strings';
+const alert = strings.alert;
 
 export const setCurrentUser = ({user}) =>{
 	return {
@@ -91,8 +92,8 @@ const createUserSuccess = (dispatch, user) =>{
 		payload: user 
 	});
 	Alert.alert(
-		i18n.t('sign in'),
-		i18n.t('user_create'),
+		'Auth',
+		alert.user_create,
 		[{text: 'OK', onPress: () => console.log('OK Pressed')}]
 	);
 	NavigationService.navigate('AuthLoading');
@@ -100,8 +101,8 @@ const createUserSuccess = (dispatch, user) =>{
 const createUserFail = (dispatch) =>{
 	dispatch({type: USER_CREATE_FAIL});
 	Alert.alert(
-		i18n.t('sign in'),
-		i18n.t('unable_user_create'),
+		'Auth',
+		alert.unable_user_create,
 		[{text: 'OK', onPress: () => console.log('OK Pressed')}]
 	);
 }

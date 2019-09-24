@@ -30,6 +30,8 @@ import {
 } from './urls';
 
 import i18n from '../../i18n/i18n';
+import strings from '../../values/strings';
+const alert = strings.alert;
 
 export const getUserInfo = ({id}) => {
 	return (dispatch) =>{
@@ -158,7 +160,7 @@ const parraineSuccess = (dispatch,data) =>{
 	});
 	Alert.alert(
 		i18n.t('Sponsorship title'),
-		i18n.t('parrainage was created'),
+		data.message,
 		[{text: 'OK', onPress: () => console.log('OK Pressed')}]
 	);
 }
@@ -168,7 +170,7 @@ const parraineFail = (dispatch) =>{
 	});
 	Alert.alert(
 		i18n.t('Sponsorship title'),
-		i18n.t("Unable to create parrainage"),
+		"Unable to create parrainage",
 		[{text: 'OK', onPress: () => console.log('OK Pressed')}]
 	);
 }
@@ -192,16 +194,16 @@ const updateUserSuccess = (dispatch, user) =>{
 		payload: user 
 	});
 	Alert.alert(
-		i18n.t('My account'),
-		i18n.t('user_update'),
+		'Auth',
+		alert.user_update,
 		[{text: 'OK', onPress: () => console.log('OK Pressed')}]
 	);
 }
 const updateUserFail = (dispatch) =>{
 	dispatch({type: USER_UPDATE_FAIL});
 	Alert.alert(
-		i18n.t('My account'),
-		i18n.t('unable_user_update'),
+		'Auth',
+		alert.unable_user_update,
 		[{text: 'OK', onPress: () => console.log('OK Pressed')}]
 	);
 }
@@ -213,7 +215,7 @@ const changePasswordSuccessed = (dispatch, data) =>{
 	});
 	Alert.alert(
 		i18n.t('Change password title'),
-		data.message && i18n.t(data.message),
+		data.message,
 		[{text: 'OK', onPress: () => console.log('OK Pressed')}]
 	);
 }
@@ -223,7 +225,7 @@ const changePasswordFailed = (dispatch, data={}) =>{
 	});
 	Alert.alert(
 		i18n.t('Change password title'),
-		(data.message && i18n.t(data.message)) || i18n.t('Unable to change password'),
+		data.message || 'Unable to change password',
 		[{text: 'OK', onPress: () => console.log('OK Pressed')}]
 	);
 }

@@ -19,8 +19,8 @@ import {
 	API_DECLARE_CLIENT,
 	API_PROJECT_INFO
 } from './urls';
-
-import i18n from '../../i18n/i18n';
+import strings from '../../values/strings';
+const alert = strings.alert;
 
 export const declareClient = ({nom,prenom, phone, age, email, cin, sexe, selectedProject,adress, budget,type_de_bien,smsar_id}) => {
 
@@ -89,8 +89,8 @@ const successDeclared = (dispatch) =>{
 		type: DECLARE_CLIENT_SUCCESS
 	});
 	Alert.alert(
-		i18n.t('declared_title'),
-		i18n.t('declared_successfully'),
+		alert.declared_title,
+		alert.declared_successfully,
 		[{text: 'OK', onPress: () => console.log('OK Pressed')}]
 	);
 	NavigationService.goBack();
@@ -102,8 +102,8 @@ const failedDeclared = (dispatch) => {
 		type: DECLARE_CLIENT_FAIL
 	});
 	Alert.alert(
-		i18n.t('declared_title'),
-		i18n.t('declared_fail'),
+		alert.declared_title,
+		alert.declared_fail,
 		[{text: 'OK', onPress: () => console.log('OK Pressed')}]
 	);
 }

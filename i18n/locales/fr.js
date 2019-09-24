@@ -128,21 +128,4 @@ export default {
    "Valid":"Validé",
    "Canceled":"Annulé",
 
-    // alerts
-  user_create:'Utilisateur créé avec succès',
-  user_update:'Utilisateur modifier avec succès',
-  unable_user_create:'Impossible de créer un utilisateur',
-  unable_user_update:'Impossible de mettre à jour l\'utilisateur',
-  declared_title:'Déclare Client',
-  declared_successfully:'Le client a été déclaré avec succès',
-  declared_fail:'Impossible de déclarer le client',
-  "Unable to create parrainage":"Impossible de créer un parrainage",
-  "Unable to change password":"Impossible de changer le mot de passe",
-  "parrainage was created":"le parrainage a été créé",
-  "password has changed":"le mot de passe a changé",
-  "Unable to change password":"Impossible de changer le mot de passe",
-  "the password doesn't match":"le mot de passe ne correspond pas",
-
-  //error
-  'Authentication Failed':'Authentication Failed',
 };
