@@ -22,8 +22,8 @@ class Tuto extends React.Component {
 	    drawerLabel: i18n.t('How it works label'),
 	    drawerIcon: ({ tintColor }) => (
 	      <Ionicons
-				name="md-menu"
-				size={32}
+				name="md-help-buoy"
+				size={25}
 				//onPress={this.props.navigation.openDrawer()}
 				/>
 	    ),

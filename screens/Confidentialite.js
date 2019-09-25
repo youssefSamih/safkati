@@ -22,8 +22,8 @@ class Confidentialite extends React.Component {
 	    drawerLabel: i18n.t('Confidentiality title'),
 	    drawerIcon: ({ tintColor }) => (
 	      <Ionicons
-				name="md-menu"
-				size={32}
+				name="md-help-circle"
+				size={25}
 				//onPress={this.props.navigation.openDrawer()}
 				/>
 	    ),

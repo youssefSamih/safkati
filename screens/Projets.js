@@ -45,8 +45,8 @@ class Projets extends React.Component {
 	    header: null,
 	    drawerIcon: ({ tintColor }) => (
 	      <Ionicons
-				name="md-menu"
-				size={32}
+				name="md-albums"
+				size={25}
 				//onPress={this.props.navigation.openDrawer()}
 				/>
 	    ),

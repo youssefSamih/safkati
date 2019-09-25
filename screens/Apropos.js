@@ -1,6 +1,6 @@
 import React from 'react';
 import {View, Text} from 'react-native';
-import { Ionicons } from '@expo/vector-icons';
+import { Ionicons, Entypo } from '@expo/vector-icons';
 
 import { 
 	Container, 
@@ -22,9 +22,9 @@ class Apropos extends React.Component {
 		    title: i18n.t('About title'),
 		    drawerLabel: i18n.t('About label'),
 		    drawerIcon: ({ tintColor }) => (
-		      <Ionicons
-					name="md-menu"
-					size={32}
+		      <Entypo
+					name="info-with-circle"
+					size={23}
 					//onPress={this.props.navigation.openDrawer()}
 					/>
 		    ),

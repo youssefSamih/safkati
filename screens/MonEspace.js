@@ -35,8 +35,8 @@ class MonEspace extends React.Component {
 	    drawerLabel: 'Espace perso',
 	    drawerIcon: ({ tintColor }) => (
 	      <Ionicons
-				name="md-menu"
-				size={32}
+				name="md-contact"
+				size={25}
 				//onPress={this.props.navigation.openDrawer()}
 				/>
 	    ),

@@ -51,8 +51,8 @@ const DrawerNavigation = createDrawerNavigator(
       drawerLabel: i18n.t("Espace pro title"),
       drawerIcon: ({ tintColor }) => (
         <Ionicons
-        name="md-menu"
-        size={32}
+        name="md-contact"
+        size={25}
         //onPress={this.props.navigation.openDrawer()}
         />
       ),
@@ -74,8 +74,8 @@ const DrawerNavigation = createDrawerNavigator(
       drawerLabel: i18n.t('Projets title'),
       drawerIcon: ({ tintColor }) => (
         <Ionicons
-        name="md-menu"
-        size={32}
+        name="md-albums"
+        size={25}
         //onPress={this.props.navigation.openDrawer()}
         />
       ),
@@ -85,10 +85,10 @@ const DrawerNavigation = createDrawerNavigator(
     screen: Confidentialite,
     path: '/confidentialite',
   },
-  Aide:{
+ /* Aide:{
     screen: Aide,
     path: '/aide',
-  },
+  },*/
   Apropos:{
     screen: Apropos,
     path: '/apropos',
