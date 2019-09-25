@@ -37,8 +37,8 @@ UIManager.setLayoutAnimationEnabledExperimental &&
 
 class SignUp extends React.Component {
 	static navigationOptions = ({ navigation }) => ({
-	    
-	  });
+	    header: null,
+	});
 	constructor(props) {
 	    super(props);
 

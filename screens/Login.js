@@ -39,7 +39,7 @@ UIManager.setLayoutAnimationEnabledExperimental &&
 class Login extends React.Component {
 	 
     static navigationOptions = ({ navigation }) => ({
-
+    	header: null,
 	  });
 	// _isMounted = false;
 	  constructor(props) {
