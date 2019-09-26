@@ -67,7 +67,7 @@ class Client extends React.Component {
  		let text = i18n.t('In the process of validation');
  		if(status == params.STATUS_VALID){
  			text = i18n.t('Valid');
- 		}else if(status == STATUS_ANULER){
+ 		}else if(status == params.STATUS_ANULER){
  			text = i18n.t('Canceled');
  		}
 

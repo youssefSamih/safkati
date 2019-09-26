@@ -15,7 +15,7 @@ const status = {
 const STATUS_VALID = 0;
 const STATUS_ENCOURS = 1;
 const STATUS_ANULER = 2;
-const CLIENT_INTEREST = 2;
+const CLIENT_INTEREST = 1;
 const CLIENT_NOINTEREST = 2;
 export {
 	app,

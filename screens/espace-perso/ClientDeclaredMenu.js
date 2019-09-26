@@ -16,6 +16,7 @@ import {
 
 import i18n from '../../i18n/i18n';
 import Enconstruction from '../EnConstuction';
+import { theme, params } from '../../constants';
 
 class ClientDeclaredMenu extends React.Component {
 	static navigationOptions = ({ navigation }) => ({
@@ -54,7 +55,7 @@ class ClientDeclaredMenu extends React.Component {
 		                  <Icon name="arrow-forward" />
 		                </Right>
 		            </ListItem>
-		            <ListItem onPress={() =>  this.props.navigation.navigate('ClientsDeclare',{status_client: 0})}>
+		            <ListItem onPress={() =>  this.props.navigation.navigate('ClientsDeclare',{status_client: params.STATUS_ENCOURS})}>
 		                <Left>
 		                  <Text>
 		                    {i18n.t('Customers to be confirmed')}
@@ -64,7 +65,7 @@ class ClientDeclaredMenu extends React.Component {
 		                  <Icon name="arrow-forward" />
 		                </Right>
 		            </ListItem>
-		            <ListItem  onPress={() =>  this.props.navigation.navigate('ClientsDeclare',{status_client: 1})}>
+		            <ListItem  onPress={() =>  this.props.navigation.navigate('ClientsDeclare',{status_client: params.STATUS_VALID})}>
 		                <Left>
 		                  <Text>
 		                    {i18n.t('Verified customers')}
@@ -74,7 +75,7 @@ class ClientDeclaredMenu extends React.Component {
 		                  <Icon name="arrow-forward" />
 		                </Right>
 		            </ListItem>
-		            <ListItem  onPress={() =>  this.props.navigation.navigate('ClientsDeclare',{status_client: 9})}>
+		            <ListItem  onPress={() =>  this.props.navigation.navigate('ClientsDeclare',{status_client: params.STATUS_ANULER})}>
 		                <Left>
 		                  <Text>
 		                    {i18n.t('Canceled customers')}
