@@ -12,7 +12,17 @@ const status = {
 	status_rdv: require('../assets/icons/status_rdv.png')
 };
 
+const STATUS_VALID = 0;
+const STATUS_ENCOURS = 1;
+const STATUS_ANULER = 2;
+const CLIENT_INTEREST = 2;
+const CLIENT_NOINTEREST = 2;
 export {
 	app,
-	status
+	status,
+	STATUS_VALID,
+	STATUS_ENCOURS,
+	STATUS_ANULER,
+	CLIENT_INTEREST,
+	CLIENT_NOINTEREST
 }

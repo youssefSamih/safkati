@@ -62,11 +62,11 @@ class ClientsDeclare extends React.Component {
 	 	this.setState({status_client});
 
 	 	if(status_client !=null && status_client != undefined){
-	 		if(status_client == 1){
+	 		if(status_client == params.STATUS_VALID){
 	 			this.setState({title: i18n.t('Verified customers')});
-	 		}else if(status_client == 9){
+	 		}else if(status_client == params.STATUS_ANULER){
 	 			this.setState({title: i18n.t('Canceled customers')});
-	 		}else if(status_client == 0){
+	 		}else if(status_client == params.STATUS_ENCOURS){
 	 			this.setState({title: i18n.t('Customers to be confirmed')});
 	 		}else{
 	 			this.setState({title: i18n.t('Declared customers')});
@@ -76,7 +76,7 @@ class ClientsDeclare extends React.Component {
 		 		if(client.status_validate == status_client){
 		 			clients.push(client);
 		 		}// pour les client à comfirmer 0 test aussi si la valeur de status est null
-		 		else if(status_client == 0 && client.status_validate == null){
+		 		else if(status_client == params.STATUS_ENCOURS && client.status_validate == null){
 		 			clients.push(client);
 		 		}
 		 	});

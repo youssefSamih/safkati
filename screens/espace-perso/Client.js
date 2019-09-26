@@ -65,10 +65,9 @@ class Client extends React.Component {
 
  	renderStatusValide(status){
  		let text = i18n.t('In the process of validation');
- 		if(status == 1){
+ 		if(status == params.STATUS_VALID){
  			text = i18n.t('Valid');
-
- 		}else if(status == 9){
+ 		}else if(status == STATUS_ANULER){
  			text = i18n.t('Canceled');
  		}
 
@@ -120,9 +119,9 @@ class Client extends React.Component {
  	renderStatusRdv(status){
  		let text = i18n.t('in the process of validating appointment');
 
- 		if(status == 1){
+ 		if(status == params.STATUS_VALID){
  			text = i18n.t('Appointment')+" : "+i18n.t('Valid');
- 		}else if(status == 9){
+ 		}else if(status == params.STATUS_ANULER){
  			text = i18n.t('Appointment')+" : "+i18n.t('Canceled');
  		}
 
@@ -197,9 +196,9 @@ class Client extends React.Component {
 
  	renderStatusInterest(status){
  		//let text = i18n.t('Customer not interested');
- 		if(status == 1){
+ 		if(status == params.CLIENT_INTEREST){
  			text = i18n.t('Interested customer');
- 		}else if(status == 2){
+ 		}else if(status == params.CLIENT_NOINTEREST){
  			text = i18n.t('Customer not interested');
  		}else {
  			return ;
