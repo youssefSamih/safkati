@@ -1,6 +1,5 @@
 import React from 'react';
-import {View, StyleSheet, Image, LayoutAnimation, UIManager,I18nManager,AsyncStorage, KeyboardAvoidingView} from 'react-native';
-import RNRestart from "react-native-restart";
+import {View, StyleSheet, LayoutAnimation, UIManager,I18nManager,AsyncStorage, KeyboardAvoidingView} from 'react-native';
 
 import { connect } from 'react-redux';
 import { loginUser, signUpUser } from '../redux/actions';
@@ -9,14 +8,7 @@ import i18n from '../i18n/i18n';
 import { 
 	Container, 
 	Content, 
-	Header,
-	Footer, 
-	Left, 
-	Body, 
-	Right, 
-	Button, 
-	Icon, 
-	Title,
+	Button,
 	Text,
 	Form,
 	Item,
@@ -29,7 +21,7 @@ import {
 
 } from 'native-base';
 
-import {Block, Divider} from '../components';
+import {Block} from '../components';
 import { theme, params } from '../constants';
 
 // Enable LayoutAnimation on Android
@@ -38,9 +30,9 @@ UIManager.setLayoutAnimationEnabledExperimental &&
 
 class Login extends React.Component {
 	 
-    static navigationOptions = ({ navigation }) => ({
+    static navigationOptions = {
     	header: null,
-	  });
+	  };
 	// _isMounted = false;
 	  constructor(props) {
 	    super(props);
@@ -110,8 +102,7 @@ class Login extends React.Component {
 	      isUsernameValid,
 	      isPasswordValid,
 	      username,
-	      password,
-	      error
+	      password
 	    } = this.state;
 	    const isLoading = this.props.loading;
 
