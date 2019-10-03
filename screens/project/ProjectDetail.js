@@ -1,5 +1,5 @@
 import React from 'react';
-import {View, Text, ScrollView, Dimensions, Image, FlatList,StyleSheet } from 'react-native';
+import {View, Text, ScrollView, Dimensions, Image, FlatList,StyleSheet,WebView } from 'react-native';
 //import { Actions } from 'react-native-router-flux';
 import { SliderBox } from 'react-native-image-slider-box';
 import MapView ,{ Marker }from 'react-native-maps';
@@ -89,14 +89,31 @@ class ProjectDetail extends React.Component {
     );*/
   }
 
+  renderYoutube(youtube_id){
+      if(!youtube_id){
+        return;
+      }
+
+      return(
+        <WebView
+              style={{ width, height: 300 }}
+              javaScriptEnabled={true}
+              source={{uri: 'https://www.youtube.com/embed/'+youtube_id+'?rel=0&autoplay=0&showinfo=0&controls=0'}}
+        />
+      );
+  }
+
   renderMap(){
     const coords = {
       latitude: parseFloat(this.props.project.geo_latitude),
       longitude: parseFloat(this.props.project.geo_longitude),
     }
     if(coords.longitude && coords.latitude){
-          return(<Content style={{width}}>
-            <MapView style={{ flex: 1, height, width }}
+          return(
+            <Title>
+            Location
+            </Title>
+            <MapView style={{ flex: 1, 300, width }}
                 showsMyLocationButton
                 showsUserLocation
                 followsUserLocation
@@ -119,7 +136,7 @@ class ProjectDetail extends React.Component {
                 }}>
                 </Marker>
                 </MapView>
-            </Content>);        
+            );        
         }
       return ;
   }
@@ -157,6 +174,15 @@ class ProjectDetail extends React.Component {
 			<Text note>
 			    {project && project.description}
 			</Text>	
+      </View>
+      
+      <View style={{paddingBottom: 10}}>
+      {this.renderYoutube(project.youtube_id)} 
+      </View>
+      <View style={{paddingBottom: 10}}>
+      {
+        this.renderMap()
+      }
       </View>
       <Block style={{paddingBottom: 10}} center>
 			<Button 
