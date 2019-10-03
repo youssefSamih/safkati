@@ -110,32 +110,34 @@ class ProjectDetail extends React.Component {
     }
     if(coords.longitude && coords.latitude){
           return(
-            <Title>
-            Location
-            </Title>
-            <MapView style={{ flex: 1, 300, width }}
-                showsMyLocationButton
-                showsUserLocation
-                followsUserLocation
-                zoomEnabled
-                zoomTapEnabled
-                zoomControlEnabled
-                showsScale
-                showsBuildings
-                showsTraffic
-                region={{
-                  latitude: coords.latitude,
-                  longitude: coords.longitude,
-                  latitudeDelta: LATITUDE_DELTA,
-                  longitudeDelta: LONGITUDE_DELTA,
-                }}
-                >
-                <Marker coordinate={{
-                  latitude: coords.latitude,
-                  longitude: coords.longitude,
-                }}>
-                </Marker>
-                </MapView>
+            <>
+              <Title>
+              Location
+              </Title>
+              <MapView style={{ flex: 1, height: 300, width }}
+                  showsMyLocationButton
+                  showsUserLocation
+                  followsUserLocation
+                  zoomEnabled
+                  zoomTapEnabled
+                  zoomControlEnabled
+                  showsScale
+                  showsBuildings
+                  showsTraffic
+                  region={{
+                    latitude: coords.latitude,
+                    longitude: coords.longitude,
+                    latitudeDelta: LATITUDE_DELTA,
+                    longitudeDelta: LONGITUDE_DELTA,
+                  }}
+                  >
+                  <Marker coordinate={{
+                    latitude: coords.latitude,
+                    longitude: coords.longitude,
+                  }}>
+                  </Marker>
+                  </MapView>
+            </>
             );        
         }
       return ;
