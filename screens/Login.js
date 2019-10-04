@@ -96,7 +96,7 @@ class Login extends React.Component {
       return <Spinner size="large" />;
     }
     return (
-      <ElevatedView elevation={5} style={{ backgroundColor: '#gray', }}>
+      <ElevatedView elevation={5} style={{ backgroundColor: '#gray' }}>
         <Button transparent onPress={this.login.bind(this)}>
           <LinearGradient
             colors={['#f6c552', '#ee813c', '#bf245a']}
@@ -286,7 +286,8 @@ const styles = StyleSheet.create({
     width: (widthWindo / 1.2) - 1 ,
     alignItems: "center",
     padding: 10,
-    marginTop: 35
+    marginTop: 35,
+    height: 50
   },
 });
 //export default Login ;
