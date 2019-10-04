@@ -103,7 +103,7 @@ class Login extends React.Component {
             style={styles.buttonContianer}
             start={[1.5, 0.6]}
           >
-              <Text style={{ color: "#fff", fontWeight: "bold", fontSize: 20 }} >{i18n.t("Log in")}</Text>
+              <Text style={styles.StyleLogin} >{i18n.t("Log in")}</Text>
           </LinearGradient>
         </Button>
       </ElevatedView>
@@ -289,6 +289,11 @@ const styles = StyleSheet.create({
     marginTop: 35,
     height: 50
   },
+  StyleLogin: { 
+    color: "#fff", 
+    fontWeight: "bold", 
+    fontSize: 20 
+  }
 });
 //export default Login ;
 const mapStateToProps = state => {
