@@ -96,9 +96,17 @@ class Login extends React.Component {
       return <Spinner size="large" />;
     }
     return (
-      <Button rounded onPress={this.login.bind(this)}>
-        <Text>{i18n.t("Log in")}</Text>
-      </Button>
+      <ElevatedView elevation={5} style={{ backgroundColor: '#gray', }}>
+        <Button transparent onPress={this.login.bind(this)}>
+          <LinearGradient
+            colors={['#f6c552', '#ee813c', '#bf245a']}
+            style={styles.buttonContianer}
+            start={[1.5, 0.6]}
+          >
+              <Text style={{ color: "#fff", fontWeight: "bold", fontSize: 20 }} >{i18n.t("Log in")}</Text>
+          </LinearGradient>
+        </Button>
+      </ElevatedView>
     );
   }
 
@@ -114,7 +122,7 @@ class Login extends React.Component {
       <LinearGradient
         colors={['#f6c552', '#ee813c', '#bf245a']}
         style={{width: "100%", opacity: 0.6, flex: 1}}
-        start={[6, 0.1]}
+        start={[1, 0.1]}
       >
         <KeyboardAvoidingView style={{ flex: 1 }} behavior="padding" enabled>
           <ScrollView style={styles.scrollStyle} showsVerticalScrollIndicator={false}>
@@ -180,6 +188,10 @@ class Login extends React.Component {
                     </Item>
                   </Form>
                   {this.renderError()}
+
+                  {this.renderButton()}
+                </Block>
+                <Block center>
                   <Button
                     transparent
                     onPress={() => this.props.navigation.navigate("Forgot")}
@@ -187,15 +199,12 @@ class Login extends React.Component {
                   >
                     <Text style={styles.forgotPassText}>{i18n.t("Forgot your password?")}</Text>
                   </Button>
-                </Block>
-                <Block center>
-                  {this.renderButton()}
-
                   <Button
                     transparent
                     onPress={() => this.props.navigation.navigate("SignUp")}
+                    style={{ marginTop: 80 }}
                   >
-                    <Text>{i18n.t("Create an account")}</Text>
+                    <Text style={{ color: "#fff" }}>{i18n.t("Create an account")}</Text>
                   </Button>
                 </Block>
               </Block>
@@ -269,10 +278,16 @@ const styles = StyleSheet.create({
     color: "#F6C552",
   },
   buttonForgot: { 
-    marginTop: 10,
+    marginTop: 50,
     marginBottom: 10,
     justifyContent: "center"
-  }
+  },
+  buttonContianer: {
+    width: (widthWindo / 1.2) - 1 ,
+    alignItems: "center",
+    padding: 10,
+    marginTop: 35
+  },
 });
 //export default Login ;
 const mapStateToProps = state => {

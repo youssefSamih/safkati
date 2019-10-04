@@ -39,7 +39,7 @@ class SelectLang extends React.Component {
 				<LinearGradient
 						colors={['#f6c552', '#ee813c', '#bf245a']}
 						style={styles.LinearBack}
-						start={[6, 0.1]}
+						start={[1, 0.1]}
 				>
 					<Block style={{ marginBottom: 80 }} center bottom middle animated>
 						<Image 
@@ -52,19 +52,19 @@ class SelectLang extends React.Component {
 					<Block center top middle animated>
 						<View>
 							<ButtonWithBackground
-                                    Backcolors={['#f6c552', '#ee813c', '#bf245a']}
-                                    buttonStyle={styles.buttonContianer}
-                                    start={[1.5, 0.6]}
-                                    onPress={this.selectLangue.bind(this,'fr')}
-                            >
+								Backcolors={['#f6c552', '#ee813c', '#bf245a']}
+								buttonStyle={styles.buttonContianer}
+								start={[1.5, 0.6]}
+								onPress={this.selectLangue.bind(this,'fr')}
+							>
 								<HeadingText style={styles.textCenter}>{i18n.t('French')}</HeadingText>
 							</ButtonWithBackground>
 							<ButtonWithBackground
-                                    Backcolors={['#f6c552', '#ee813c', '#bf245a']}
-                                    buttonStyle={styles.buttonContianer}
-                                    start={[1.5, 0.6]}
-                                    onPress={this.selectLangue.bind(this,'ar')}
-                            >
+								Backcolors={['#f6c552', '#ee813c', '#bf245a']}
+								buttonStyle={styles.buttonContianer}
+								start={[1.5, 0.6]}
+								onPress={this.selectLangue.bind(this,'ar')}
+              >
 								<HeadingText style={styles.textCenter}>{i18n.t('Arabic')}</HeadingText>
 							</ButtonWithBackground>
 						</View>
