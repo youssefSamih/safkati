@@ -40,7 +40,10 @@ const GradientText = ({ text1 }) => {
                     {text3[1]+' '}
                 </Text>
                 <Text style={{...styles.title, color: "#EE813C"}}>
-                    {text3[2]}
+                    {text3[2] + ' '}
+                </Text>
+                <Text style={{...styles.title, color: "#EE813C"}}>
+                    {text3[3]}
                 </Text>
             </View>
         </View>

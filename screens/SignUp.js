@@ -9,7 +9,9 @@ import {
   Dimensions,
   ImageBackground,
 	I18nManager,
-	Switch
+  Switch,
+  Platform,
+  TouchableOpacity
 } from "react-native";
 import { connect } from "react-redux";
 import { LinearGradient } from "expo-linear-gradient";
@@ -45,7 +47,6 @@ import {
   Thumbnail,
   Icon
 } from "native-base";
-import { TouchableOpacity } from "react-native-gesture-handler";
 
 // Enable LayoutAnimation on Android
 UIManager.setLayoutAnimationEnabledExperimental &&
@@ -228,16 +229,16 @@ class SignUp extends React.Component {
       <Container>
         <ImageBackground
           source={require("../assets/images/backCreateAccount.png")}
-          style={{ widthWindo, flex: 1 }}
+          style={{ ...styles.ImgBack, ...styles.keyAvoid }}
         >
-          <KeyboardAvoidingView style={{ flex: 1 }} behavior="padding" enabled>
+          <KeyboardAvoidingView style={styles.keyAvoid} behavior="padding" enabled>
             <Content>
               <Block
                 center
                 padding={18}
                 style={{ width: 37, flexDirection: "row" }}
               >
-                <TouchableOpacity>
+                <TouchableOpacity onPress={() => this.props.navigation.goBack()}>
                   <LinearGradient
                     colors={["#f6c552", "#ee813c", "#bf245a"]}
                     style={styles.arrowBack}
@@ -513,10 +514,9 @@ const styles = StyleSheet.create({
     flex: 1
   },
   faceImg: {
-    height: 50,
-    width: 50,
-    backgroundColor: "#eee",
-    borderRadius: 100
+    height: 60,
+    width: 60,
+    marginTop: Platform.OS === "android" ? -5 : -10
   },
   footerText: {
     color: "white",
@@ -534,20 +534,18 @@ const styles = StyleSheet.create({
     marginLeft: 30
   },
   arrowBack: {
-    borderRadius: 100,
-    backgroundColor: "#bf245a",
-    width: 40,
+    borderRadius: Platform.OS === "android" ? 100 : 15,
+    width: Platform.OS === 'android' ? 40 : widthWindo / 12,
     justifyContent: "center",
     alignItems: "center",
-    padding: 5,
-    marginTop: 20
+    padding: Platform.OS === "android" ? 5 : 0,
+    marginTop: Platform.OS === 'android' ? 30 : 40,
   },
   titledFormStyle: {
-    // marginTop: 50,
-    // marginTop: 10,
-    // height: 10,
-		marginLeft: 125,
-		width: widthWindo
+    marginTop: Platform.OS === 'android' ? 55 : 45,
+    height: Platform.OS === 'android' ? 10 : 35,
+		marginLeft: Platform.OS === 'android' ? 125 : -35,
+		width: Platform.OS === 'android' ? widthWindo / 14 : widthWindo
 	},
 	LabelColor: {
 		color: "#fff"
@@ -566,8 +564,10 @@ const styles = StyleSheet.create({
 	},
 	SwitchStyle: {
 		alignItems: "flex-end",
-		marginLeft: 99,
-	}
+		marginLeft: 80,
+  },
+  keyAvoid: { flex: 1 },
+  ImgBack: { width : widthWindo }
 });
 
 const mapStateToProps = state => {

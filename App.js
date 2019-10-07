@@ -1,5 +1,5 @@
 import React from 'react';
-import { StyleSheet, Text, View,I18nManager,AsyncStorage } from 'react-native';
+import { StyleSheet, Text, View,I18nManager,AsyncStorage, StatusBar } from 'react-native';
 import RNRestart from "react-native-restart";
 
 import { Provider } from 'react-redux';
@@ -77,17 +77,20 @@ export default class App extends React.Component {
     }
 
     return (
-      <Provider store={store}>
-      <StyleProvider style={getTheme(variables)}>
-        <Block white>
-          <Navigation 
-            ref={navigatorRef => {
-            NavigationService.setTopLevelNavigator(navigatorRef);
-            }}
-          />
-        </Block>
-      </StyleProvider>
-      </Provider>
+      <>
+        <StatusBar hidden />
+        <Provider store={store}>
+          <StyleProvider style={getTheme(variables)}>
+            <Block white>
+              <Navigation 
+                ref={navigatorRef => {
+                NavigationService.setTopLevelNavigator(navigatorRef);
+                }}
+              />
+            </Block>
+          </StyleProvider>
+        </Provider>
+      </>
     );
   }
 }
