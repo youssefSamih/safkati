@@ -1,5 +1,6 @@
 import React from 'react';
-import {View , ScrollView, StyleSheet, LayoutAnimation, UIManager, KeyboardAvoidingView} from 'react-native';
+import {View , Platform, StyleSheet, LayoutAnimation, UIManager, KeyboardAvoidingView} from 'react-native';
+import { LinearGradient } from "expo-linear-gradient";
 
 import { Ionicons } from '@expo/vector-icons';
 import { 
@@ -8,7 +9,6 @@ import {
 	Header,
 	Body,
 	Title,
-	Footer, 
 	Right, 
 	Left, 
 	Icon, 
@@ -21,12 +21,7 @@ import {
 	CheckBox,
 	Item,
 	Form,
-	Grid,
-	Row,
-	Col,
-	FooterTab,
 	Spinner,
-	Picker,
 	Thumbnail
 } from 'native-base';
 import { connect } from 'react-redux';
@@ -36,6 +31,7 @@ import i18n from '../i18n/i18n';
 import Enconstruction from './EnConstuction';
 import {Block} from '../components';
 import { theme, params } from '../constants';
+import GradientText from "../components/UI/gradientText";
 
 // Enable LayoutAnimation on Android
 UIManager.setLayoutAnimationEnabledExperimental &&
@@ -45,11 +41,11 @@ class Parrainage extends React.Component {
 	static navigationOptions = ({ navigation }) => ({
 	    title: i18n.t('Sponsorship title'),
 	    drawerLabel: i18n.t('Sponsorship label'),
-	    drawerIcon: ({ tintColor }) => (
+	    drawerIcon: () => (
 	      <Ionicons
-				name="md-person-add"
-				size={25}
-				//onPress={this.props.navigation.openDrawer()}
+					name="md-person-add"
+					size={25}
+					//onPress={this.props.navigation.openDrawer()}
 				/>
 	    ),
 	  });
@@ -169,15 +165,20 @@ class Parrainage extends React.Component {
 	    
 		return( 
 			<Container>
-				<Header noRight>
-				  <Left>
-				    <Button transparent onPress={() =>  this.props.navigation.openDrawer()}>
-				      <Icon name="menu" />
-				    </Button>
-				  </Left>
-				  <Body>
-				    <Title>{i18n.t('Sponsorship title')}</Title>
-				  </Body>
+				<Header transparent noRight>
+					<Left style={{ flex: 1 }}>
+						<Button transparent onPress={() =>  this.props.navigation.openDrawer()}>
+							<Icon name="menu" />
+						</Button>
+					</Left>
+					<Body style={{ alignItems: "center", marginLeft: 120 }}>
+						<GradientText text1={i18n.t('Sponsorship title').toUpperCase()} />
+					</Body>
+					<Right style={{ flex: 1 }}>
+						<Button transparent onPress={() =>  this.props.navigation.openDrawer()}>
+							<Icon name="share" />
+						</Button>
+					</Right>
 				</Header>
 
 			    <KeyboardAvoidingView style={{flex:1}} behavior="padding" enabled>
@@ -333,7 +334,11 @@ const styles = StyleSheet.create({
 	footerText:{
 		color:'white',
 		fontSize: 18
-	}
+	},
+	paddHeader: {
+    marginTop: Platform.OS === "android" ? -25 : -5,
+    paddingBottom: Platform.OS === "android" ? 0 : 10
+  }
 });
 
 const mapStateToProps = (state) => ({
