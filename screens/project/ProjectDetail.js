@@ -16,7 +16,7 @@ const { width, height } = Dimensions.get('window');
 
 const ASPECT_RATIO = width / height;
 const LATITUDE_DELTA = 0.0922;
-const LONGITUDE_DELTA = LATITUDE_DELTA * ASPECT_RATIO;
+const LONGITUDE_DELTA = 20.794660188257694 /*LATITUDE_DELTA * ASPECT_RATIO*/;
 
 class ProjectDetail extends React.Component {
   static navigationOptions = ({ navigation }) => ({
@@ -103,42 +103,41 @@ class ProjectDetail extends React.Component {
       );
   }
 
-  renderMap(){
+  renderMap() {
     const coords = {
       latitude: parseFloat(this.props.project.geo_latitude),
       longitude: parseFloat(this.props.project.geo_longitude),
     }
-    if(coords.longitude && coords.latitude){
-          return(
-            <Title>
+    if (coords.longitude && coords.latitude) {
+      return (
+        <View>
+          <Title>
             Location
-            </Title>
-            <MapView style={{ flex: 1, 300, width }}
-                showsMyLocationButton
-                showsUserLocation
-                followsUserLocation
-                zoomEnabled
-                zoomTapEnabled
-                zoomControlEnabled
-                showsScale
-                showsBuildings
-                showsTraffic
-                region={{
-                  latitude: coords.latitude,
-                  longitude: coords.longitude,
-                  latitudeDelta: LATITUDE_DELTA,
-                  longitudeDelta: LONGITUDE_DELTA,
-                }}
-                >
-                <Marker coordinate={{
-                  latitude: coords.latitude,
-                  longitude: coords.longitude,
-                }}>
-                </Marker>
-                </MapView>
-            );        
-        }
-      return ;
+          </Title>
+          <MapView style={{ flex: 1, height: 300, width }}
+            zoomEnabled
+            zoomTapEnabled
+            zoomControlEnabled
+            showsScale
+            showsBuildings
+            showsTraffic
+            region={{
+              latitude: coords.latitude,
+              longitude: coords.longitude,
+              latitudeDelta: LATITUDE_DELTA,
+              longitudeDelta: LONGITUDE_DELTA,
+            }}
+          >
+            <Marker coordinate={{
+              latitude: coords.latitude,
+              longitude: coords.longitude,
+            }}>
+            </Marker>
+          </MapView>
+        </View>
+      );
+    }
+    return;
   }
 	render(){
     
