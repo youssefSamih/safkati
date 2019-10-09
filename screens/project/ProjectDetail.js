@@ -1,11 +1,12 @@
 import React from 'react';
-import { View, Text, Dimensions, Image, StyleSheet, WebView, Platform } from 'react-native';
+import { View, Text, Dimensions, Image, StyleSheet, WebView, Platform, ImageBackground } from 'react-native';
 //import { Actions } from 'react-native-router-flux';
 import { SliderBox } from 'react-native-image-slider-box';
 import MapView, { Marker } from 'react-native-maps';
 import { LinearGradient } from "expo-linear-gradient";
+import ElevatedView from 'react-native-elevated-view';
 
-import { H2, Button, Icon, Container, Content, Header, Left, Body, Title, Spinner } from 'native-base';
+import { H2, Button, Icon, Container, Content, Header, Left, Body, Title, Spinner, Right } from 'native-base';
 import { Block } from '../../components';
 
 import { connect } from 'react-redux';
@@ -17,7 +18,8 @@ const { width, height } = Dimensions.get('window');
 
 const ASPECT_RATIO = width / height;
 const LATITUDE_DELTA = 0.0922;
-const LONGITUDE_DELTA = LATITUDE_DELTA * ASPECT_RATIO;
+const LONGITUDE_DELTA = 20.794660188257694 /*LATITUDE_DELTA * ASPECT_RATIO*/;
+const windowWidth = Dimensions.get("window").width;
 
 class ProjectDetail extends React.Component {
   static navigationOptions = ({ navigation }) => ({
@@ -68,7 +70,9 @@ class ProjectDetail extends React.Component {
       sliderBoxHeight={height / 2.4}
       images={images}
       circleLoop
-      dotColor="#AA2D5A"
+      dotColor="#f6c552"
+      dotStyle={styles.dotStyle}
+      inactiveDotColor="#bf245a45"
     />;
   }
 
@@ -98,9 +102,6 @@ class ProjectDetail extends React.Component {
             Location
               </Title>
           <MapView style={{ flex: 1, height: 300, width }}
-            showsMyLocationButton
-            showsUserLocation
-            followsUserLocation
             zoomEnabled
             zoomTapEnabled
             zoomControlEnabled
@@ -132,7 +133,9 @@ class ProjectDetail extends React.Component {
       latitude: parseFloat(project.geo_latitude),
       longitude: parseFloat(project.geo_longitude),
     }
-    console.log(coords);
+    const tag = project.tags ? project.tags.split(",") : ""
+    // console.log(project.tags ? project.tags.split(" , ") : "");
+    // console.log(coords);
     return (
       <Container>
         <LinearGradient
@@ -141,31 +144,53 @@ class ProjectDetail extends React.Component {
           style={styles.paddHeader}
         >
           <Header transparent noRight>
-            <Left>
+            <Left style={styles.leftHeader}>
               <Button transparent onPress={() => this.props.navigation.goBack()}>
                 <Icon name="arrow-back" />
               </Button>
             </Left>
-            <Body>
-              <Title>{i18n.t('Projet Detail')}</Title>
+            <Body style={styles.titleHeader}>
+              <Title>{project && project.libelle}</Title>
             </Body>
+            <Right>
+              <Button transparent>
+                <Icon name="share" />
+              </Button>
+            </Right>
           </Header>
         </LinearGradient>
-        {/*<ScrollView horizontal pagingEnabled decelerationRate={0.993}>*/}
         <Content style={{ width }}>
           {this.renderGallery()}
-          <View style={styles.itemProjet}>
-            <H2 style={styles.libelleStyle}>{project && project.libelle}</H2>
-            <Text note numberOfLines={1}>{project && project.type_de_bien}</Text>
-            <Text note >{project && this.printTags(project.tags)}</Text>
-            <View><Text style={styles.prixStyle} >{project && this.printPrix(project.prix_min, project.prix_max)}</Text></View>
+          <View style={styles.contentTag}>
+            <View style={{ ...styles.colorBlanc, padding: 5 }} />
+            <View style={styles.tagStyles}>
+              { tag[0] ? <View style={{...styles.propertyBorder, backgroundColor: "#e8d19b"}}><Text style={styles.tagTextStyle}> {tag[0]} </Text></View> : null }
+              { tag[1] ? <View style={{...styles.propertyBorder, backgroundColor: "#f8c652"}}><Text style={styles.tagTextStyle}> {tag[1]} </Text></View> : null }
+              { tag[2] ? <View style={{...styles.propertyBorder, backgroundColor: "#f29851"}}><Text style={styles.tagTextStyle}> {tag[2]} </Text></View> : null }
+              { tag[3] ? <View style={{...styles.propertyBorder, backgroundColor: "#d29197"}}><Text style={styles.tagTextStyle}> {tag[3]} </Text></View> : null }
+              { tag[4] ? <View style={{...styles.propertyBorder, backgroundColor: "#ca4e58"}}><Text style={styles.tagTextStyle}> {tag[4]} </Text></View> : null }
+            </View>
           </View>
+          <ImageBackground source={require('../../assets/images/backDetail.png')} style={{ width: "100%" }}>
+            <LinearGradient
+              colors={["#f6c552", "#ee813c", "#bf245a"]}
+              start={[1.5, 0.6]}
+              style={styles.gradientMain}
+            >
+              <View style={styles.itemProjet}>
+                <H2 style={styles.libelleStyle}>{project && project.libelle}</H2>
+                <Text note numberOfLines={1} style={styles.colorBlanc}>{project && project.town}</Text>
+                <Text note numberOfLines={1} style={styles.colorBlanc}>{project && project.type_de_bien}</Text>
+                <View><Text style={styles.prixStyle} >{project && this.printPrix(project.prix_min, project.prix_max)}</Text></View>
+              </View>
+            </LinearGradient>
+          </ImageBackground>
           <View style={{
             paddingHorizontal: 16 * 2,
             paddingVertical: 25
           }}>
             <Text note>
-              {project && project.description}
+              {project.description && project.description.replace(/<p>/gi, "")}
             </Text>
           </View>
 
@@ -178,12 +203,21 @@ class ProjectDetail extends React.Component {
             }
           </View>
           <Block style={{ paddingBottom: 10 }} center>
-            <Button
-              rounded
-              onPress={() => this.props.navigation.navigate('DeclareClient', { projectId: project.id })}
-            >
-              <Text style={styles.button}>{i18n.t("Declare client")}</Text>
-            </Button>
+            <ElevatedView elevation={5} style={{ backgroundColor: '#gray', marginBottom: 50 }}>
+              <Button
+                rounded
+                transparent
+                onPress={() => this.props.navigation.navigate('DeclareClient', { projectId: project.id })}
+              >
+                <LinearGradient
+                  colors={['#f6c552', '#ee813c', '#bf245a']}
+                  style={{...styles.buttonContianer, borderRadius: 10}}
+                  start={[1.5, 0.6]}
+                >
+                  <Text style={styles.button}>{i18n.t("Declare client")}</Text>
+                </LinearGradient>
+              </Button>
+            </ElevatedView>
           </Block>
         </Content>
       </Container>
@@ -192,7 +226,6 @@ class ProjectDetail extends React.Component {
 }
 const styles = StyleSheet.create({
   itemProjet: {
-    backgroundColor: '#F5F5F5',
     marginBottom: 2,
     padding: 12,
   },
@@ -201,17 +234,19 @@ const styles = StyleSheet.create({
     height: "100%",
   },
   libelleStyle: {
-    color: '#AA2D5A',
+    color: '#FFF',
     //fontWeight: '500'
   },
   prixStyle: {
     textAlign: 'right',
     fontWeight: '600',
+    color: "#fff"
   },
   button: {
     color: 'white',
     padding: 12,
     fontSize: 20,
+    marginTop: -10,
   },
   myMarker: {
     zIndex: 2,
@@ -231,12 +266,52 @@ const styles = StyleSheet.create({
   paddHeader: {
     marginTop: Platform.OS === "android" ? -25 : -5,
     paddingBottom: Platform.OS === "android" ? 0 : 10
-  }
+  },
+  leftHeader: { flex: 1 },
+  titleHeader: { alignItems: 'center' },
+  dotStyle: { 
+    top: -230,
+    width: 15,
+    height: 15,
+    borderRadius: 15,
+    marginHorizontal: 10,
+  },
+  gradientMain: { opacity: .8 },
+  colorBlanc: { color: "#fff" },
+  propertyBorder: { 
+    width: 55, 
+    height: 55, 
+    borderRadius: 100, 
+    borderWidth: 2, 
+    borderColor: "#fff",
+    top: -25,
+    marginRight: 3,
+    alignItems: "center",
+    justifyContent: "center"
+  },
+  tagStyles: { 
+    flexDirection: "row", 
+    justifyContent: "flex-start", 
+    position: "absolute", 
+    // zIndex: Platform.OS === "android" ? 5 : 100, 
+    width: windowWidth / 10, 
+    right: 220,
+  },
+  tagTextStyle: { 
+    fontSize: 10,
+    textAlign: "center",
+  },
+  buttonContianer: {
+    width: (windowWidth / 2) - 1 ,
+    alignItems: "center",
+    padding: 10,
+    marginTop: 35,
+    height: 50
+  },
+  contentTag: { zIndex: 5 }
 });
 
 const mapStateToProps = (state) => {
-  /* let {tags} = state.currentProject.project;
-   tags = tags && tags.replace(/,/gi, " - "); */
 
   return {
     error: state.currentProject.error,
