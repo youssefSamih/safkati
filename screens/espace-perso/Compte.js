@@ -1,26 +1,22 @@
 import React from 'react';
-import { View, StyleSheet, LayoutAnimation, UIManager, KeyboardAvoidingView, Platform, ImageBackground } from 'react-native';
+import { View, StyleSheet, LayoutAnimation, UIManager, KeyboardAvoidingView, Platform, ImageBackground, Dimensions } from 'react-native';
 import { Ionicons } from '@expo/vector-icons';
 import StarRating from 'react-native-star-rating';
 import { LinearGradient } from "expo-linear-gradient";
+import ElevatedView from 'react-native-elevated-view';
 
 import {
 	Container,
 	Header,
 	Content,
-	List,
-	ListItem,
 	Thumbnail,
 	Text,
 	H2,
 	Left,
 	Body,
-	Right,
 	Icon,
-	Grid,
 	Title,
 	Button,
-	Separator,
 	Label,
 	Input,
 	CheckBox,
@@ -29,7 +25,7 @@ import {
 	Spinner
 } from 'native-base';
 
-import { Block, Divider } from '../../components';
+import { Block } from '../../components';
 import { theme, params } from '../../constants';
 import i18n from '../../i18n/i18n';
 
@@ -39,7 +35,7 @@ import { getUserInfo, updateCompte } from '../../redux/actions';
 // Enable LayoutAnimation on Android
 UIManager.setLayoutAnimationEnabledExperimental &&
 	UIManager.setLayoutAnimationEnabledExperimental(true);
-
+const widthWindo = Dimensions.get("window").width;
 class Compte extends React.Component {
 	static navigationOptions = ({ navigation }) => ({
 		title: "Compte title",
@@ -131,9 +127,17 @@ class Compte extends React.Component {
 			return <Spinner size="large" />
 		}
 		return (
-			<Button block style={styles.mb15} onPress={this.saveCompte.bind(this)} >
-				<Text>{i18n.t('Save')}</Text>
-			</Button>
+			<ElevatedView elevation={5} style={styles.elevationStyle}>
+				<Button transparent block style={styles.mb15} onPress={this.saveCompte.bind(this)}>
+					<LinearGradient
+						colors={['#f6c552', '#ee813c', '#bf245a']}
+						style={{...styles.buttonContianer, borderRadius: 10}}
+						start={[1.5, 0.6]}
+					>
+						<Text style={styles.StyleLogin}>{i18n.t('Save')}</Text>
+					</LinearGradient>
+				</Button>
+			</ElevatedView>
 		);
 	}
 
@@ -153,7 +157,6 @@ class Compte extends React.Component {
 			prenom,
 			cin,
 			adress,
-			entrepreneur,
 			phone,
 			email,
 			ville
@@ -180,6 +183,7 @@ class Compte extends React.Component {
 				</LinearGradient>
 				<KeyboardAvoidingView style={{ flex: 1 }} behavior="padding" enabled>
 					<Content>
+					<ImageBackground source={require('../../assets/images/backpassModif.png')} style={{ flex: 1}}>
 						<LinearGradient
 							colors={["#f6c552", "#ee813c", "#bf245a"]}
 							start={[1.5, 0.6]}
@@ -190,8 +194,8 @@ class Compte extends React.Component {
 									large
 									style={styles.logoImg}
 									source={params.app.FACE} />
-								<H2 style={{ color: "#bf1c45", fontSize: 23, fontWeight: "bold", marginBottom: 5 }}>{this.props.user.nom}</H2>
-								<View style={{ backgroundColor: "#bf1c45", padding: 5, borderRadius: 50 }}>
+								<H2 style={styles.userNameStyle}>{this.props.user.nom}</H2>
+								<View style={styles.starRatingStyle}>
 									<StarRating
 										// disabled={true}
 										emptyStar={'ios-star-outline'}
@@ -200,23 +204,22 @@ class Compte extends React.Component {
 										iconSet={'Ionicons'}
 										maxStars={5}
 										rating={parseFloat(this.props.user.rating)}
-										selectedStar={(rating) => console.log(rating)}
+										//selectedStar={(rating) => this.onStarRatingPress(rating)}
 										fullStarColor={theme.colors.primary}
-										starStyle={{ color: "#fdd77d" }}
+										starStyle={styles.starStyle}
 									/>
 								</View>
 							</Block>
 						</LinearGradient>
-						<ImageBackground source={require('../../assets/images/backCompte.png')} style={{ padding: 20, }}>
-							<Form transparent>
-								<Item fixedLabel disabled={true}>
+							<Form transparent style={{ padding: 20, }}>
+								<Item fixedLabel disabled={true} style={styles.borderInputForm}>
 									<Label>{i18n.t('Username')}</Label>
 									<Input
 										disabled
 										value={username}
 									/>
 								</Item>
-								<Item fixedLabel error={!isNomValid} disabled={isLoading}>
+								<Item fixedLabel error={!isNomValid} disabled={isLoading} style={styles.borderInputForm}>
 									<Label>{i18n.t('Last Name *')}</Label>
 									<Input
 										value={nom}
@@ -229,7 +232,7 @@ class Compte extends React.Component {
 										onChangeText={nom => this.setState({ nom })}
 									/>
 								</Item>
-								<Item fixedLabel error={!isPrenomValid} disabled={isLoading}>
+								<Item fixedLabel error={!isPrenomValid} disabled={isLoading} style={styles.borderInputForm}>
 									<Label>{i18n.t('First Name *')}</Label>
 									<Input
 										value={prenom}
@@ -242,7 +245,7 @@ class Compte extends React.Component {
 										onChangeText={prenom => this.setState({ prenom })}
 									/>
 								</Item>
-								<Item fixedLabel error={!isAdressValid} disabled={isLoading}>
+								<Item fixedLabel error={!isAdressValid} disabled={isLoading} style={styles.borderInputForm}>
 									<Label>{i18n.t('Adress *')}</Label>
 									<Input
 										value={adress}
@@ -255,7 +258,7 @@ class Compte extends React.Component {
 										onChangeText={adress => this.setState({ adress })}
 									/>
 								</Item>
-								<Item fixedLabel error={!isVilleValid} disabled={isLoading}>
+								<Item fixedLabel error={!isVilleValid} disabled={isLoading} style={styles.borderInputForm}>
 									<Label>{i18n.t('Ville *')}</Label>
 									<Input
 										value={ville}
@@ -268,7 +271,7 @@ class Compte extends React.Component {
 										onChangeText={ville => this.setState({ ville })}
 									/>
 								</Item>
-								<Item fixedLabel error={!isEmailValid} disabled={isLoading}>
+								<Item fixedLabel error={!isEmailValid} disabled={isLoading} style={styles.borderInputForm}>
 									<Label>{i18n.t('Email')}</Label>
 									<Input
 										value={email}
@@ -281,7 +284,7 @@ class Compte extends React.Component {
 										onChangeText={email => this.setState({ email })}
 									/>
 								</Item>
-								<Item fixedLabel error={!isCinValid} disabled={isLoading}>
+								<Item fixedLabel error={!isCinValid} disabled={isLoading} style={styles.borderInputForm}>
 									<Label>{i18n.t('CIN *')}</Label>
 									<Input
 										value={cin}
@@ -294,7 +297,7 @@ class Compte extends React.Component {
 										onChangeText={cin => this.setState({ cin })}
 									/>
 								</Item>
-								<Item fixedLabel error={!isPhoneValid} disabled={isLoading}>
+								<Item fixedLabel error={!isPhoneValid} disabled={isLoading} style={styles.borderInputForm}>
 									<Label>{i18n.t('phone *')}</Label>
 									<Input
 										value={phone}
@@ -308,7 +311,7 @@ class Compte extends React.Component {
 										onChangeText={phone => this.setState({ phone })}
 									/>
 								</Item>
-								<Item inlineLabel error={!isEntrepreneurValid} style={{ height: 45 }}>
+								<Item inlineLabel error={!isEntrepreneurValid} style={{ height: 45 }} style={styles.borderInputForm}>
 									<Label>{i18n.t('entrepreneur *')}</Label>
 									<CheckBox
 										checked={this.state.entrepreneur}
@@ -349,7 +352,24 @@ const styles = StyleSheet.create({
 	 paddHeader: {
     marginTop: Platform.OS === "android" ? -25 : -5,
     paddingBottom: Platform.OS === "android" ? 0 : 10
-  },
+	},
+	borderInputForm: { borderColor: "#bf245a" },
+	buttonContianer: {
+		width: (widthWindo / 2) - 1 ,
+		alignItems: "center",
+		padding: 10,
+		marginTop: 35,
+		height: 50
+	},
+	StyleLogin: { 
+		color: "#fff", 
+		fontWeight: "bold", 
+		fontSize: 16
+	},
+	elevationStyle: { backgroundColor: "transparent" },
+	starRatingStyle: { backgroundColor: "#bf1c45", padding: 5, borderRadius: 50 },
+	userNameStyle: { color: "#fff", fontSize: 23, fontWeight: "bold", marginBottom: 5 },
+	starStyle: { color: "#fdd77d" }
 });
 
 const mapStateToProps = (state) => ({
