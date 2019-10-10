@@ -1,5 +1,5 @@
 import React from 'react';
-import { FlatList, View, StyleSheet, Alert, ImageBackground } from 'react-native';
+import { FlatList, View, StyleSheet, Alert } from 'react-native';
 import { Ionicons } from '@expo/vector-icons';
 
 import { connect } from 'react-redux';

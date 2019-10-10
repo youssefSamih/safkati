@@ -156,9 +156,9 @@ class Parrainage extends React.Component {
 			<ElevatedView elevation={5} style={{ backgroundColor: '#gray', marginBottom: 50 }}>
 				<Button transparent onPress={this.parraine.bind(this)}>
 					<LinearGradient
-							colors={['#f6c552', '#ee813c', '#bf245a']}
-							style={{...styles.buttonContianer, borderRadius: 10}}
-							start={[1.5, 0.6]}
+						colors={['#f6c552', '#ee813c', '#bf245a']}
+						style={{ ...styles.buttonContianer, borderRadius: 10 }}
+						start={[1.5, 0.6]}
 					>
 						<Text style={styles.StyleLogin}>{i18n.t('I sponsor')}</Text>
 					</LinearGradient>
@@ -173,7 +173,7 @@ class Parrainage extends React.Component {
 
 		return (
 			<Container>
-					<ImageBackground source={require('../assets/images/backParainage.png')} style={{ flex: 1 }}>
+				<ImageBackground source={require('../assets/images/backParainage.png')} style={{ flex: 1 }}>
 					<Header transparent noRight style={styles.paddHeader}>
 						<Left style={styles.leftRightHeaderStyle}>
 							<Button transparent onPress={() => this.props.navigation.openDrawer()}>
@@ -200,13 +200,13 @@ class Parrainage extends React.Component {
 					<KeyboardAvoidingView style={{ flex: 1 }} behavior="padding" enabled>
 						<Content>
 							<Block center padding={18}>
-							<Card style={{ width: '90%' }} transparent bordred>
-								<LinearGradient
-									colors={["#f6c552", "#ee813c", "#bf245a"]}
-									start={[1.5, 0.6]}
-									style={styles.gradientFormStyle}
-								>
-									<Form>
+								<Card style={{ width: '90%' }} transparent bordred>
+									<LinearGradient
+										colors={["#f6c552", "#ee813c", "#bf245a"]}
+										start={[1.5, 0.6]}
+										style={styles.gradientFormStyle}
+									>
+										<Form>
 											<Item inlineLabel error={!isNomValid} disabled={isLoading}>
 												<Label style={styles.blancColor}>{i18n.t('Last Name *')}</Label>
 												<Input
@@ -292,28 +292,28 @@ class Parrainage extends React.Component {
 											<Item inlineLabel error={!isEntrepreneurValid} style={{ height: 45 }}>
 												<Label style={styles.blancColor}>{i18n.t('entrepreneur *')}</Label>
 												<Switch
-                          value={this.state.entrepreneur}
-                          onValueChange={() =>
-                            this.setState({
-                              entrepreneur: !this.state.entrepreneur
-                            })
-                          }
+													value={this.state.entrepreneur}
+													onValueChange={() =>
+														this.setState({
+															entrepreneur: !this.state.entrepreneur
+														})
+													}
 													thumbColor="#fff"
 													trackColor={{ true: "#ee6c7e" }}
 													style={styles.SwitchStyle}
-                        />
+												/>
 											</Item>
 											<Item inlineLabel style={{ height: 45, borderBottomWidth: 0 }} >
 												<Label style={styles.blancColor}>{i18n.t('Accept CGU')}</Label>
 												<Switch
-                          value={this.state.cgu}
-                          onValueChange={() =>
-                            this.setState({ cgu: !this.state.cgu })
-                          }
+													value={this.state.cgu}
+													onValueChange={() =>
+														this.setState({ cgu: !this.state.cgu })
+													}
 													thumbColor="#fff"
 													trackColor={{ true: "#ee6c7e" }}
 													style={styles.SwitchStyle}
-                        />
+												/>
 											</Item>
 											{!isCguValid && <Text small style={{ paddingLeft: 20, color: 'red' }}>{i18n.t('Accept CGU')}</Text>}
 										</Form>
@@ -326,35 +326,35 @@ class Parrainage extends React.Component {
 						</Content>
 					</KeyboardAvoidingView>
 					<Footer style={styles.FooterHeigh}>
-            <FooterTab>
-              <LinearGradient
-                colors={["#f6c552", "#ee813c", "#bf245a"]}
-                style={styles.gradientFooterStyle}
-                start={[1.5, 0.6]}
-              >
-                <Grid style={styles.FooterGridCenter}>
-                  <Col size={1}>
-                    <Right>
-                      <Image
-                        style={styles.faceImg}
-                        source={require("../assets/images/bottomLogoSignup.png")}
-                      />
-                    </Right>
-                  </Col>
-                  <Col size={3}>
-                    <Row>
-                      <Text style={styles.footerText}>{i18n.t("Caller")}</Text>
-                    </Row>
-                    <Row>
-                      <Text style={styles.footerText}>
-                        {i18n.t("Caller Contact")}
-                      </Text>
-                    </Row>
-                  </Col>
-                </Grid>
-              </LinearGradient>
-            </FooterTab>
-          </Footer>
+						<FooterTab>
+							<LinearGradient
+								colors={["#f6c552", "#ee813c", "#bf245a"]}
+								style={styles.gradientFooterStyle}
+								start={[1.5, 0.6]}
+							>
+								<Grid style={styles.FooterGridCenter}>
+									<Col size={1}>
+										<Right>
+											<Image
+												style={styles.faceImg}
+												source={require("../assets/images/bottomLogoSignup.png")}
+											/>
+										</Right>
+									</Col>
+									<Col size={3}>
+										<Row>
+											<Text style={styles.footerText}>{i18n.t("Caller")}</Text>
+										</Row>
+										<Row>
+											<Text style={styles.footerText}>
+												{i18n.t("Caller Contact")}
+											</Text>
+										</Row>
+									</Col>
+								</Grid>
+							</LinearGradient>
+						</FooterTab>
+					</Footer>
 				</ImageBackground>
 			</Container>
 		);
@@ -407,7 +407,7 @@ const styles = StyleSheet.create({
 		height: 30,
 		justifyContent: "center"
 	},
-	principalText: { 
+	principalText: {
 		marginTop: Platform.OS === "android" ? -5 : -30,
 		marginLeft: Platform.OS === "android" ? 5 : -100
 	},
@@ -415,47 +415,47 @@ const styles = StyleSheet.create({
 	bodyHeaderStyle: { alignItems: "center", marginLeft: 140 },
 	leftRightHeaderStyle: { flex: 1 },
 	gradientFormStyle: {
-		 opacity: .6,
-		 borderRadius: 20,
-		 paddingBottom: 30,
-		 paddingTop: 30
+		opacity: .6,
+		borderRadius: 20,
+		paddingBottom: 30,
+		paddingTop: 30
 	},
 	FooterHeigh: {
-    height: 70
+		height: 70
 	},
 	gradientFooterStyle: {
-    flex: 1,
-    padding: 10
+		flex: 1,
+		padding: 10
 	},
 	FooterGridCenter: {
-    marginRight: 10,
-    marginLeft: 30
+		marginRight: 10,
+		marginLeft: 30
 	},
 	faceImg: {
-    height: 60,
-    width: 60,
-    marginTop: Platform.OS === "android" ? -5 : -10
+		height: 60,
+		width: 60,
+		marginTop: Platform.OS === "android" ? -5 : -10
 	},
 	footerText: {
-    color: "white",
-    fontSize: 12
+		color: "white",
+		fontSize: 12
 	},
 	buttonContianer: {
-    width: (widthWindo / 2) - 1 ,
-    alignItems: "center",
-    padding: 10,
-    marginTop: 35,
-    height: 50
+		width: (widthWindo / 2) - 1,
+		alignItems: "center",
+		padding: 10,
+		marginTop: 35,
+		height: 50
 	},
-	StyleLogin: { 
-		color: "#fff", 
-		fontWeight: "bold", 
-		fontSize: 20 
+	StyleLogin: {
+		color: "#fff",
+		fontWeight: "bold",
+		fontSize: 20
 	},
 	SwitchStyle: {
 		alignItems: "flex-end",
 		marginLeft: 80,
-  },
+	},
 });
 
 const mapStateToProps = (state) => ({

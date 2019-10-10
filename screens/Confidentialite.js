@@ -1,5 +1,6 @@
 import React from 'react';
-import {View, Text} from 'react-native';
+import { StyleSheet, Platform } from 'react-native';
+import { LinearGradient } from "expo-linear-gradient";
 import { Ionicons } from '@expo/vector-icons';
 import { 
 	Container, 
@@ -32,16 +33,22 @@ class Confidentialite extends React.Component {
 	render(){
 		return( 
 			<Container>
-				<Header noRight>
-				  <Left>
-				    <Button transparent onPress={() =>  this.props.navigation.openDrawer()}>
-				      <Icon name="menu" />
-				    </Button>
-				  </Left>
-				  <Body>
-				    <Title>{i18n.t('Confidentiality title')}</Title>
-				  </Body>
-				</Header>				
+				<LinearGradient
+					colors={["#f6c552", "#ee813c", "#bf245a"]}
+					start={[1.5, 0.6]}
+					style={styles.paddHeader}
+				>
+					<Header transparent noRight>
+						<Left>
+							<Button transparent onPress={() =>  this.props.navigation.openDrawer()}>
+								<Icon name="menu" />
+							</Button>
+						</Left>
+						<Body>
+							<Title>{i18n.t('Confidentiality title')}</Title>
+						</Body>
+					</Header>				
+				</LinearGradient>
 				<Content>
 				 	<Enconstruction />
 				</Content>
@@ -49,5 +56,12 @@ class Confidentialite extends React.Component {
 		);
 	}
 }
+
+const styles = StyleSheet.create({
+	paddHeader: {
+		marginTop: Platform.OS === "android" ? -25 : -5, 
+		paddingBottom: Platform.OS === "android" ? 0 : 10 
+	}
+})
 
 export default Confidentialite ;
