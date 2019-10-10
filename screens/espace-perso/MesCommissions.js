@@ -1,5 +1,5 @@
 import React from 'react';
-import { ImageBackground, StyleSheet, Platform, Image, Text, View } from 'react-native';
+import { ImageBackground, StyleSheet, Platform, Image, Text, View, I18nManager } from 'react-native';
 import { Ionicons } from '@expo/vector-icons';
 import { LinearGradient } from "expo-linear-gradient";
 import {
@@ -65,7 +65,7 @@ class MesCommissions extends React.Component {
 					<Header transparent noRight style={styles.paddHeader}>
 						<Left style={styles.leftRightHeaderStyle} style={{ ...styles.violetColor, fontSize: 35 }}>
 							<Button transparent onPress={() => this.props.navigation.goBack()}>
-								<Icon name="arrow-back" style={{ ...styles.violetColor, fontSize: 30 }} />
+								<Icon name={ I18nManager.isRTL ? "arrow-forward" : "arrow-back" } style={{ ...styles.violetColor, fontSize: 30 }} />
 							</Button>
 						</Left>
 						<Body style={styles.bodyHeaderStyle}>

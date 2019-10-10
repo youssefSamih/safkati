@@ -1,5 +1,5 @@
 import React from 'react'
-import { Text, View, StyleSheet, Platform } from "react-native";
+import { Text, View, StyleSheet, Platform, I18nManager } from "react-native";
 import Svg, {
     LinearGradient,
     Text as TextSvg,
@@ -9,7 +9,7 @@ import Svg, {
 } from 'react-native-svg';
 
 const GradientText = ({ text1, style, titleStyle }) => {
-    if(Platform.OS === 'android'){
+    if(Platform.OS === 'android' && !I18nManager.isRTL ){
         return (
             <View style={{...styles.wrap, ...style}}>
                 <Svg viewBox="0 0 300 300" height="300" width="300">

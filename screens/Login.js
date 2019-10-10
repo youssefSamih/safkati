@@ -8,7 +8,8 @@ import {
   Dimensions,
   ImageBackground,
   ScrollView,
-  Image
+  Image,
+  I18nManager
 } from "react-native";
 import ElevatedView from 'react-native-elevated-view';
 
@@ -183,6 +184,7 @@ class Login extends React.Component {
                         onChangeText={password => this.setState({ password })}
                         onSubmitEditing={() => this.login()}
                         placeholderTextColor = "#fff"
+                        style={{ textAlign: I18nManager.isRTL ? "right" : "left" }}
                       />
                       {isPasswordValid || <IconNB name="ios-close-circle" />}
                     </Item>

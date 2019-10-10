@@ -36,7 +36,6 @@ import {
   Card,
   Label,
   Input,
-  CheckBox,
   Item,
   Form,
   Grid,
@@ -44,7 +43,6 @@ import {
   Col,
   FooterTab,
   Spinner,
-  Thumbnail,
   Icon
 } from "native-base";
 
@@ -52,8 +50,16 @@ import {
 UIManager.setLayoutAnimationEnabledExperimental &&
   UIManager.setLayoutAnimationEnabledExperimental(true);
 const widthWindo = Dimensions.get("window").width;
+var centerTitle = 0;
+if(Platform.OS === 'android'){
+  if(I18nManager.isRTL){
+    centerTitle = 50
+  }
+  centerTitle = 125;
+}
+centerTitle = -35;
 class SignUp extends React.Component {
-  static navigationOptions = ({ navigation }) => ({
+  static navigationOptions = () => ({
     header: null
   });
   constructor(props) {
@@ -244,7 +250,7 @@ class SignUp extends React.Component {
                     style={styles.arrowBack}
                     start={[1.5, 0.6]}
                   >
-                    <Icon name="arrow-back" style={{ color: "#fff" }} />
+                    <Icon name={ I18nManager.isRTL ? "arrow-forward" : "arrow-back"} style={{ color: "#fff" }} />
                   </LinearGradient>
                 </TouchableOpacity>
                 <View style={styles.titledFormStyle}>{titledForm}</View>
@@ -542,10 +548,10 @@ const styles = StyleSheet.create({
     marginTop: Platform.OS === 'android' ? 30 : 40,
   },
   titledFormStyle: {
-    marginTop: Platform.OS === 'android' ? 55 : 45,
+    marginTop: Platform.OS === 'android' ? ( I18nManager.isRTL ? 35 : 55) : 45,
     height: Platform.OS === 'android' ? 10 : 35,
-		marginLeft: Platform.OS === 'android' ? 125 : -35,
-		width: Platform.OS === 'android' ? widthWindo / 14 : widthWindo
+		marginLeft: Platform.OS === "android" ? (I18nManager.isRTL ? -55 : 125 ) : -35,
+		width: Platform.OS === 'ios' || I18nManager.isRTL ? widthWindo : widthWindo / 14
 	},
 	LabelColor: {
 		color: "#fff"

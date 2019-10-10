@@ -1,5 +1,5 @@
 import React from 'react';
-import { View, Text, Dimensions, Image, StyleSheet, WebView, Platform, ImageBackground } from 'react-native';
+import { View, Text, Dimensions, Image, StyleSheet, WebView, Platform, ImageBackground, I18nManager } from 'react-native';
 //import { Actions } from 'react-native-router-flux';
 import { SliderBox } from 'react-native-image-slider-box';
 import MapView, { Marker } from 'react-native-maps';
@@ -146,7 +146,7 @@ class ProjectDetail extends React.Component {
           <Header transparent noRight>
             <Left style={styles.leftHeader}>
               <Button transparent onPress={() => this.props.navigation.goBack()}>
-                <Icon name="arrow-back" />
+                <Icon name={ I18nManager.isRTL ? "arrow-forward" : "arrow-back" } />
               </Button>
             </Left>
             <Body style={styles.titleHeader}>
@@ -228,6 +228,7 @@ const styles = StyleSheet.create({
   itemProjet: {
     marginBottom: 2,
     padding: 12,
+    alignItems: "flex-start"
   },
   itemImg: {
     width: "100%",

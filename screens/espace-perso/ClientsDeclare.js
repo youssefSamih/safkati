@@ -1,5 +1,5 @@
 import React from 'react';
-import { StyleSheet, FlatList, Text, TouchableWithoutFeedback, Platform, ImageBackground, Image } from 'react-native';
+import { StyleSheet, FlatList, Text, TouchableWithoutFeedback, Platform, ImageBackground, Image, I18nManager } from 'react-native';
 import { LinearGradient } from "expo-linear-gradient";
 
 import {
@@ -133,7 +133,7 @@ class ClientsDeclare extends React.Component {
 					<Header transparent noRight style={styles.paddHeader}>
 						<Left style={styles.leftRightHeaderStyle}>
 							<Button transparent onPress={() => this.props.navigation.goBack()}>
-								<Icon name="arrow-back" style={{ ...styles.violetColor, fontSize: 35 }} />
+								<Icon name={ I18nManager.isRTL ? "arrow-forward" : "arrow-back" } style={{ ...styles.violetColor, fontSize: 35 }} />
 							</Button>
 						</Left>
 						<Body style={styles.bodyHeaderStyle}>
@@ -235,8 +235,8 @@ const styles = StyleSheet.create({
 	},
 	blancColor: { color: "#fff" },
 	principalText: { 
-		marginTop: Platform.OS === "android" ? -3 : -30,
-		marginLeft: Platform.OS === "android" ? 3 : -100
+		marginTop: Platform.OS === "android" ? ( I18nManager.isRTL ? -38 : -3 ) : -30,
+		marginLeft: Platform.OS === "android" ? ( I18nManager.isRTL ? -120 : 3 ) : -100
 	},
 	titleStyle: { fontSize: 20 },
 	bodyHeaderStyle: { alignItems: "center", marginLeft: 140 },

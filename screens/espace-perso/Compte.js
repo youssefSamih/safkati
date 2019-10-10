@@ -1,5 +1,5 @@
 import React from 'react';
-import { View, StyleSheet, LayoutAnimation, UIManager, KeyboardAvoidingView, Platform, ImageBackground, Dimensions } from 'react-native';
+import { View, StyleSheet, LayoutAnimation, UIManager, KeyboardAvoidingView, Platform, ImageBackground, Dimensions, I18nManager } from 'react-native';
 import { Ionicons } from '@expo/vector-icons';
 import StarRating from 'react-native-star-rating';
 import { LinearGradient } from "expo-linear-gradient";
@@ -173,7 +173,7 @@ class Compte extends React.Component {
 					<Header transparent noRight>
 						<Left>
 							<Button transparent onPress={() => this.props.navigation.goBack()}>
-								<Icon name="arrow-back" />
+								<Icon name={ I18nManager.isRTL ? "arrow-forward" : "arrow-back" } />
 							</Button>
 						</Left>
 						<Body style={{ marginLeft: 50 }}>

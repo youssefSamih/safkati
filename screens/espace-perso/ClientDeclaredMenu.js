@@ -1,5 +1,5 @@
 import React from 'react';
-import { Text, StyleSheet, Platform } from 'react-native';
+import { Text, StyleSheet, Platform, I18nManager } from 'react-native';
 import { Ionicons } from '@expo/vector-icons';
 import { LinearGradient } from "expo-linear-gradient";
 import {
@@ -42,7 +42,7 @@ class ClientDeclaredMenu extends React.Component {
 					<Header transparent noRight>
 						<Left>
 							<Button transparent onPress={() => this.props.navigation.goBack()}>
-								<Icon name="arrow-back" />
+								<Icon name={ I18nManager.isRTL ? "arrow-forward" : "arrow-back" } />
 							</Button>
 						</Left>
 						<Body>
@@ -58,7 +58,7 @@ class ClientDeclaredMenu extends React.Component {
 							</Text>
 						</Left>
 						<Right>
-							<Icon name="arrow-forward" style={styles.iconColor} />
+							<Icon name={ I18nManager.isRTL ? "arrow-back" : "arrow-forward" } style={styles.iconColor} />
 						</Right>
 					</ListItem>
 					<ListItem onPress={() => this.props.navigation.navigate('ClientsDeclare', { status_client: params.STATUS_ENCOURS })} style={styles.borderMenu}>
@@ -68,7 +68,7 @@ class ClientDeclaredMenu extends React.Component {
 							</Text>
 						</Left>
 						<Right>
-							<Icon name="arrow-forward" style={styles.iconColor} />
+							<Icon name={ I18nManager.isRTL ? "arrow-back" : "arrow-forward" } style={styles.iconColor} />
 						</Right>
 					</ListItem>
 					<ListItem onPress={() => this.props.navigation.navigate('ClientsDeclare', { status_client: params.STATUS_VALID })} style={styles.borderMenu}>
@@ -78,7 +78,7 @@ class ClientDeclaredMenu extends React.Component {
 							</Text>
 						</Left>
 						<Right>
-							<Icon name="arrow-forward" style={styles.iconColor} />
+							<Icon name={ I18nManager.isRTL ? "arrow-back" : "arrow-forward" } style={styles.iconColor} />
 						</Right>
 					</ListItem>
 					<ListItem onPress={() => this.props.navigation.navigate('ClientsDeclare', { status_client: params.STATUS_ANULER })} style={styles.borderMenu}>
@@ -88,7 +88,7 @@ class ClientDeclaredMenu extends React.Component {
 							</Text>
 						</Left>
 						<Right>
-							<Icon name="arrow-forward" style={styles.iconColor} />
+							<Icon name={ I18nManager.isRTL ? "arrow-back" : "arrow-forward" } style={styles.iconColor} />
 						</Right>
 					</ListItem>
 				</Content>
