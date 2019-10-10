@@ -23,8 +23,24 @@ import { StyleProvider } from 'native-base';
 console.disableYellowBox = true;
 
 const images = [
-'../assets/logo.png',
-'../assets/user-hp.png'
+'./assets/logo.png',
+'./assets/user-hp.png',
+'./assets/images/backClient.png',
+'./assets/images/backCompte.png',
+'./assets/images/backCreateAccount.png',
+'./assets/images/backDetail.png',
+'./assets/images/backParainage.png',
+'./assets/images/backpassModif.png',
+'./assets/images/bottomLogoSignup.png',
+'./assets/images/connexion.jpg',
+'./assets/images/listProject.png',
+'./assets/images/logoLang.png',
+'./assets/images/logoLog.png',
+'./assets/images/marocback.png',
+'./assets/images/plants_1.png',
+'./assets/images/plants_2.png',
+'./assets/images/plants_3.png',
+'./assets/images/safkatiSignup.png',
 ];
 
 export default class App extends React.Component {

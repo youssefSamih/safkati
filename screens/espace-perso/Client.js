@@ -1,9 +1,10 @@
 import React from 'react';
-import { View, StyleSheet, Platform, Image, ImageBackground } from 'react-native';
+import { View, StyleSheet, Platform, Image, ImageBackground, Dimensions } from 'react-native';
 import { Ionicons } from '@expo/vector-icons';
 import { connect } from 'react-redux';
 import Moment from 'moment';
 import { LinearGradient } from "expo-linear-gradient";
+import ElevatedView from 'react-native-elevated-view';
 
 import {
 	Container,
@@ -16,16 +17,9 @@ import {
 	Icon,
 	Title,
 	Card,
-	Grid,
-	Row,
-	Col,
-	H1,
-	H2,
 	Text,
 	Thumbnail,
 	ListItem,
-	Separator,
-	H3
 } from 'native-base';
 
 import { selectedClient } from '../../redux/actions';
@@ -34,6 +28,7 @@ import i18n from '../../i18n/i18n';
 import { Block } from '../../components';
 import { theme, params } from '../../constants';
 
+const widthWindo = Dimensions.get("window").width;
 class Client extends React.Component {
 	static navigationOptions = ({ navigation }) => ({
 		title: i18n.t('Client title'),
@@ -74,7 +69,7 @@ class Client extends React.Component {
 		}
 
 		return (
-			<ListItem icon>
+			<ListItem icon noBorder>
 				<Left>
 					<Button transparent>
 						<Thumbnail
@@ -100,7 +95,7 @@ class Client extends React.Component {
 		}
 
 		return (
-			<ListItem icon>
+			<ListItem icon noBorder>
 				<Left>
 					<Button transparent>
 						<Thumbnail
@@ -129,7 +124,7 @@ class Client extends React.Component {
 
 
 		return (
-			<ListItem icon>
+			<ListItem icon noBorder>
 				<Left>
 					<Button transparent>
 						<Thumbnail
@@ -154,7 +149,7 @@ class Client extends React.Component {
 			text += " : " + i18n.t('Valid');
 		}
 
-		return (<ListItem icon>
+		return (<ListItem icon noBorder>
 			<Left>
 				<Button transparent>
 					<Thumbnail
@@ -177,7 +172,7 @@ class Client extends React.Component {
 			text += " : " + i18n.t('Valid');
 		}
 		return (
-			<ListItem icon>
+			<ListItem icon noBorder>
 				<Left>
 					<Button transparent>
 						<Thumbnail
@@ -207,7 +202,7 @@ class Client extends React.Component {
 		}
 		// 
 		return (
-			<ListItem icon>
+			<ListItem icon noBorder>
 				<Left>
 					<Button transparent>
 						<Thumbnail
@@ -263,7 +258,7 @@ class Client extends React.Component {
 								<Icon name="arrow-back" />
 							</Button>
 						</Left>
-						<Body>
+						<Body style={{ marginLeft: 35 }}>
 							<Title>{i18n.t('Client title')}</Title>
 						</Body>
 					</Header>
@@ -277,33 +272,51 @@ class Client extends React.Component {
 						>
 						<View>
 							<Card transparent>
-								<View style={{ paddingBottom: 30 }}>
-									<View style={{ flexDirection: "row" }}>
-										<Text style={{ color: "#f8c652", fontSize: 20, }}>Client NAME</Text>
+								<View style={styles.transparentCard}>
+									<View style={styles.directionRow}>
+										<Text style={styles.nameClientStyle}>{client && client.nom + ' ' + client.prenom}</Text>
 									</View>
-									<View style={{ flexDirection: "row" }}>
-										<Text style={{ color: "#fff", width: "60%" }}>Adresse client - Casablanca Morocco </Text>
-										<View style={{ flexDirection: 'column', alignItems: "flex-end" }}>
-											<Text style={{ color: "#fff" }}>Budget: <Text style={{ fontWeight: "bold", color: "#fff" }}>150 000 Dh</Text></Text>
-											<Text style={{ color: "#fff" }}>Tel: <Text style={{ fontWeight: "bold", color: "#fff" }}>00212 60 60 60 60</Text></Text>
+									<View style={styles.directionRow}>
+										<Text style={{ ...styles.blancColor, ...styles.boldSomeInfo, width: "60%" }}>Adresse client - Casablanca Morocco </Text>
+										<View style={styles.personalInfo}>
+											<Text style={styles.blancColor}>Budget: <Text style={{ ...styles.boldSomeInfo, ...styles.blancColor }}>150 000 Dh</Text></Text>
+											<Text style={styles.blancColor}>Tel: <Text style={{ ...styles.boldSomeInfo, ...styles.blancColor }}>00212 60 60 60 60</Text></Text>
 										</View>
 									</View>
 								</View>
-								<View style={{ flexDirection: "row" }}>
-									<Text style={{ color: "#fff" }}>Déclarer le: </Text>
-									<Text style={{ color: "#fff", textAlign: "right" }}>29-09-2019</Text>
+								<View style={styles.locationDetailsClient}>
+									<Text style={styles.blancColor}>{i18n.t('Declare the')} </Text>
+									<View style={{ marginLeft: "20%" }}>
+										<Text style={styles.blancColor}>{client && Moment(client.date_creation).format('DD/MM/Y')}</Text>
+									</View>
 								</View>
-								<View style={{ flexDirection: "row" }}>
-									<Text style={{ color: "#fff" }}>Projet: </Text>
-									<Text style={{ color: "#fff", textAlign: "right" }}>Blue Lotus</Text>
+								<View style={styles.locationDetailsClient}>
+									<Text style={styles.blancColor}>{i18n.t('Project')}: </Text>
+									<View style={{ marginLeft: "30%" }}>
+										<Text style={styles.blancColor}>{client && client.project}</Text>
+									</View>
 								</View>
-								<View style={{ flexDirection: "row" }}>
-									<Text style={{ color: "#fff" }}>Type de bien: </Text>
-									<Text style={{ color: "#fff", textAlign: "right" }}>Appartement</Text>
+								<View style={styles.locationDetailsClient}>
+									<Text style={styles.blancColor}>{i18n.t('type de bien')}: </Text>
+									<View style={{ marginLeft: "17%" }}>
+										<Text style={styles.blancColor}>{client && this.printType(client.type_de_bien)}</Text>
+									</View>
 								</View>
 							</Card>
 						</View>
 						</LinearGradient>
+							<Button transparent noRight style={{...styles.gradientEditButton, ...styles.editButtonLocation}}>
+								<ElevatedView elevation={5} style={styles.elevationStyle}>
+									<LinearGradient
+										colors={["#f6c552", "#ee813c", "#bf245a"]}
+										start={[1.5, 0.6]}
+										style={{...styles.buttonContianer, ...styles.gradientEditButton }}
+									>
+										<Icon name="create" style={{ ...styles.blancColor, ...styles.sizeEditButton }} />
+										<Text style={{ ...styles.blancColor, ...styles.sizeEditButton }}>Modifier</Text>
+									</LinearGradient>
+								</ElevatedView>
+							</Button>
 						{client && this.renderStatus()}
 					</Content>
 				</ImageBackground>
@@ -330,12 +343,34 @@ const styles = StyleSheet.create({
 		borderBottomWidth: 0,
 	},
 	stateStyle: {
-		paddingTop: 18,
+		padding: 20,
 	},
 	paddHeader: {
     marginTop: Platform.OS === "android" ? -25 : -5,
     paddingBottom: Platform.OS === "android" ? 0 : 10
-	}
+	},
+	elevationStyle: { backgroundColor: "transparent" },
+	buttonContianer: {
+		width: (widthWindo / 2) - 1 ,
+		alignItems: "center",
+		padding: 10,
+		marginTop: 35,
+		height: 50
+	},
+	blancColor: { color: "#fff" },
+	sizeEditButton: { fontWeight: "bold", fontSize: 25 },
+	gradientEditButton: { borderRadius: 10, flexDirection: 'row', justifyContent: "center" },
+	editButtonLocation: { 
+		justifyContent: "center", 
+		alignItems: "flex-end", 
+		top: Platform.OS === 'android' ? -5 : -5, 
+},
+	locationDetailsClient: { flexDirection: "row", borderBottomColor: "#bf245a", borderBottomWidth: 1, paddingTop: 15, paddingBottom: 15 },
+	boldSomeInfo: {fontWeight: "bold"},
+	transparentCard: { paddingBottom: 30 },
+	nameClientStyle: { color: "#f8c652", fontSize: 20, },
+	directionRow: { flexDirection: "row" },
+	personalInfo: { flexDirection: 'column', alignItems: "flex-end" }
 });
 
 const mapStateToProps = (state) => ({
