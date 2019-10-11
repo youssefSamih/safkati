@@ -236,7 +236,7 @@ const styles = StyleSheet.create({
 	blancColor: { color: "#fff" },
 	principalText: { 
 		marginTop: Platform.OS === "android" ? ( I18nManager.isRTL ? -38 : -3 ) : -30,
-		marginLeft: Platform.OS === "android" ? ( I18nManager.isRTL ? -120 : 3 ) : -100
+		marginLeft: Platform.OS === "android" ? ( I18nManager.isRTL ? -120 : 3 ) : (I18nManager.isRTL ? -100 : -80)
 	},
 	titleStyle: { fontSize: 20 },
 	bodyHeaderStyle: { alignItems: "center", marginLeft: 140 },

@@ -195,11 +195,11 @@ const styles = StyleSheet.create({
 	titleStyle: { fontSize: 20 },
 	principalText: {
 		marginTop: Platform.OS === "android" ? ( I18nManager.isRTL ? -50 : -8 ) : -30,
-		marginLeft: Platform.OS === "android" ? ( I18nManager.isRTL ? -150 : 4) : -100
+		marginLeft: Platform.OS === "android" ? ( I18nManager.isRTL ? -150 : 4) : ( I18nManager.isRTL ? -100 : -50 )
 	},
 	violetColor: { color: "#bf245a" },
 	principalIcon: {
-		marginLeft: -295,
+		marginLeft: Platform.OS === 'ios' ? ( I18nManager.isRTL ? -200 : -295 ) : -295 ,
 		borderRadius: Platform.OS === 'android' ? 105 : 15,
 		padding: 6,
 		marginTop: Platform.OS === 'android' ? 10 : 0,
