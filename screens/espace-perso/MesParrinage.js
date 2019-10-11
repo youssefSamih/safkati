@@ -1,7 +1,8 @@
 import React from 'react';
-import { View, StyleSheet, FlatList } from 'react-native';
+import { Platform, StyleSheet, FlatList, I18nManager, ImageBackground } from 'react-native';
 import { connect } from 'react-redux';
 import Moment from 'moment';
+import { LinearGradient } from "expo-linear-gradient";
 
 import {
 	Container,
@@ -30,6 +31,7 @@ import Enconstruction from '../EnConstuction';
 import { theme, params } from '../../constants';
 import { Block } from '../../components';
 import { fetchParrainage } from '../../redux/actions';
+import FadeIn from '../../components/Animations/FadIn'
 
 
 class MesParrinage extends React.Component {
@@ -50,82 +52,76 @@ class MesParrinage extends React.Component {
 		// this.props.infoProject({id: project.id});
 	}
 
-	renderRow(row) {
-		//console.log(row);
+	renderRow = (row) => {
 		return (
-			/*<ListItem>
-			<Body>
-						<Text>{row.item.nom +" "+row.item.prenom}</Text>
-						<Text note>{Moment(row.item.date_creation).format('DD/MM/Y')}</Text>
-				</Body>
-				</ListItem>*/
-			<Card style={styles.cardStyle}>
-				<Grid>
-					<Row style={styles.cardRow}>
-						<Col>
-							<H2>{i18n.t('Name')} :</H2>
-						</Col>
-						<Col>
-							<H2 style={{ color: theme.colors.primary }}>{row.item.nom + " " + row.item.prenom}</H2>
-						</Col>
-					</Row>
-					<Row style={styles.cardRow}>
-						<Col>
-							<H2>{i18n.t('Created in')} :</H2>
-						</Col>
-						<Col>
-							<H2 style={{ color: theme.colors.primary }}>{Moment(row.item.date_creation).format('DD/MM/Y')}</H2>
-						</Col>
-					</Row>
-					<Row style={styles.cardRow}>
-						<Col>
-							<H2>{i18n.t('Email')} :</H2>
-						</Col>
-						<Col>
-							<H2 style={{ color: theme.colors.primary }}>{row.item.email}</H2>
-						</Col>
-					</Row>
-					<Row style={[styles.cardRow, styles.cardRowLast]}>
-						<Col>
-							<H2>{i18n.t('phone')} :</H2>
-						</Col>
-						<Col>
-							<H2 style={{ color: theme.colors.primary }}>{row.item.phone}</H2>
-						</Col>
-					</Row>
-
-				</Grid>
-			</Card>
+			<FadeIn>
+				<Card transparent>
+					<LinearGradient
+						colors={["#f6c552", "#ee813c", "#bf245a"]}
+						start={[1.5, 0.6]}
+						style={{...styles.cardStyle, opacity: .6}}
+					>
+						<Grid>
+							<Row style={styles.cardRow}>
+								<Col>
+									<H2 style={styles.blancColor}>{i18n.t('Name')} :</H2>
+								</Col>
+								<Col>
+									<H2 style={{ color: theme.colors.primary }}>{row.item.nom + " " + row.item.prenom}</H2>
+								</Col>
+							</Row>
+							<Row style={styles.cardRow}>
+								<Col>
+									<H2 style={styles.blancColor}>{i18n.t('Created in')} :</H2>
+								</Col>
+								<Col>
+									<H2 style={{ color: theme.colors.primary }}>{Moment(row.item.date_creation).format('DD/MM/Y')}</H2>
+								</Col>
+							</Row>
+							<Row style={styles.cardRow}>
+								<Col>
+									<H2 style={styles.blancColor}>{i18n.t('Email')} :</H2>
+								</Col>
+								<Col>
+									<H2 style={{ color: theme.colors.primary }}>{row.item.email}</H2>
+								</Col>
+							</Row>
+							<Row style={[styles.cardRow, styles.cardRowLast]}>
+								<Col>
+									<H2 style={styles.blancColor}>{i18n.t('phone')} :</H2>
+								</Col>
+								<Col>
+									<H2 style={{ color: theme.colors.primary }}>{row.item.phone}</H2>
+								</Col>
+							</Row>
+						</Grid>
+					</LinearGradient>
+				</Card>
+			</FadeIn>
 		);
 	}
 	render() {
 		return (
 			<Container>
-				<Header noRight>
-					<Left>
-						<Button transparent onPress={() => this.props.navigation.goBack()}>
-							<Icon name={ I18nManager.isRTL ? "arrow-forward" : "arrow-back" } />
-						</Button>
-					</Left>
-					<Body>
-						<Title>{i18n.t('My referrals title')}</Title>
-					</Body>
-				</Header>
-				<Content>
-					<Block center padding={18}>
-						<Thumbnail
-							large
-							style={styles.logoImg}
-							source={params.app.LOGO} />
-						<H1 style={{ color: theme.colors.primary }}>{i18n.t('My referrals')}</H1>
-					</Block>
-					<Separator bordered style={{ backgroundColor: 'white', borderColor: 'white' }} />
-					<FlatList
-						keyExtractor={(item, index) => index.toString()}
-						data={this.props.mes_parraines}
-						renderItem={this.renderRow.bind(this)}
-					/>
-				</Content>
+				<ImageBackground source={require('../../assets/images/backClient.png')} style={{ flex: 1 }}>	
+					<Header transparent noRight style={styles.paddHeader}>
+						<Left>
+							<Button transparent onPress={() => this.props.navigation.goBack()}>
+								<Icon name={ I18nManager.isRTL ? "arrow-forward" : "arrow-back" } style={styles.violetColor} />
+							</Button>
+						</Left>
+						<Body>
+							<Title style={styles.violetColor}>{i18n.t('My referrals title')}</Title>
+						</Body>
+					</Header>
+					<Content>
+						<FlatList
+							keyExtractor={(item, index) => index.toString()}
+							data={this.props.mes_parraines}
+							renderItem={this.renderRow}
+						/>
+					</Content>
+				</ImageBackground>
 			</Container>
 		);
 	}
@@ -150,6 +146,12 @@ const styles = StyleSheet.create({
 	cardRowLast: {
 		borderBottomWidth: 0,
 	},
+	paddHeader: {
+		marginTop: Platform.OS === "android" ? -25 : -5,
+		paddingBottom: Platform.OS === "android" ? 0 : 10
+	},
+	violetColor: { color: "#bf245a" },
+	blancColor: { color: "#fff" }
 });
 
 const mapStateToProps = (state) => ({

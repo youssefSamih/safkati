@@ -1,5 +1,5 @@
 import React from 'react';
-import { View, StyleSheet, Platform, Image, ImageBackground, Dimensions } from 'react-native';
+import { View, StyleSheet, Platform, Image, ImageBackground, Dimensions, I18nManager } from 'react-native';
 import { Ionicons } from '@expo/vector-icons';
 import { connect } from 'react-redux';
 import Moment from 'moment';
@@ -255,7 +255,7 @@ class Client extends React.Component {
 					<Header transparent noRight>
 						<Left>
 							<Button transparent onPress={() => this.props.navigation.goBack()}>
-								<Icon name="arrow-back" />
+								<Icon name={ I18nManager.isRTL ? "arrow-forward" : "arrow-back" } />
 							</Button>
 						</Left>
 						<Body style={{ marginLeft: 35 }}>
@@ -369,8 +369,8 @@ const styles = StyleSheet.create({
 	boldSomeInfo: {fontWeight: "bold"},
 	transparentCard: { paddingBottom: 30 },
 	nameClientStyle: { color: "#f8c652", fontSize: 20, },
-	directionRow: { flexDirection: "row" },
-	personalInfo: { flexDirection: 'column', alignItems: "flex-end" }
+	directionRow: { flexDirection: "row"},
+	personalInfo: { flexDirection: 'column', alignItems: "flex-end", marginLeft: 6, textAlign: "left" }
 });
 
 const mapStateToProps = (state) => ({

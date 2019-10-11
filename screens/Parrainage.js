@@ -1,5 +1,5 @@
 import React from 'react';
-import { View, Platform, StyleSheet, LayoutAnimation, UIManager, KeyboardAvoidingView, ImageBackground, Image, Dimensions, Switch } from 'react-native';
+import { View, Platform, StyleSheet, LayoutAnimation, UIManager, KeyboardAvoidingView, ImageBackground, Image, Dimensions, Switch, I18nManager } from 'react-native';
 import { LinearGradient } from "expo-linear-gradient";
 
 import { Ionicons } from '@expo/vector-icons';
@@ -400,7 +400,7 @@ const styles = StyleSheet.create({
 	blancColor: { color: "#fff" },
 	violetColor: { color: "#bf245a" },
 	principalIcon: {
-		marginLeft: -300,
+		marginLeft: ( I18nManager.isRTL ? -200 : -300),
 		borderRadius: Platform.OS === 'android' ? 105 : 15,
 		padding: 6,
 		marginTop: Platform.OS === 'android' ? 11 : 0,
@@ -408,8 +408,8 @@ const styles = StyleSheet.create({
 		justifyContent: "center"
 	},
 	principalText: {
-		marginTop: Platform.OS === "android" ? -5 : -30,
-		marginLeft: Platform.OS === "android" ? 5 : -100
+		marginTop: Platform.OS === "android" ? ( I18nManager.isRTL ? -50 : -5 ) : -30,
+		marginLeft: Platform.OS === "android" ? ( I18nManager.isRTL ? -100 : 5 ) : -100
 	},
 	titleStyle: { fontSize: 20 },
 	bodyHeaderStyle: { alignItems: "center", marginLeft: 140 },

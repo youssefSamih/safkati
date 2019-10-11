@@ -194,8 +194,8 @@ const styles = StyleSheet.create({
 	blancColor: { color: "#fff" },
 	titleStyle: { fontSize: 20 },
 	principalText: {
-		marginTop: Platform.OS === "android" ? -8 : -30,
-		marginLeft: Platform.OS === "android" ? 4 : -100
+		marginTop: Platform.OS === "android" ? ( I18nManager.isRTL ? -50 : -8 ) : -30,
+		marginLeft: Platform.OS === "android" ? ( I18nManager.isRTL ? -150 : 4) : -100
 	},
 	violetColor: { color: "#bf245a" },
 	principalIcon: {
@@ -208,7 +208,7 @@ const styles = StyleSheet.create({
 		alignItems: 'center',
 		width: 30
 	},
-	bodyHeaderStyle: { alignItems: "center", marginLeft: 140 },
+	bodyHeaderStyle: { alignItems: "center", marginLeft: I18nManager.isRTL ? 175 : 140 },
 	FooterHeigh: {
     height: 70
 	},
