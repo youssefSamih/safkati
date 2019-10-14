@@ -154,7 +154,7 @@ class ProjectDetail extends React.Component {
             </Body>
             <Right>
               <Button transparent>
-                <Icon name="share" />
+                {/* <Icon name="share" /> */}
               </Button>
             </Right>
           </Header>

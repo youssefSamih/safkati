@@ -109,7 +109,7 @@ class ClientsDeclare extends React.Component {
 							<Grid>
 								<Row>
 									<Left>
-										<H2 style={{ color: "#c30839", marginBottom: 5 }}>{this.printFullname(client.item)}</H2>
+										<H2 style={{ color: "#fff", marginBottom: 5 }}>{this.printFullname(client.item)}</H2>
 										<Text style={{ ...styles.colorText , fontSize: 16 }}>Budget: 150 000 Dh</Text>
 										<Text style={{ ...styles.colorText, fontSize: 16 }}>Tel: 00212 6 60 60 60 60</Text>
 									</Left>
@@ -148,7 +148,7 @@ class ClientsDeclare extends React.Component {
 						</Body>
 						<Right style={styles.leftRightHeaderStyle}>
 							<Button transparent>
-								<Icon name="share" style={{ ...styles.violetColor, fontSize: 30 }} />
+								{/* <Icon name="share" style={{ ...styles.violetColor, fontSize: 30 }} /> */}
 							</Button>
 						</Right>
 					</Header>

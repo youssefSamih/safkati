@@ -181,7 +181,7 @@ class DeclareClient extends React.Component {
 						</Body>
 						<Right style={styles.keyAvoid}>
 							<Button transparent>
-								<Icon name="share" style={{ ...styles.violetColor, fontSize: 30 }} />
+								{/* <Icon name="share" style={{ ...styles.violetColor, fontSize: 30 }} /> */}
 							</Button>
 						</Right>
 					</Header>

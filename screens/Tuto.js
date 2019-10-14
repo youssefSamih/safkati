@@ -61,7 +61,7 @@ class Tuto extends React.Component {
 									<Title>{i18n.t('How it works title')}</Title>
 								</Body>
 								<Button transparent>
-									<Icon name="share" />
+									{/* <Icon name="share" /> */}
 								</Button>
 							</Header>
 							<View style={styles.tutoVideoStyle}>
