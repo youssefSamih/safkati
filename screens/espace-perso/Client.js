@@ -1,5 +1,5 @@
 import React from 'react';
-import { View, StyleSheet, Platform, Image, ImageBackground, Dimensions, I18nManager } from 'react-native';
+import { View, StyleSheet, Platform, ImageBackground, Dimensions, I18nManager } from 'react-native';
 import { Ionicons } from '@expo/vector-icons';
 import { connect } from 'react-redux';
 import Moment from 'moment';
@@ -25,8 +25,7 @@ import {
 import { selectedClient } from '../../redux/actions';
 
 import i18n from '../../i18n/i18n';
-import { Block } from '../../components';
-import { theme, params } from '../../constants';
+import { params } from '../../constants';
 
 const widthWindo = Dimensions.get("window").width;
 class Client extends React.Component {
@@ -367,7 +366,7 @@ const styles = StyleSheet.create({
 },
 	locationDetailsClient: { flexDirection: "row", borderBottomColor: "#bf245a", borderBottomWidth: 1, paddingTop: 15, paddingBottom: 15 },
 	boldSomeInfo: {fontWeight: "bold"},
-	transparentCard: { paddingBottom: 30 },
+	transparentCard: { paddingBottom: 30, width: "70%" },
 	nameClientStyle: { color: "#f8c652", fontSize: 20, },
 	directionRow: { flexDirection: "row"},
 	personalInfo: { flexDirection: 'column', alignItems: "flex-end", marginLeft: 6, textAlign: "left" }

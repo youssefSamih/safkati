@@ -50,7 +50,6 @@ import {
 UIManager.setLayoutAnimationEnabledExperimental &&
   UIManager.setLayoutAnimationEnabledExperimental(true);
 const widthWindo = Dimensions.get("window").width;
-var centerTitle = 0;
 if(Platform.OS === 'android'){
   if(I18nManager.isRTL){
     centerTitle = 50
@@ -241,8 +240,7 @@ class SignUp extends React.Component {
             <Content>
               <Block
                 center
-                padding={18}
-                style={{ width: 37, flexDirection: "row" }}
+                style={{ width: "50%", flexDirection: "row", paddingLeft: 15, paddingRight: 15 }}
               >
                 <TouchableOpacity onPress={() => this.props.navigation.goBack()}>
                   <LinearGradient
@@ -570,7 +568,7 @@ const styles = StyleSheet.create({
 	},
 	SwitchStyle: {
 		alignItems: "flex-end",
-		marginLeft: 80,
+		marginLeft: "20%",
   },
   keyAvoid: { flex: 1 },
   ImgBack: { width : widthWindo }

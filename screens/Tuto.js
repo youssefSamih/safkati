@@ -1,5 +1,5 @@
 import React from 'react';
-import { Text, WebView, Dimensions, ImageBackground, StyleSheet, Platform, View } from 'react-native';
+import { Text, WebView, Dimensions, ImageBackground, StyleSheet, Platform, View, PixelRatio } from 'react-native';
 import { Ionicons } from '@expo/vector-icons';
 import { LinearGradient } from 'expo-linear-gradient';
 const { width } = Dimensions.get('window');
@@ -18,6 +18,15 @@ import {
 
 import i18n from '../i18n/i18n';
 
+const scale = Dimensions.get("window").width / 200;
+const actuatedNormalize = (size) => {
+  let newSize = size * scale
+  if (Platform.OS === 'ios') {
+  return Math.round(PixelRatio.roundToNearestPixel(newSize))
+  } else {
+    return Math.round(PixelRatio.roundToNearestPixel(newSize)) - 2
+  }
+}
 class Tuto extends React.Component {
 	static navigationOptions = ({ navigation }) => ({
 		title: i18n.t('How it works title'),
@@ -72,7 +81,7 @@ class Tuto extends React.Component {
 									source={{ uri: 'https://www.youtube.com/embed/mSwtx7wFDPY?rel=0&autoplay=0&showinfo=0&controls=0' }}
 								/>
 							</View>
-							<Content style={{ marginTop: Platform.OS === "ios" ? 5 : 0 }} >
+							<Content style={{ marginTop: Platform.OS === "ios" ? 5 : "30%" }} >
 								<Text style={styles.textStyle}>
 									Le Lorem Ipsum est simplement du faux texte employé dans la composition et la mise en page avant impression. Le Lorem Ipsum est le faux texte standard de l'imprimerie depuis les années 1500, quand un imprimeur anonyme assembla ensemble des morceaux de texte pour réaliser un livre spécimen de polices de texte. Il n'a pas fait que survivre cinq siècles, mais s'est aussi adapté à la bureautique informatique, sans que son contenu n'en soit modifié. Il a été popularisé dans les années 1960 grâce à la vente de feuilles Letraset contenant des passages du Lorem Ipsum, et, plus récemment, par son inclusion dans des applications de mise en page de texte, comme Aldus PageMaker.
 								</Text>
@@ -91,13 +100,15 @@ const styles = StyleSheet.create({
 		paddingBottom: Platform.OS === "android" ? 0 : 10
 	},
 	tutoVideoStyle: { 
-		height: 205, 
-		width: "88%", 
-		margin: 25, 
-		marginTop: Platform.OS === "android" ? 125 : 155
+		height: 150, 
+		width: "88%",
+		transform: [
+      { translateX: actuatedNormalize(13) },
+      { translateY: actuatedNormalize(60) }
+    ]
 	},
 	textStyle: { 
-		padding: 10, 
+		padding: 10,
 		color: "#fff" 
 	}
 })

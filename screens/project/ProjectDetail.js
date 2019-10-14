@@ -1,5 +1,5 @@
 import React from 'react';
-import { View, Text, Dimensions, Image, StyleSheet, WebView, Platform, ImageBackground, I18nManager } from 'react-native';
+import { View, Text, Dimensions, Image, StyleSheet, WebView, Platform, ImageBackground, I18nManager, PixelRatio } from 'react-native';
 //import { Actions } from 'react-native-router-flux';
 import { SliderBox } from 'react-native-image-slider-box';
 import MapView, { Marker } from 'react-native-maps';
@@ -20,6 +20,16 @@ const ASPECT_RATIO = width / height;
 const LATITUDE_DELTA = 0.0922;
 const LONGITUDE_DELTA = 20.794660188257694 /*LATITUDE_DELTA * ASPECT_RATIO*/;
 const windowWidth = Dimensions.get("window").width;
+
+const scale = Dimensions.get("window").width / 200   ;
+const actuatedNormalize = (size) => {
+  let newSize = size * scale
+  if (Platform.OS === 'ios') {
+  return Math.round(PixelRatio.roundToNearestPixel(newSize))
+  } else {
+    return Math.round(PixelRatio.roundToNearestPixel(newSize)) - 2
+  }
+};
 
 class ProjectDetail extends React.Component {
   static navigationOptions = ({ navigation }) => ({
@@ -246,7 +256,7 @@ const styles = StyleSheet.create({
   button: {
     color: 'white',
     padding: 12,
-    fontSize: 20,
+    fontSize: actuatedNormalize(10),
     marginTop: -10,
   },
   myMarker: {
@@ -293,8 +303,7 @@ const styles = StyleSheet.create({
   tagStyles: { 
     flexDirection: "row", 
     justifyContent: "flex-start", 
-    position: "absolute", 
-    // zIndex: Platform.OS === "android" ? 5 : 100, 
+    position: "absolute",
     width: windowWidth / 10, 
     right: 220,
   },

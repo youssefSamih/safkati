@@ -1,5 +1,5 @@
 import React from 'react';
-import { ImageBackground, StyleSheet, Platform, Image, Text, View, I18nManager } from 'react-native';
+import { ImageBackground, StyleSheet, Platform, Image, Text, View, I18nManager, Dimensions, PixelRatio } from 'react-native';
 import { Ionicons } from '@expo/vector-icons';
 import { LinearGradient } from "expo-linear-gradient";
 import {
@@ -26,6 +26,16 @@ import { theme } from '../../constants';
 import { fetchCommissions } from '../../redux/actions';
 import GradientText from '../../components/UI/gradientText';
 
+
+const scale = Dimensions.get("window").width / 200   ;
+const actuatedNormalize = (size) => {
+  let newSize = size * scale
+  if (Platform.OS === 'ios') {
+  return Math.round(PixelRatio.roundToNearestPixel(newSize))
+  } else {
+    return Math.round(PixelRatio.roundToNearestPixel(newSize)) - 2
+  }
+}
 
 class MesCommissions extends React.Component {
 	static navigationOptions = ({ navigation }) => ({
@@ -63,12 +73,12 @@ class MesCommissions extends React.Component {
 			<Container>
 				<ImageBackground source={require('../../assets/images/backClient.png')} style={{ flex: 1 }}>
 					<Header transparent noRight style={styles.paddHeader}>
-						<Left style={styles.leftRightHeaderStyle} style={{ ...styles.violetColor, fontSize: 35 }}>
+						<Left style={styles.leftRightHeaderStyle} style={{ ...styles.violetColor, fontSize: actuatedNormalize(35) }}>
 							<Button transparent onPress={() => this.props.navigation.goBack()}>
-								<Icon name={ I18nManager.isRTL ? "arrow-forward" : "arrow-back" } style={{ ...styles.violetColor, fontSize: 30 }} />
+								<Icon name={ I18nManager.isRTL ? "arrow-forward" : "arrow-back" } style={{ ...styles.violetColor, fontSize: actuatedNormalize(30) }} />
 							</Button>
 						</Left>
-						<Body style={styles.bodyHeaderStyle}>
+						<Body style={styles.bodyHeaderStyle} noRight >
 							<LinearGradient
 								colors={["#f6c552", "#ee813c", "#bf245a"]}
 								start={[1.5, 0.6]}
@@ -94,10 +104,10 @@ class MesCommissions extends React.Component {
 								<Grid>
 									<Row>
 										<Left>
-											<H2 style={{ color: "#facf6d", marginBottom: 5 }}>{i18n.t('Project')}</H2>
+											<H2 style={{ color: "#facf6d", marginBottom: 5, fontSize: actuatedNormalize(12) }}>{i18n.t('Project')}</H2>
 										</Left>
 										<Right>
-											<H2 style={{ color: "#facf6d", marginBottom: 5 }}>{i18n.t('Commission')}</H2>
+											<H2 style={{ color: "#facf6d", marginBottom: 5, fontSize: actuatedNormalize(12) }}>{i18n.t('Commission')}</H2>
 										</Right>
 									</Row>
 								</Grid>
@@ -115,10 +125,10 @@ class MesCommissions extends React.Component {
 											<Grid>
 												<Row>
 													<Left>
-														<H2 style={{ color: "#fff", marginBottom: 5 }}>{rowData[0]} Dhs</H2>
+														<H2 style={{ color: "#fff", marginBottom: 5, fontSize: actuatedNormalize(10) }}>{rowData[0]} Dhs</H2>
 													</Left>
 													<Right>
-														<H2 style={{ color: "#fff", marginBottom: 5 }}>{rowData[1]} Dhs</H2>
+														<H2 style={{ color: "#fff", marginBottom: 5, fontSize: actuatedNormalize(10) }}>{rowData[1]} Dhs</H2>
 													</Right>
 												</Row>
 											</Grid>
@@ -126,7 +136,7 @@ class MesCommissions extends React.Component {
 									</Card>
 								))
 							}
-							<Grid>
+							{/* <Grid>
 								<Col size={1}>
 									<Right style={{ left: 45 }}>
 										<Button transparent>
@@ -139,7 +149,7 @@ class MesCommissions extends React.Component {
 										</Button>
 									</Right>
 								</Col>
-							</Grid>
+							</Grid> */}
 						</View>
 					</Content>
 					<Footer style={styles.FooterHeigh}>
@@ -195,7 +205,7 @@ const styles = StyleSheet.create({
 	titleStyle: { fontSize: 20 },
 	principalText: {
 		marginTop: Platform.OS === "android" ? ( I18nManager.isRTL ? -50 : -8 ) : -30,
-		marginLeft: Platform.OS === "android" ? ( I18nManager.isRTL ? -150 : 4) : ( I18nManager.isRTL ? -100 : -50 )
+		marginLeft: Platform.OS === "android" ? ( I18nManager.isRTL ? -150 : "1%") : ( I18nManager.isRTL ? -100 : -50 )
 	},
 	violetColor: { color: "#bf245a" },
 	principalIcon: {
@@ -208,7 +218,13 @@ const styles = StyleSheet.create({
 		alignItems: 'center',
 		width: 30
 	},
-	bodyHeaderStyle: { alignItems: "center", marginLeft: I18nManager.isRTL ? 175 : 140 },
+	bodyHeaderStyle: { 
+		flex: 1,
+		alignItems: "center",
+		transform: [
+      { translateX: actuatedNormalize(70) },
+    ]
+	},
 	FooterHeigh: {
     height: 70
 	},

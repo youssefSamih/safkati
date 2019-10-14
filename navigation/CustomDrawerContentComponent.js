@@ -1,10 +1,21 @@
 import React from 'react';
-import { ImageBackground, StyleSheet, Platform } from 'react-native';
+import { ImageBackground, StyleSheet, Platform, Dimensions, PixelRatio } from 'react-native';
 import SafeAreaView from 'react-native-safe-area-view';
 import { DrawerNavigatorItems } from 'react-navigation-drawer';
 import { Container, Content, Header, Body, Text, Left, Button, Icon, Right } from 'native-base';
 import { LinearGradient } from "expo-linear-gradient";
 import { params } from '../constants';
+
+
+const scale = Dimensions.get("window").width / 200   ;
+const actuatedNormalize = (size) => {
+  let newSize = size * scale
+  if (Platform.OS === 'ios') {
+  return Math.round(PixelRatio.roundToNearestPixel(newSize))
+  } else {
+    return Math.round(PixelRatio.roundToNearestPixel(newSize)) - 2
+  }
+}
 
 const CustomDrawerContentComponent = (props) => {
   const userInfo = props.navigation.getParam('userInfo');
@@ -22,11 +33,11 @@ const CustomDrawerContentComponent = (props) => {
           >
             <Header transparent noShadow style={styles.drawerHeader}>
               <Left style={styles.leftRightHeaderStyle}>
-                <Button transparent>
+                <Button transparent onPress={() => props.navigation.closeDrawer()}>
                   <Icon name="md-close" style={{ fontSize: 30, color: "#fff" }} />
                 </Button>
               </Left>
-              <Body style={{ flex: 1, alignItems: 'center' }}>
+              <Body style={{ flex: 1, alignItems: 'center' }} noRight>
                 <ImageBackground
                   style={styles.drawerImage}
                   source={params.app.FACE}>
@@ -38,10 +49,10 @@ const CustomDrawerContentComponent = (props) => {
                       <Icon name="ios-camera" style={{ color: "#fff", fontSize: 20 }} />
                     </LinearGradient>
                 </ImageBackground>
-                <Text style={{ fontWeight: "bold", color: "#fff", fontSize: 30 }}>{userInfo.nom}</Text>
+                <Text style={styles.userNameStyle}>{userInfo.nom} {userInfo.prenom}</Text>
               </Body>
               <Right style={styles.leftRightHeaderStyle}>
-                <Button transparent>
+                <Button transparent onPress={() => props.navigation.navigate('Compte')}>
                   <Icon name="md-settings" style={{ fontSize: 30, color: "#fff" }} />
                 </Button>
               </Right>
@@ -84,6 +95,13 @@ const styles = StyleSheet.create({
     height: 30,
     top: 60,
     left: 75
+  },
+  userNameStyle: {
+    fontWeight: "bold", 
+    color: "#fff", 
+    fontSize: actuatedNormalize(12), 
+    width: "200%", 
+    textAlign: "center" 
   }
 });
 

@@ -1,5 +1,5 @@
 import React from 'react'
-import { Text, View, StyleSheet, Platform, I18nManager } from "react-native";
+import { Text, View, StyleSheet, Platform, I18nManager, PixelRatio, Dimensions } from "react-native";
 import Svg, {
     LinearGradient,
     Text as TextSvg,
@@ -8,6 +8,7 @@ import Svg, {
     TSpan
 } from 'react-native-svg';
 
+const scale = Dimensions.get("window").width; 
 const GradientText = ({ text1, style, titleStyle }) => {
     if(Platform.OS === 'android' && !I18nManager.isRTL ){
         return (
@@ -58,7 +59,7 @@ const styles = StyleSheet.create({
     },
     title: {
         fontWeight: "bold",
-        fontSize: 16,
+        fontSize: Math.round(PixelRatio.roundToNearestPixel(scale / 23)),
         textAlign: "center"
     },
 })

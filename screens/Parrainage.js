@@ -454,7 +454,7 @@ const styles = StyleSheet.create({
 	},
 	SwitchStyle: {
 		alignItems: "flex-end",
-		marginLeft: 80,
+		marginLeft: "10%",
 	},
 });
 

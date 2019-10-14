@@ -1,5 +1,5 @@
 import React from 'react';
-import { Platform, StyleSheet, FlatList, I18nManager, ImageBackground } from 'react-native';
+import { Platform, StyleSheet, FlatList, I18nManager, ImageBackground, Dimensions, PixelRatio } from 'react-native';
 import { connect } from 'react-redux';
 import Moment from 'moment';
 import { LinearGradient } from "expo-linear-gradient";
@@ -10,30 +10,30 @@ import {
 	Content,
 	Left,
 	Body,
-	Right,
 	Button,
 	Icon,
 	Title,
-	Text,
 	Card,
-	ListItem,
-	H1,
 	H2,
-	Thumbnail,
 	Grid,
 	Row,
 	Col,
-	Separator
 } from 'native-base';
 
 import i18n from '../../i18n/i18n';
-import Enconstruction from '../EnConstuction';
-import { theme, params } from '../../constants';
-import { Block } from '../../components';
+import { theme } from '../../constants';
 import { fetchParrainage } from '../../redux/actions';
 import FadeIn from '../../components/Animations/FadIn'
 
-
+const scale = Dimensions.get("window").width / 200   ;
+const actuatedNormalize = (size) => {
+  let newSize = size * scale
+  if (Platform.OS === 'ios') {
+  return Math.round(PixelRatio.roundToNearestPixel(newSize))
+  } else {
+    return Math.round(PixelRatio.roundToNearestPixel(newSize)) - 2
+  }
+}
 class MesParrinage extends React.Component {
 	static navigationOptions = ({ navigation }) => ({
 		title: i18n.t('My referrals title'),
@@ -64,34 +64,34 @@ class MesParrinage extends React.Component {
 						<Grid>
 							<Row style={styles.cardRow}>
 								<Col>
-									<H2 style={styles.blancColor}>{i18n.t('Name')} :</H2>
+									<H2 style={{...styles.blancColor, fontSize: actuatedNormalize(15)}}>{i18n.t('Name')} :</H2>
 								</Col>
 								<Col>
-									<H2 style={{ color: theme.colors.primary }}>{row.item.nom + " " + row.item.prenom}</H2>
-								</Col>
-							</Row>
-							<Row style={styles.cardRow}>
-								<Col>
-									<H2 style={styles.blancColor}>{i18n.t('Created in')} :</H2>
-								</Col>
-								<Col>
-									<H2 style={{ color: theme.colors.primary }}>{Moment(row.item.date_creation).format('DD/MM/Y')}</H2>
+									<H2 style={{ color: theme.colors.primary, fontSize: actuatedNormalize(13) }}>{row.item.nom + " " + row.item.prenom}</H2>
 								</Col>
 							</Row>
 							<Row style={styles.cardRow}>
 								<Col>
-									<H2 style={styles.blancColor}>{i18n.t('Email')} :</H2>
+									<H2 style={{...styles.blancColor, fontSize: actuatedNormalize(15)}}>{i18n.t('Created in')} :</H2>
 								</Col>
 								<Col>
-									<H2 style={{ color: theme.colors.primary }}>{row.item.email}</H2>
+									<H2 style={{ color: theme.colors.primary, fontSize: actuatedNormalize(13) }}>{Moment(row.item.date_creation).format('DD/MM/Y')}</H2>
+								</Col>
+							</Row>
+							<Row style={styles.cardRow}>
+								<Col>
+									<H2 style={{...styles.blancColor, fontSize: actuatedNormalize(15)}}>{i18n.t('Email')} :</H2>
+								</Col>
+								<Col>
+									<H2 style={{ color: theme.colors.primary, fontSize: actuatedNormalize(13) }}>{row.item.email}</H2>
 								</Col>
 							</Row>
 							<Row style={[styles.cardRow, styles.cardRowLast]}>
 								<Col>
-									<H2 style={styles.blancColor}>{i18n.t('phone')} :</H2>
+									<H2 style={{...styles.blancColor, fontSize: actuatedNormalize(15)}}>{i18n.t('phone')} :</H2>
 								</Col>
 								<Col>
-									<H2 style={{ color: theme.colors.primary }}>{row.item.phone}</H2>
+									<H2 style={{ color: theme.colors.primary, fontSize: actuatedNormalize(13) }}>{row.item.phone}</H2>
 								</Col>
 							</Row>
 						</Grid>

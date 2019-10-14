@@ -1,5 +1,5 @@
 import React from 'react';
-import { StyleSheet, FlatList, Text, TouchableWithoutFeedback, Platform, ImageBackground, Image, I18nManager } from 'react-native';
+import { StyleSheet, FlatList, Text, TouchableWithoutFeedback, Platform, ImageBackground, Image, I18nManager, Dimensions, PixelRatio } from 'react-native';
 import { LinearGradient } from "expo-linear-gradient";
 
 import {
@@ -27,6 +27,15 @@ import i18n from '../../i18n/i18n';
 import { params } from '../../constants';
 import GradientText from '../../components/UI/gradientText';
 
+const scale = Dimensions.get("window").width / 200   ;
+const actuatedNormalize = size => {
+  let newSize = size * scale
+  if (Platform.OS === 'ios') {
+  return Math.round(PixelRatio.roundToNearestPixel(newSize))
+  } else {
+    return Math.round(PixelRatio.roundToNearestPixel(newSize)) - 2
+  }
+};
 
 class ClientsDeclare extends React.Component {
 	static navigationOptions = () => ({
@@ -110,12 +119,12 @@ class ClientsDeclare extends React.Component {
 								<Row>
 									<Left>
 										<H2 style={{ color: "#fff", marginBottom: 5 }}>{this.printFullname(client.item)}</H2>
-										<Text style={{ ...styles.colorText , fontSize: 16 }}>Budget: 150 000 Dh</Text>
-										<Text style={{ ...styles.colorText, fontSize: 16 }}>Tel: 00212 6 60 60 60 60</Text>
+										<Text style={{ ...styles.colorText , fontSize: actuatedNormalize(10) }}>Budget: 150 000 Dh</Text>
+										<Text style={{ ...styles.colorText, fontSize: actuatedNormalize(10) }}>Tel: 00212 6 60 60 60 60</Text>
 									</Left>
 									<Right>
-										<View style={{ backgroundColor: "#fff", borderRadius: 10, padding: 5 }}>
-											<Text style={styles.colorText}>{i18n.t('View status')} -></Text>
+										<View style={{ backgroundColor: "#fff", borderRadius: 10, padding: 5, fontSize: actuatedNormalize(9) }}>
+											<Text style={{...styles.colorText, fontSize: actuatedNormalize(9)}}>{i18n.t('View status')} -></Text>
 										</View>
 									</Right>
 								</Row>
@@ -158,7 +167,7 @@ class ClientsDeclare extends React.Component {
 							data={this.state.clients}
 							renderItem={this.renderRow}
 						/>
-						<Grid>
+						{/* <Grid>
 							<Col size={1}>
 								<Right style={{ left: 70 }}>
 									<Button transparent>
@@ -169,7 +178,7 @@ class ClientsDeclare extends React.Component {
 									</Button>
 								</Right>
 							</Col>
-						</Grid>
+						</Grid> */}
 					</Content>
 					<Footer style={styles.FooterHeigh}>
             <FooterTab>
