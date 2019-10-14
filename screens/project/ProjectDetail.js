@@ -318,7 +318,7 @@ const styles = StyleSheet.create({
     marginTop: 35,
     height: 50
   },
-  contentTag: { zIndex: 5 }
+  contentTag: { zIndex: 5, marginBottom: "3%", }
 });
 
 const mapStateToProps = (state) => {

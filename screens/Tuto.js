@@ -1,8 +1,7 @@
 import React from 'react';
-import { Text, WebView, Dimensions, ImageBackground, StyleSheet, Platform, View, PixelRatio } from 'react-native';
+import { Text, WebView, Dimensions, ImageBackground, StyleSheet, Platform, View, PixelRatio, I18nManager } from 'react-native';
 import { Ionicons } from '@expo/vector-icons';
 import { LinearGradient } from 'expo-linear-gradient';
-const { width } = Dimensions.get('window');
 
 import {
 	Container,
@@ -13,7 +12,6 @@ import {
 	Button,
 	Icon,
 	Title,
-	Right
 } from 'native-base';
 
 import i18n from '../i18n/i18n';
@@ -99,11 +97,11 @@ const styles = StyleSheet.create({
 		marginTop: Platform.OS === "android" ? -25 : -5,
 		paddingBottom: Platform.OS === "android" ? 0 : 10
 	},
-	tutoVideoStyle: { 
-		height: 150, 
+	tutoVideoStyle: {
+		height: Dimensions.get("window").height > 600 ? "30%" : 150, 
 		width: "88%",
 		transform: [
-      { translateX: actuatedNormalize(13) },
+      { translateX: I18nManager.isRTL ? actuatedNormalize(-11) : actuatedNormalize(13) },
       { translateY: actuatedNormalize(60) }
     ]
 	},

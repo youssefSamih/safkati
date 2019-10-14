@@ -1,6 +1,6 @@
 import React from 'react';
 import _ from 'lodash';
-import { View, Image, StyleSheet, ImageBackground, LayoutAnimation, UIManager, KeyboardAvoidingView, Platform, Dimensions } from 'react-native';
+import { View, Image, StyleSheet, ImageBackground, LayoutAnimation, UIManager, KeyboardAvoidingView, Platform, Dimensions, I18nManager, PixelRatio } from 'react-native';
 
 import {
 	Container,
@@ -38,6 +38,15 @@ import i18n from '../../i18n/i18n';
 UIManager.setLayoutAnimationEnabledExperimental &&
 	UIManager.setLayoutAnimationEnabledExperimental(true);
 const widthWindo = Dimensions.get("window").width;
+const scale = widthWindo / 200;
+const actuatedNormalize = (size) => {
+  let newSize = size * scale
+  if (Platform.OS === 'ios') {
+  return Math.round(PixelRatio.roundToNearestPixel(newSize))
+  } else {
+    return Math.round(PixelRatio.roundToNearestPixel(newSize)) - 2
+  }
+}
 class DeclareClient extends React.Component {
 
 	componentWillMount() {
@@ -166,7 +175,7 @@ class DeclareClient extends React.Component {
 					<Header transparent noRight style={styles.paddHeader}>
 						<Left style={styles.keyAvoid}>
 							<Button transparent onPress={() => this.props.navigation.goBack()}>
-								<Icon name="arrow-back" style={{ ...styles.violetColor, fontSize: 30 }} />
+								<Icon name={ I18nManager.isRTL ? "arrow-forward" : "arrow-back" } style={{ ...styles.violetColor, fontSize: 30 }} />
 							</Button>
 						</Left>
 						<Body style={styles.bodyHeaderStyle}>
@@ -397,18 +406,23 @@ const styles = StyleSheet.create({
 	},
 	violetColor: { color: "#bf245a" },
 	principalIcon: {
-		marginLeft: -300,
+		marginLeft: "-650%",
 		borderRadius: Platform.OS === 'android' ? 105 : 15,
 		padding: 6,
 		marginTop: Platform.OS === 'android' ? 11 : 0,
 		height: 30,
 		justifyContent: "center"
 	},
-	bodyHeaderStyle: { alignItems: "center", marginLeft: 70 },
+	bodyHeaderStyle: { 
+		alignItems: "center", 
+		marginLeft:  "50%"
+	},
 	blancColor: { color: "#fff" },
-	principalText: { 
-		marginTop: Platform.OS === "android" ? -5 : -30,
-		marginLeft: Platform.OS === "android" ? 5 : -50
+	principalText: {
+		transform: [
+			{ translateX: I18nManager.isRTL ? actuatedNormalize(50) : actuatedNormalize(-15) },
+			{ translateY: I18nManager.isRTL ? actuatedNormalize(-15): actuatedNormalize(-3) }
+    ]
 	},
 	titleStyle: { fontSize: 20 },
 	keyAvoid: { flex: 1 },
@@ -441,7 +455,8 @@ const styles = StyleSheet.create({
 	StyleLogin: { 
 		color: "#fff", 
 		fontWeight: "bold", 
-		fontSize: 16
+		fontSize: actuatedNormalize(10),
+		textAlign: "center"
 	}
 });
 
