@@ -222,7 +222,7 @@ const styles = StyleSheet.create({
 		flex: 1,
 		alignItems: "center",
 		transform: [
-      { translateX: I18nManager.isRTL ? actuatedNormalize(-70) : ( Platform.OS === 'android' ? actuatedNormalize(70) : actuatedNormalize(50) ) },
+      { translateX: I18nManager.isRTL ? actuatedNormalize(-70) : ( Platform.OS === 'android' ? actuatedNormalize(70) : (Dimensions.get("window").height > 600 ? actuatedNormalize(50) : actuatedNormalize(60)) ) },
     ]
 	},
 	FooterHeigh: {

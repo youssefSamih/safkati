@@ -256,7 +256,7 @@ const styles = StyleSheet.create({
   button: {
     color: 'white',
     padding: 12,
-    fontSize: actuatedNormalize(10),
+    fontSize: Platform.OS === "ios" ? (Dimensions.get("window").height > 600 ? actuatedNormalize(10) : actuatedNormalize(8)) : actuatedNormalize(10),
     marginTop: -10,
   },
   myMarker: {
