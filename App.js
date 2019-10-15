@@ -1,5 +1,5 @@
 import React from 'react';
-import { StyleSheet, Text, View,I18nManager,AsyncStorage } from 'react-native';
+import { StyleSheet, Text, View,I18nManager,AsyncStorage, StatusBar } from 'react-native';
 import RNRestart from "react-native-restart";
 
 import { Provider } from 'react-redux';
@@ -23,8 +23,24 @@ import { StyleProvider } from 'native-base';
 console.disableYellowBox = true;
 
 const images = [
-'../assets/logo.png',
-'../assets/user-hp.png'
+'./assets/logo.png',
+'./assets/user-hp.png',
+'./assets/images/backClient.png',
+'./assets/images/backCompte.png',
+'./assets/images/backCreateAccount.png',
+'./assets/images/backDetail.png',
+'./assets/images/backParainage.png',
+'./assets/images/backpassModif.png',
+'./assets/images/bottomLogoSignup.png',
+'./assets/images/connexion.jpg',
+'./assets/images/listProject.png',
+'./assets/images/logoLang.png',
+'./assets/images/logoLog.png',
+'./assets/images/marocback.png',
+'./assets/images/plants_1.png',
+'./assets/images/plants_2.png',
+'./assets/images/plants_3.png',
+'./assets/images/safkatiSignup.png',
 ];
 
 export default class App extends React.Component {
@@ -77,17 +93,20 @@ export default class App extends React.Component {
     }
 
     return (
-      <Provider store={store}>
-      <StyleProvider style={getTheme(variables)}>
-        <Block white>
-          <Navigation 
-            ref={navigatorRef => {
-            NavigationService.setTopLevelNavigator(navigatorRef);
-            }}
-          />
-        </Block>
-      </StyleProvider>
-      </Provider>
+      <>
+        <StatusBar hidden />
+        <Provider store={store}>
+          <StyleProvider style={getTheme(variables)}>
+            <Block white>
+              <Navigation 
+                ref={navigatorRef => {
+                NavigationService.setTopLevelNavigator(navigatorRef);
+                }}
+              />
+            </Block>
+          </StyleProvider>
+        </Provider>
+      </>
     );
   }
 }
