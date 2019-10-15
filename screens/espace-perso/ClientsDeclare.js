@@ -119,8 +119,8 @@ class ClientsDeclare extends React.Component {
 								<Row>
 									<Left>
 										<H2 style={{ color: "#fff", marginBottom: 5 }}>{this.printFullname(client.item)}</H2>
-										<Text style={{ ...styles.colorText , fontSize: actuatedNormalize(10) }}>Budget: 150 000 Dh</Text>
-										<Text style={{ ...styles.colorText, fontSize: actuatedNormalize(10) }}>Tel: 00212 6 60 60 60 60</Text>
+										<Text style={{ ...styles.colorText , fontSize: actuatedNormalize(10) }}>{i18n.t('Budget prix', { prix: client.item.budget })}</Text>
+										<Text style={{ ...styles.colorText, fontSize: actuatedNormalize(10) }}>{i18n.t('show number', { tel: client.item.phone })}</Text>
 									</Left>
 									<Right>
 										<View style={{ backgroundColor: "#fff", borderRadius: 10, padding: 5, fontSize: actuatedNormalize(9) }}>

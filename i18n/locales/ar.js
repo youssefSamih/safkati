@@ -57,6 +57,8 @@ export default {
   "from price":"ابتداء من {{prix}} درهم",
   "price dhs" :"{{prix}} درهم",
   "min - max":"{{min}} درهم - {{max}} درهم",
+  "Budget prix": "الميزانية: {{price}} درهم",
+  "show number":"هاتف: {{tel}}",
 
    "Last Name *":"الاسم *",
    "First Name *":"الاسم الأول *", 

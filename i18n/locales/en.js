@@ -58,6 +58,8 @@ export default {
   "from price":"from {{prix}} dhs",
   "price dhs" :"{{prix}} dhs",
   "min - max":"{{min}} dhs - {{max}} dhs",
+  "Budget prix": "Budget: {{prix}} Dh",
+  "show number":"Tel: {{tel}}",
 
   "Last Name *":"Name *",
    "First Name *":"First name *", 
