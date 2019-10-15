@@ -79,7 +79,7 @@ class Tuto extends React.Component {
 									source={{ uri: 'https://www.youtube.com/embed/mSwtx7wFDPY?rel=0&autoplay=0&showinfo=0&controls=0' }}
 								/>
 							</View>
-							<Content style={{ marginTop: Platform.OS === "ios" ? 5 : "30%" }} >
+							<Content style={{ marginTop: Platform.OS === "ios" ? "45%" : "30%" }} >
 								<Text style={styles.textStyle}>
 									Le Lorem Ipsum est simplement du faux texte employé dans la composition et la mise en page avant impression. Le Lorem Ipsum est le faux texte standard de l'imprimerie depuis les années 1500, quand un imprimeur anonyme assembla ensemble des morceaux de texte pour réaliser un livre spécimen de polices de texte. Il n'a pas fait que survivre cinq siècles, mais s'est aussi adapté à la bureautique informatique, sans que son contenu n'en soit modifié. Il a été popularisé dans les années 1960 grâce à la vente de feuilles Letraset contenant des passages du Lorem Ipsum, et, plus récemment, par son inclusion dans des applications de mise en page de texte, comme Aldus PageMaker.
 								</Text>
@@ -98,11 +98,11 @@ const styles = StyleSheet.create({
 		paddingBottom: Platform.OS === "android" ? 0 : 10
 	},
 	tutoVideoStyle: {
-		height: Dimensions.get("window").height > 600 ? "30%" : 150, 
+		height: Platform.OS === "android" ? Dimensions.get("window").height > 600 ? "30%" : 150 : Dimensions.get("window").height > 600 ? "29%" : 150 , 
 		width: "88%",
 		transform: [
-      { translateX: I18nManager.isRTL ? actuatedNormalize(-11) : actuatedNormalize(13) },
-      { translateY: actuatedNormalize(60) }
+      { translateX: I18nManager.isRTL ? actuatedNormalize(-11) : ( Platform.OS === "android" ? actuatedNormalize(13) : actuatedNormalize(11)) },
+      { translateY: ( Platform.OS === "android" ? actuatedNormalize(60) : actuatedNormalize(75) ) }
     ]
 	},
 	textStyle: { 

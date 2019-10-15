@@ -73,9 +73,9 @@ class MesCommissions extends React.Component {
 			<Container>
 				<ImageBackground source={require('../../assets/images/backClient.png')} style={{ flex: 1 }}>
 					<Header transparent noRight style={styles.paddHeader}>
-						<Left style={styles.leftRightHeaderStyle} style={{ ...styles.violetColor, fontSize: actuatedNormalize(35) }}>
+						<Left style={styles.leftRightHeaderStyle} style={{ ...styles.violetColor }}>
 							<Button transparent onPress={() => this.props.navigation.goBack()}>
-								<Icon name={ I18nManager.isRTL ? "arrow-forward" : "arrow-back" } style={{ ...styles.violetColor, fontSize: actuatedNormalize(30) }} />
+								<Icon name={ I18nManager.isRTL ? "arrow-forward" : "arrow-back" } style={{ ...styles.violetColor, fontSize: Platform.OS === "android" ? actuatedNormalize(30) : actuatedNormalize(20) }} />
 							</Button>
 						</Left>
 						<Body style={styles.bodyHeaderStyle} noRight >
@@ -222,7 +222,7 @@ const styles = StyleSheet.create({
 		flex: 1,
 		alignItems: "center",
 		transform: [
-      { translateX: I18nManager.isRTL ? actuatedNormalize(-70) : actuatedNormalize(70) },
+      { translateX: I18nManager.isRTL ? actuatedNormalize(-70) : ( Platform.OS === 'android' ? actuatedNormalize(70) : actuatedNormalize(50) ) },
     ]
 	},
 	FooterHeigh: {

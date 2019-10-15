@@ -64,7 +64,7 @@ class MesParrinage extends React.Component {
 						<Grid>
 							<Row style={styles.cardRow}>
 								<Col>
-									<H2 style={{...styles.blancColor, fontSize: actuatedNormalize(15)}}>{i18n.t('Name')} :</H2>
+									<H2 style={{...styles.blancColor, fontSize: actuatedNormalize(13)}}>{i18n.t('Name')} :</H2>
 								</Col>
 								<Col>
 									<H2 style={{ color: theme.colors.primary, fontSize: actuatedNormalize(13) }}>{row.item.nom + " " + row.item.prenom}</H2>
@@ -72,7 +72,7 @@ class MesParrinage extends React.Component {
 							</Row>
 							<Row style={styles.cardRow}>
 								<Col>
-									<H2 style={{...styles.blancColor, fontSize: actuatedNormalize(15)}}>{i18n.t('Created in')} :</H2>
+									<H2 style={{...styles.blancColor, fontSize: actuatedNormalize(13)}}>{i18n.t('Created in')} :</H2>
 								</Col>
 								<Col>
 									<H2 style={{ color: theme.colors.primary, fontSize: actuatedNormalize(13) }}>{Moment(row.item.date_creation).format('DD/MM/Y')}</H2>
@@ -80,7 +80,7 @@ class MesParrinage extends React.Component {
 							</Row>
 							<Row style={styles.cardRow}>
 								<Col>
-									<H2 style={{...styles.blancColor, fontSize: actuatedNormalize(15)}}>{i18n.t('Email')} :</H2>
+									<H2 style={{...styles.blancColor, fontSize: actuatedNormalize(13)}}>{i18n.t('Email')} :</H2>
 								</Col>
 								<Col>
 									<H2 style={{ color: theme.colors.primary, fontSize: actuatedNormalize(13) }}>{row.item.email}</H2>
@@ -88,7 +88,7 @@ class MesParrinage extends React.Component {
 							</Row>
 							<Row style={[styles.cardRow, styles.cardRowLast]}>
 								<Col>
-									<H2 style={{...styles.blancColor, fontSize: actuatedNormalize(15)}}>{i18n.t('phone')} :</H2>
+									<H2 style={{...styles.blancColor, fontSize: actuatedNormalize(13)}}>{i18n.t('phone')} :</H2>
 								</Col>
 								<Col>
 									<H2 style={{ color: theme.colors.primary, fontSize: actuatedNormalize(13) }}>{row.item.phone}</H2>

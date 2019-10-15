@@ -419,10 +419,9 @@ const styles = StyleSheet.create({
 	},
 	blancColor: { color: "#fff" },
 	principalText: {
-		transform: [
-			{ translateX: I18nManager.isRTL ? actuatedNormalize(50) : actuatedNormalize(-15) },
-			{ translateY: I18nManager.isRTL ? actuatedNormalize(-15): actuatedNormalize(-3) }
-    ]
+		marginTop: Platform.OS === "android" ? ( I18nManager.isRTL ? (Dimensions.get("window").height > 600 ? "-100%" : "-150%") : "-50%" ) : "-40%",
+		marginLeft: Platform.OS === "android" ? ( I18nManager.isRTL ? -100 : "-50%" ) : "-230%",
+		marginBottom: "-50%",
 	},
 	titleStyle: { fontSize: 20 },
 	keyAvoid: { flex: 1 },
@@ -455,7 +454,7 @@ const styles = StyleSheet.create({
 	StyleLogin: { 
 		color: "#fff", 
 		fontWeight: "bold", 
-		fontSize: actuatedNormalize(10),
+		fontSize: actuatedNormalize(8),
 		textAlign: "center"
 	}
 });
