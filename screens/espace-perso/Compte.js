@@ -33,8 +33,10 @@ import { connect } from 'react-redux';
 import { getUserInfo, updateCompte } from '../../redux/actions';
 
 // Enable LayoutAnimation on Android
-UIManager.setLayoutAnimationEnabledExperimental &&
-	UIManager.setLayoutAnimationEnabledExperimental(true);
+if(Platform.OS === "android"){
+	UIManager.setLayoutAnimationEnabledExperimental &&
+		UIManager.setLayoutAnimationEnabledExperimental(true);
+}
 const widthWindo = Dimensions.get("window").width;
 class Compte extends React.Component {
 	static navigationOptions = ({ navigation }) => ({

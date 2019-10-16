@@ -114,7 +114,7 @@ class MonEspace extends React.Component {
 								{Platform.OS === "ios" && <Icon active name="arrow-forward" />}
 							</Right>
 						</ListItem>
-						<ListItem icon noBorder style={styles.listItemStyle}>
+						<ListItem icon noBorder style={styles.listItemStyle} onPress={() => this.props.navigation.navigate('MesMessageries')}>
 							<Left>
 								<Button transparent>
 									<Icon name="mail" />
