@@ -156,9 +156,9 @@ class Projets extends React.Component {
 							<Title>{i18n.t('Projets title')}</Title>
 						</Body>
 						<Right style={styles.headerFlex}>
-							<Button onPress={() => this._toggleHeaderSearch()} transparent>
+							{/*<Button onPress={() => this._toggleHeaderSearch()} transparent>
 								<Icon name='ios-search' style={styles.iosColor} />
-							</Button>
+							</Button>*/}
 						</Right>
 					</Header>
 				</LinearGradient>
