@@ -79,7 +79,9 @@ class DeclareClient extends React.Component {
 			isTypeValid: true,
 			isSelectedProjet: true,
 			budget: '',
-			type_de_bien: 'A',
+			type_de_bien: this.props.navigation.getParam('bien', 'A'),
+			disabledProject : this.props.navigation.getParam('projectId', false),
+			disabledBien : this.props.navigation.getParam('bien', false),
 		};
 	}
 	validateEmail(email) {
@@ -163,9 +165,9 @@ class DeclareClient extends React.Component {
 	}
 
 	render() {
-		const { isEmailValid, isNomValid, isPhoneValid, isAgeValid, isProjectValid, isPrenomValid, isCinValid, isAdressValid, isBudgetValid, isTypeValid, isSelectedProjet } = this.state;
+		const { isEmailValid, isNomValid, isPhoneValid, isAgeValid, isProjectValid, isPrenomValid, isCinValid, isAdressValid, isBudgetValid, isTypeValid, isSelectedProjet, disabledProject, disabledBien } = this.state;
 		const isLoading = this.props.loading;
-
+		console.log(disabledProject, disabledBien);
 		return (
 			<Container>
 				<ImageBackground
@@ -291,9 +293,10 @@ class DeclareClient extends React.Component {
 												onChangeText={budget => this.setState({ budget })}
 											/>
 										</Item>
-										<Item inlineLabel error={!isTypeValid} disabled={isLoading}>
+										<Item inlineLabel error={!isTypeValid} disabled={disabledBien || isLoading}>
 											<Label style={styles.blancColor}>{i18n.t('type de bien *')}</Label>
 											<Picker
+												enabled={!disabledBien}
 												placeholder={''}
 												mode="dialog"
 												style={{ width: undefined, ...styles.blancColor }}
@@ -305,9 +308,10 @@ class DeclareClient extends React.Component {
 												<Picker.Item label={i18n.t('Villa')} value="V" />
 											</Picker>
 										</Item>
-										<Item style={{ borderBottomWidth: 0 }} error={!isSelectedProjet}>
+										<Item style={{ borderBottomWidth: 0 }} error={!isSelectedProjet} disabled={disabledProject || isLoading}>
 											<Label style={styles.blancColor}> {i18n.t('default project')} </Label>
 											<Picker
+												enabled={!disabledProject}
 												placeholder={''}
 												mode="dialog"
 												style={{ width: undefined, ...styles.blancColor }}

@@ -174,7 +174,6 @@ class ProjectDetail extends React.Component {
         <Content style={{ width }}>
           {this.renderGallery()}
           <View style={styles.contentTag}>
-            <View style={{ ...styles.colorBlanc, padding: 5 }} />
             <View style={styles.tagStyles}>
               { tag[0] ? <View style={{...styles.propertyBorder, backgroundColor: "#e8d19b"}}><Text style={styles.tagTextStyle}> {tag[0]} </Text></View> : null }
               { tag[1] ? <View style={{...styles.propertyBorder, backgroundColor: "#f8c652"}}><Text style={styles.tagTextStyle}> {tag[1]} </Text></View> : null }
@@ -219,7 +218,7 @@ class ProjectDetail extends React.Component {
               <Button
                 rounded
                 transparent
-                onPress={() => this.props.navigation.navigate('DeclareClient', { projectId: project.id })}
+                onPress={() => this.props.navigation.navigate('DeclareClient', { projectId: project.id,bien:project.type_de_bien && project.type_de_bien.charAt(0) })}
               >
                 <LinearGradient
                   colors={['#f6c552', '#ee813c', '#bf245a']}
@@ -240,6 +239,7 @@ const styles = StyleSheet.create({
   itemProjet: {
     marginBottom: 2,
     padding: 12,
+    paddingTop: 24,
     alignItems: "flex-start"
   },
   itemImg: {
@@ -303,11 +303,10 @@ const styles = StyleSheet.create({
     justifyContent: "center"
   },
   tagStyles: { 
-    flexDirection: "row", 
-    justifyContent: "flex-start", 
+    flexDirection: "row-reverse", 
+    //justifyContent: "flex-start", 
     position: "absolute",
-    width: windowWidth / 10, 
-    right: 220,
+    width: windowWidth 
   },
   tagTextStyle: { 
     fontSize: 10,
@@ -320,7 +319,7 @@ const styles = StyleSheet.create({
     marginTop: 35,
     height: 50
   },
-  contentTag: { zIndex: 5, marginBottom: "3%", }
+  contentTag: { zIndex: 5, margin: 0,padding: 0, }
 });
 
 const mapStateToProps = (state) => {
