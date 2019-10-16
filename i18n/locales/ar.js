@@ -59,6 +59,8 @@ export default {
   "min - max":"{{min}} درهم - {{max}} درهم",
   "Budget prix": "الميزانية: {{price}} درهم",
   "show number":"هاتف: {{tel}}",
+  "Budget:": "الميزانية:",
+  "Tel:":"الهاتف:",
 
    "Last Name *":"الاسم *",
    "First Name *":"الاسم الأول *", 

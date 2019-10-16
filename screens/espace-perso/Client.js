@@ -276,10 +276,10 @@ class Client extends React.Component {
 										<Text style={styles.nameClientStyle}>{client && client.nom + ' ' + client.prenom}</Text>
 									</View>
 									<View style={styles.directionRow}>
-										<Text style={{ ...styles.blancColor, ...styles.boldSomeInfo, width: "60%" }}>Adresse client - Casablanca Morocco </Text>
+										<Text style={{ ...styles.blancColor, ...styles.boldSomeInfo, width: "60%" }}>{client && client.adress} </Text>
 										<View style={styles.personalInfo}>
-											<Text style={styles.blancColor}>Budget: <Text style={{ ...styles.boldSomeInfo, ...styles.blancColor }}>150 000 Dh</Text></Text>
-											<Text style={styles.blancColor}>Tel: <Text style={{ ...styles.boldSomeInfo, ...styles.blancColor }}>00212 60 60 60 60</Text></Text>
+											<Text style={styles.blancColor}>{i18n.t('Budget:')} <Text style={{ ...styles.boldSomeInfo, ...styles.blancColor }}>{client && i18n.t('price dhs',{prix: client.budget})}</Text></Text>
+											<Text style={styles.blancColor}>{i18n.t('Tel:')} <Text style={{ ...styles.boldSomeInfo, ...styles.blancColor }}>{client && client.phone}</Text></Text>
 										</View>
 									</View>
 								</View>
@@ -304,7 +304,7 @@ class Client extends React.Component {
 							</Card>
 						</View>
 						</LinearGradient>
-							<Button transparent noRight style={{...styles.gradientEditButton, ...styles.editButtonLocation}}>
+							{/*<Button transparent noRight style={{...styles.gradientEditButton, ...styles.editButtonLocation}}>
 								<ElevatedView elevation={5} style={styles.elevationStyle}>
 									<LinearGradient
 										colors={["#f6c552", "#ee813c", "#bf245a"]}
@@ -315,7 +315,7 @@ class Client extends React.Component {
 										<Text style={{ ...styles.blancColor, ...styles.sizeEditButton }}>Modifier</Text>
 									</LinearGradient>
 								</ElevatedView>
-							</Button>
+							</Button>*/}
 						{client && this.renderStatus()}
 					</Content>
 				</ImageBackground>
