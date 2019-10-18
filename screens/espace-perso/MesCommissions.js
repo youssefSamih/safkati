@@ -75,7 +75,7 @@ class MesCommissions extends React.Component {
 					<Header transparent noRight style={styles.paddHeader}>
 						<Left style={styles.leftRightHeaderStyle} style={{ ...styles.violetColor }}>
 							<Button transparent onPress={() => this.props.navigation.goBack()}>
-								<Icon name={ I18nManager.isRTL ? "arrow-forward" : "arrow-back" } style={{ ...styles.violetColor, fontSize: Platform.OS === "android" ? actuatedNormalize(30) : actuatedNormalize(20) }} />
+								<Icon name={ I18nManager.isRTL ? "arrow-forward" : "arrow-back" } style={{ ...styles.violetColor, fontSize: 35}} />
 							</Button>
 						</Left>
 						<Body style={styles.bodyHeaderStyle} noRight >
